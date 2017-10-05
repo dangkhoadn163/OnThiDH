@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "915201932807",
+    "firebase_url": "https://onthi-76e3b.firebaseio.com",
+    "project_id": "onthi-76e3b",
+    "storage_bucket": "onthi-76e3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915201932807:android:8e8c822f166a5518",
+        "android_client_info": {
+          "package_name": "com.example.dk.onthidh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915201932807-h2al2ksq235jhjqueo09e64hnfvmcj08.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dk.onthidh",
+            "certificate_hash": "e590ddf89d86cce53d34166afd49674ae35bd48e"
+          }
+        },
+        {
+          "client_id": "915201932807-moeidumj5l6bjk9uaemd3ob562fk0p9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMpSbBFJ8K1TAWSehfq_080wDUGhzwSqk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915201932807-moeidumj5l6bjk9uaemd3ob562fk0p9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
