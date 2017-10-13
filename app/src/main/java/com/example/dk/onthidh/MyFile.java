@@ -6,12 +6,15 @@ package com.example.dk.onthidh;
 
 public class MyFile {
 
-    public String image, text;
+    public String answer;
+    public String image;
+    public String text;
 
     public MyFile() {
     }
 
-    public MyFile(String image, String text) {
+    public MyFile(String answer, String image, String text) {
+        this.answer = answer;
         this.image = image;
         this.text = text;
     }
