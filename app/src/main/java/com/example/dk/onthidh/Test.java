@@ -20,13 +20,17 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dk.onthidh.FolderMoi.Moi;
 import com.example.dk.onthidh.FolderMoi.MoiAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Test extends AppCompatActivity {
@@ -34,8 +38,8 @@ public class Test extends AppCompatActivity {
     DrawerLayout drawer;
     Toolbar toolbar;
     NavigationView navigation;
-    RadioGroup[] rdg = new RadioGroup[50];
-    String answer;
+    private RadioGroup[] rdg = new RadioGroup[50];
+    String keydatabase;
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
     private TextView tvMinute, tvSecond;
@@ -47,7 +51,8 @@ public class Test extends AppCompatActivity {
     private ImageButton imgClock, imgPen;
     //
     private RecyclerView rcvDataMoi;
-
+    private BigDecimal score = new BigDecimal("0.0");
+    private BigDecimal scoreperanswer = new BigDecimal("0.2");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +70,9 @@ public class Test extends AppCompatActivity {
         rcvDataMoi.setHasFixedSize(true);
         rcvDataMoi.setLayoutManager(new LinearLayoutManager(this));
         rcvDataMoi.setAdapter(adapter_moi);
+           /* keydatabase = getIntent().getStringExtra("khóa");
+            Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
-        loadanswer(keyt);
-
 
     }
 
@@ -106,43 +111,8 @@ public class Test extends AppCompatActivity {
         });
 
     }
-    public void loadanswer(String keyt) {
-        rootDatabase.child("anhvan").child(keyt).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                /*String link = dataSnapshot.getValue().toString();
-                if(link!=null){
-                    mois.add(link);
-                    adapter_moi.notifyDataSetChanged();
-                    Log.d(TAG,link);
-                }else{
-                    Log.d(TAG,"KHONG CO DU LIEU");
-                }*/
-                Log.d(TAG,dataSnapshot.getValue().toString());
-                answer=dataSnapshot.getValue().toString();
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
     private void anhxa() {
         imgClock = (ImageButton) findViewById(R.id.imageClock);
@@ -196,16 +166,41 @@ public class Test extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String result = "1A2C3A4B5B6D7D8C9A10B11A12D13D14C15C16C17A18A19C20C21D22B23A24C25C26B27D28C29D30B31C32A33B34A35D36D37A38C39A40A41A42D43C44A45B46D47C48C49D50D";
+                String idRdb = "";
                 for (int j = 0; j < 50; j++) {
                     if ((rdg[j].getCheckedRadioButtonId()) == -1) {
-                        Toast.makeText(Test.this, "ban chua danh cau " + (j + 1), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Test.this, "Bạn chưa đánh câu " + (j + 1), Toast.LENGTH_SHORT).show();
                         return;
                     }
-//                    Toast.makeText(Test.this, rdg[j]
-//                                    .getResources()
-//                                    .getResourceEntryName(rdg[j]
-//                                    .getCheckedRadioButtonId()) + "", Toast.LENGTH_SHORT).show();
                 }
+                Log.d("ID", idRdb );
+                int lengthresult = result.length();
+                String temp = "";
+                int index = 0;
+                for(int j = 0; j < lengthresult; j++)
+                {
+                    char c = result.charAt(j);
+                    temp = temp.concat(c + "");
+                    if(c >= 'A' && c <= 'D')
+                    {
+                        Log.d("Temp", temp);
+                        boolean checkresult = rdg[index]
+                                .getResources()
+                                .getResourceEntryName(rdg[index]
+                                        .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
+                        Log.d("Result", temp + ":" + checkresult + "");
+                        if(checkresult)
+                        {
+                            score = score.add(scoreperanswer);
+                            Log.d("Scorestep", score + "");
+                        }
+                        temp = "";
+                        index++;
+                    }
+                }
+                Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
+                Log.d("Score", score + "");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
