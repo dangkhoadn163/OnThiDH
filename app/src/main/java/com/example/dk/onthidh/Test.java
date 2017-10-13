@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Test extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class Test extends AppCompatActivity {
     DrawerLayout drawer;
     Toolbar toolbar;
     NavigationView navigation;
-    RadioGroup[] rdg = new RadioGroup[50];
+    private RadioGroup[] rdg = new RadioGroup[50];
     String keydatabase;
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
@@ -50,7 +51,8 @@ public class Test extends AppCompatActivity {
     private ImageButton imgClock, imgPen;
     //
     private RecyclerView rcvDataMoi;
-
+    private BigDecimal score = new BigDecimal("0.0");
+    private BigDecimal scoreperanswer = new BigDecimal("0.2");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,19 +74,6 @@ public class Test extends AppCompatActivity {
             Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
 
-
-//        loadList(keyt);
-//        mois.add(new Moi("https://drive.google.com/drive/u/0/my-drive"));
-//        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
-//        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
-//        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
-////        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
-//        mois.add(new Moi(R.drawable.test));
-//        mois.add(new Moi(R.drawable.thpta));
-//        mois.add(new Moi(R.drawable.thptb));
-//        mois.add(new Moi(R.drawable.thptc));
-//        mois.add(new Moi(R.drawable.thptd));
-//        mois.add(new Moi(R.drawable.thpte));
     }
 
     public void load(String keyt) {
@@ -123,24 +112,7 @@ public class Test extends AppCompatActivity {
 
     }
 
-    private void loadList(String keyt) {
 
-        FirebaseRecyclerAdapter<Moi, MoiAdapter.ViewHolder> myAdapterMoi = new FirebaseRecyclerAdapter<Moi,
-                MoiAdapter.ViewHolder>(Moi.class, R.layout.item_moi,
-                MoiAdapter.ViewHolder.class,
-                rootDatabase.
-                child("anhvan").
-                child(keyt).
-                child("test")) {
-            @Override
-            protected void populateViewHolder(MoiAdapter.ViewHolder viewHolder, Moi model, int position) {
-                //TODO:Lam o day
-                Picasso.with(Test.this).load(model.test).into(viewHolder.item_image);
-
-            }
-        };
-        rcvDataMoi.setAdapter(myAdapterMoi);
-    }
 
     private void anhxa() {
         imgClock = (ImageButton) findViewById(R.id.imageClock);
@@ -194,16 +166,41 @@ public class Test extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String result = "1A2C3A4B5B6D7D8C9A10B11A12D13D14C15C16C17A18A19C20C21D22B23A24C25C26B27D28C29D30B31C32A33B34A35D36D37A38C39A40A41A42D43C44A45B46D47C48C49D50D";
+                String idRdb = "";
                 for (int j = 0; j < 50; j++) {
                     if ((rdg[j].getCheckedRadioButtonId()) == -1) {
-                        Toast.makeText(Test.this, "ban chua danh cau " + (j + 1), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Test.this, "Bạn chưa đánh câu " + (j + 1), Toast.LENGTH_SHORT).show();
                         return;
                     }
-//                    Toast.makeText(Test.this, rdg[j]
-//                                    .getResources()
-//                                    .getResourceEntryName(rdg[j]
-//                                    .getCheckedRadioButtonId()) + "", Toast.LENGTH_SHORT).show();
                 }
+                Log.d("ID", idRdb );
+                int lengthresult = result.length();
+                String temp = "";
+                int index = 0;
+                for(int j = 0; j < lengthresult; j++)
+                {
+                    char c = result.charAt(j);
+                    temp = temp.concat(c + "");
+                    if(c >= 'A' && c <= 'D')
+                    {
+                        Log.d("Temp", temp);
+                        boolean checkresult = rdg[index]
+                                .getResources()
+                                .getResourceEntryName(rdg[index]
+                                        .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
+                        Log.d("Result", temp + ":" + checkresult + "");
+                        if(checkresult)
+                        {
+                            score = score.add(scoreperanswer);
+                            Log.d("Scorestep", score + "");
+                        }
+                        temp = "";
+                        index++;
+                    }
+                }
+                Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
+                Log.d("Score", score + "");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });

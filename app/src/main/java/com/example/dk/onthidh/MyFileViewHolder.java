@@ -38,6 +38,7 @@ public final class MyFileViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(),t +  "", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
