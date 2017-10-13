@@ -174,7 +174,7 @@ public class Test extends AppCompatActivity {
                         return;
                     }
                 }
-                Log.d("ID", idRdb );
+                //Log.d("ID", idRdb );
                 int lengthresult = result.length();
                 String temp = "";
                 int index = 0;
