@@ -26,7 +26,6 @@ public final class MyFileViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void loadHinhAnh(Context context, String duongDan) {
-
         Picasso.with(context).load(duongDan).into(imvHinhAnh);
     }
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <ImageView
-        android:background="@color/colorWhite"
+        android:contentDescription="@string/dethi"
         android:id="@+id/item_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/test"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-    <View android:layout_width="match_parent"
+        android:background="@color/colorWhite" />
+    <View
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#D6D6D6"/>
-</RelativeLayout>
+        android:background="#D6D6D6" />
+</LinearLayout>

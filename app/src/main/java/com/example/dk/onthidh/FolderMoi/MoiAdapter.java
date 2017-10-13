@@ -1,4 +1,4 @@
-package com.example.dk.onthidh.Moi;
+package com.example.dk.onthidh.FolderMoi;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,17 +12,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by DK on 10/2/2017.
- */
-
 public class MoiAdapter extends RecyclerView.Adapter<MoiAdapter.ViewHolder> {
     private Context mContext;
-    private List<Moi> images;
+    private List<String> mois;
 
-    public MoiAdapter(Context mContext, List<Moi> images) {
+    public MoiAdapter(Context mContext, List<String> mois) {
         this.mContext = mContext;
-        this.images = images;
+        this.mois = mois;
     }
 
     @Override
@@ -33,21 +29,17 @@ public class MoiAdapter extends RecyclerView.Adapter<MoiAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Moi m = images.get(position);
-        Picasso.with(mContext)
-                .load(m.getHinh())
-                .skipMemoryCache()
-                .placeholder(R.drawable.noimage)
-                .into(holder.item_image);
+        String moi = mois.get(position);
+        Picasso.with(mContext).load(moi).placeholder(R.drawable.noimage).into(holder.item_image);
     }
 
     @Override
     public int getItemCount() {
-        return images.size();
+        return mois.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView item_image;
+        public ImageView item_image;
         public ViewHolder(View itemView) {
             super(itemView);
             item_image = (ImageView) itemView.findViewById(R.id.item_image);
