@@ -20,12 +20,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dk.onthidh.FolderMoi.Moi;
 import com.example.dk.onthidh.FolderMoi.MoiAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,7 +38,7 @@ public class Test extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation;
     RadioGroup[] rdg = new RadioGroup[50];
-    String answer;
+    String keydatabase;
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
     private TextView tvMinute, tvSecond;
@@ -45,6 +48,7 @@ public class Test extends AppCompatActivity {
     private DatabaseReference rootDatabase;
     private CountDownTimer countDownTimer;
     private ImageButton imgClock, imgPen;
+    //
     private RecyclerView rcvDataMoi;
 
     @Override
@@ -52,6 +56,7 @@ public class Test extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         String keyt = getIntent().getExtras().getString("keyt");
+//        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         CDTimer();
@@ -66,7 +71,20 @@ public class Test extends AppCompatActivity {
            /* keydatabase = getIntent().getStringExtra("khóa");
             Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
-        loadanswer(keyt);
+
+
+//        loadList(keyt);
+//        mois.add(new Moi("https://drive.google.com/drive/u/0/my-drive"));
+//        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
+//        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
+//        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
+////        mois.add(new Moi("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"));
+//        mois.add(new Moi(R.drawable.test));
+//        mois.add(new Moi(R.drawable.thpta));
+//        mois.add(new Moi(R.drawable.thptb));
+//        mois.add(new Moi(R.drawable.thptc));
+//        mois.add(new Moi(R.drawable.thptd));
+//        mois.add(new Moi(R.drawable.thpte));
     }
 
     public void load(String keyt) {
@@ -104,37 +122,25 @@ public class Test extends AppCompatActivity {
         });
 
     }
-    public void loadanswer(String keyt) {
-        rootDatabase.child("anhvan").child(keyt).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                Log.d(TAG,dataSnapshot.getValue().toString());
-                answer=dataSnapshot.getValue().toString();
-                Toast.makeText(Test.this, dataSnapshot.getValue().toString()+"", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            }
+    private void loadList(String keyt) {
 
+        FirebaseRecyclerAdapter<Moi, MoiAdapter.ViewHolder> myAdapterMoi = new FirebaseRecyclerAdapter<Moi,
+                MoiAdapter.ViewHolder>(Moi.class, R.layout.item_moi,
+                MoiAdapter.ViewHolder.class,
+                rootDatabase.
+                child("anhvan").
+                child(keyt).
+                child("test")) {
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            protected void populateViewHolder(MoiAdapter.ViewHolder viewHolder, Moi model, int position) {
+                //TODO:Lam o day
+                Picasso.with(Test.this).load(model.test).into(viewHolder.item_image);
 
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        };
+        rcvDataMoi.setAdapter(myAdapterMoi);
     }
-
 
     private void anhxa() {
         imgClock = (ImageButton) findViewById(R.id.imageClock);
