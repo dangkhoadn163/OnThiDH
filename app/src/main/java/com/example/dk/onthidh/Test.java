@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public class Test extends AppCompatActivity {
     DrawerLayout drawer;
     Toolbar toolbar;
     NavigationView navigation;
-    private RadioGroup[] rdg = new RadioGroup[50];
-    String keydatabase;
+    String answer;
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
+    private RadioGroup[] rdg = new RadioGroup[50];
     private TextView tvMinute, tvSecond;
     private Handler handler;
     private Button btnSave;
@@ -50,6 +51,7 @@ public class Test extends AppCompatActivity {
     private RecyclerView rcvDataMoi;
     private BigDecimal score = new BigDecimal("0.0");
     private BigDecimal scoreperanswer = new BigDecimal("0.2");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class Test extends AppCompatActivity {
            /* keydatabase = getIntent().getStringExtra("khóa");
             Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
+        loadanswer(keyt);
 
     }
 
@@ -78,14 +81,15 @@ public class Test extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String link = dataSnapshot.getValue().toString();
-                if(link!=null){
+                if (link != null) {
                     mois.add(link);
                     adapter_moi.notifyDataSetChanged();
-                    Log.d(TAG,link);
-                }else{
-                    Log.d(TAG,"KHONG CO DU LIEU");
+                    Log.d(TAG, link);
+                } else {
+                    Log.d(TAG, "KHONG CO DU LIEU");
                 }
             }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
@@ -109,6 +113,40 @@ public class Test extends AppCompatActivity {
 
     }
 
+    public void loadanswer(String keyt) {
+
+        rootDatabase.child("anhvan").child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild("answer"))
+                    answer = dataSnapshot.child("answer").getValue().toString();
+                    Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+//    private void loadList(String keyt) {
+//        FirebaseRecyclerAdapter<String, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<String, MyFileViewHolder>(
+//                String.class,
+//                R.layout.item,
+//                MyFileViewHolder.class,
+//                rootDatabase.child("anhvan").child(keyt)
+//        ) {
+//            @Override
+//            protected void populateViewHolder(MyFileViewHolder viewHolder, final String model, int position) {
+//                viewHolder.imvHinhAnh.
+//                Toast.makeText(Test.this, model + "", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        };
+//        rcvDataMoi.setAdapter(myAdapterTest);
+//    }
 
 
     private void anhxa() {
@@ -163,7 +201,6 @@ public class Test extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String result = "1A2C3A4B5B6D7D8C9A10B11A12D13D14C15C16C17A18A19C20C21D22B23A24C25C26B27D28C29D30B31C32A33B34A35D36D37A38C39A40A41A42D43C44A45B46D47C48C49D50D";
                 String idRdb = "";
                 for (int j = 0; j < 50; j++) {
                     if ((rdg[j].getCheckedRadioButtonId()) == -1) {
@@ -171,24 +208,21 @@ public class Test extends AppCompatActivity {
                         return;
                     }
                 }
-                Log.d("ID", idRdb );
-                int lengthresult = result.length();
+                Log.d("ID", idRdb);
+                int lengthresult = answer.length();
                 String temp = "";
                 int index = 0;
-                for(int j = 0; j < lengthresult; j++)
-                {
-                    char c = result.charAt(j);
+                for (int j = 0; j < lengthresult; j++) {
+                    char c = answer.charAt(j);
                     temp = temp.concat(c + "");
-                    if(c >= 'A' && c <= 'D')
-                    {
+                    if (c >= 'A' && c <= 'D') {
                         Log.d("Temp", temp);
                         boolean checkresult = rdg[index]
                                 .getResources()
                                 .getResourceEntryName(rdg[index]
                                         .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
                         Log.d("Result", temp + ":" + checkresult + "");
-                        if(checkresult)
-                        {
+                        if (checkresult) {
                             score = score.add(scoreperanswer);
                             Log.d("Scorestep", score + "");
                         }
@@ -213,13 +247,15 @@ public class Test extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-//noinspectionSimplifiableIfStatement
-        /*if (id == R.id.action_settings) {
-            return true;
-        }*/
-        if (id == android.R.id.home)
-            drawer.openDrawer(GravityCompat.START);
+//        int id = item.getItemId();
+////noinspectionSimplifiableIfStatement
+//        /*if (id == R.id.action_settings) {
+//            return true;
+//        }*/
+//        if (id == android.R.id.home)
+//            drawer.openDrawer(GravityCompat.START);
+
+        Toast.makeText(this, answer + "", Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
 

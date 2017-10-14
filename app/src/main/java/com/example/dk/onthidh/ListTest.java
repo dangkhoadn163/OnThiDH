@@ -105,7 +105,7 @@ public class ListTest extends AppCompatActivity {
 
                     }
                 });
-                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
 
             }
         };

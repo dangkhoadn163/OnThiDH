@@ -5,12 +5,15 @@ package com.example.dk.onthidh.FolderMoi;
  */
 
 public class Moi {
-    public String test;
+//    public String answer;
+    public  String test;
 
     public Moi() {
     }
 
-    public Moi(String test) {
+    public Moi(String answer,String test,String text) {
+//        this.answer=answer;
         this.test = test;
+
     }
 }
