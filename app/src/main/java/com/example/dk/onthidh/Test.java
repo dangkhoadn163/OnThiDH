@@ -36,10 +36,10 @@ public class Test extends AppCompatActivity {
     DrawerLayout drawer;
     Toolbar toolbar;
     NavigationView navigation;
+    private RadioGroup[] rdg = new RadioGroup[50];
     String answer;
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
-    private RadioGroup[] rdg = new RadioGroup[50];
     private TextView tvMinute, tvSecond;
     private Handler handler;
     private Button btnSave;
@@ -51,7 +51,6 @@ public class Test extends AppCompatActivity {
     private RecyclerView rcvDataMoi;
     private BigDecimal score = new BigDecimal("0.0");
     private BigDecimal scoreperanswer = new BigDecimal("0.2");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,15 +80,14 @@ public class Test extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String link = dataSnapshot.getValue().toString();
-                if (link != null) {
+                if(link!=null){
                     mois.add(link);
                     adapter_moi.notifyDataSetChanged();
-                    Log.d(TAG, link);
-                } else {
-                    Log.d(TAG, "KHONG CO DU LIEU");
+                    Log.d(TAG,link);
+                }else{
+                    Log.d(TAG,"KHONG CO DU LIEU");
                 }
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
@@ -112,7 +110,6 @@ public class Test extends AppCompatActivity {
         });
 
     }
-
     public void loadanswer(String keyt) {
 
         rootDatabase.child("anhvan").child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -120,7 +117,7 @@ public class Test extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("answer"))
                     answer = dataSnapshot.child("answer").getValue().toString();
-                    Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -131,22 +128,6 @@ public class Test extends AppCompatActivity {
 
     }
 
-//    private void loadList(String keyt) {
-//        FirebaseRecyclerAdapter<String, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<String, MyFileViewHolder>(
-//                String.class,
-//                R.layout.item,
-//                MyFileViewHolder.class,
-//                rootDatabase.child("anhvan").child(keyt)
-//        ) {
-//            @Override
-//            protected void populateViewHolder(MyFileViewHolder viewHolder, final String model, int position) {
-//                viewHolder.imvHinhAnh.
-//                Toast.makeText(Test.this, model + "", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        };
-//        rcvDataMoi.setAdapter(myAdapterTest);
-//    }
 
 
     private void anhxa() {
@@ -208,21 +189,24 @@ public class Test extends AppCompatActivity {
                         return;
                     }
                 }
-                Log.d("ID", idRdb);
+                Log.d("ID", idRdb );
                 int lengthresult = answer.length();
                 String temp = "";
                 int index = 0;
-                for (int j = 0; j < lengthresult; j++) {
+                for(int j = 0; j < lengthresult; j++)
+                {
                     char c = answer.charAt(j);
                     temp = temp.concat(c + "");
-                    if (c >= 'A' && c <= 'D') {
+                    if(c >= 'A' && c <= 'D')
+                    {
                         Log.d("Temp", temp);
                         boolean checkresult = rdg[index]
                                 .getResources()
                                 .getResourceEntryName(rdg[index]
                                         .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
                         Log.d("Result", temp + ":" + checkresult + "");
-                        if (checkresult) {
+                        if(checkresult)
+                        {
                             score = score.add(scoreperanswer);
                             Log.d("Scorestep", score + "");
                         }
@@ -247,15 +231,13 @@ public class Test extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-////noinspectionSimplifiableIfStatement
-//        /*if (id == R.id.action_settings) {
-//            return true;
-//        }*/
-//        if (id == android.R.id.home)
-//            drawer.openDrawer(GravityCompat.START);
-
-        Toast.makeText(this, answer + "", Toast.LENGTH_SHORT).show();
+        int id = item.getItemId();
+//noinspectionSimplifiableIfStatement
+        /*if (id == R.id.action_settings) {
+            return true;
+        }*/
+        if (id == android.R.id.home)
+            drawer.openDrawer(GravityCompat.START);
         return super.onOptionsItemSelected(item);
     }
 
