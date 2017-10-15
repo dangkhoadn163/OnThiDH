@@ -1,5 +1,8 @@
 package com.example.dk.onthidh;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -14,8 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,9 +36,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import static android.app.PendingIntent.getActivity;
+
 public class Test extends AppCompatActivity {
     private static final String TAG = "Test";
     DrawerLayout drawer;
+    LinearLayout lnl;
     Toolbar toolbar;
     NavigationView navigation;
     private RadioGroup[] rdg = new RadioGroup[50];
@@ -54,6 +62,8 @@ public class Test extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+                WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         setContentView(R.layout.activity_test);
         String keyt = getIntent().getExtras().getString("keyt");
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
@@ -72,7 +82,11 @@ public class Test extends AppCompatActivity {
             Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
         loadanswer(keyt);
-
+//        lnl = (LinearLayout) findViewById(R.id.linearlayout);
+//        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), );
+//        Bitmap blurredBitmap = BlurBuilder.blur(this, originalBitmap);
+//        lnl.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
+//        lnl.getBackground().setAlpha(100);
     }
 
     public void load(String keyt) {
@@ -166,7 +180,6 @@ public class Test extends AppCompatActivity {
     }
 
     private void Nav() {
-        //thang cho pha hoai
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
 
