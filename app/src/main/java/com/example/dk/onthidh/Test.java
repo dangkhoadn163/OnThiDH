@@ -41,7 +41,8 @@ public class Test extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation;
     private RadioGroup[] rdg = new RadioGroup[50];
-    String answer;
+    private String answer;
+    private String saveanswers = "";
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
     private TextView tvMinute, tvSecond;
@@ -175,10 +176,10 @@ public class Test extends AppCompatActivity {
                 public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
                     //rdg[finalJ].getResources().getResourceEntryName(rdg[finalJ].getCheckedRadioButtonId());
-//                            Toast.makeText(Test.this, rdg[finalJ]
-//                                            .getResources()
-//                                            .getResourceEntryName(rdg[finalJ]
-//                                            .getCheckedRadioButtonId()) + "", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Test.this, rdg[finalJ]
+                                            .getResources()
+                                            .getResourceEntryName(rdg[finalJ]
+                                            .getCheckedRadioButtonId()) + "", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -214,6 +215,7 @@ public class Test extends AppCompatActivity {
                 int index = 0;
                 for(int j = 0; j < lengthresult; j++)
                 {
+                    final int finalJ = j;
                     char c = answer.charAt(j);
                     temp = temp.concat(c + "");
                     if(c >= 'A' && c <= 'D')
@@ -223,6 +225,7 @@ public class Test extends AppCompatActivity {
                                 .getResources()
                                 .getResourceEntryName(rdg[index]
                                         .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
+                      saveanswers = saveanswers.concat(rdg[index].getResources().getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
                         Log.d("Result", temp + ":" + checkresult + "");
                         if(checkresult)
                         {
@@ -233,6 +236,7 @@ public class Test extends AppCompatActivity {
                         index++;
                     }
                 }
+                Log.d("Save", saveanswers);
                 Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
                 Log.d("Score", score + "");
                 drawer.closeDrawer(GravityCompat.START);
