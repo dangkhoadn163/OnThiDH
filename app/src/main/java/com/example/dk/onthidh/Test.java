@@ -42,9 +42,7 @@ public class Test extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation;
     private RadioGroup[] rdg = new RadioGroup[50];
-    String answer;
-    String keyt;
-    String scored;
+    private String answer;
     private String saveanswers = "";
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
@@ -65,13 +63,12 @@ public class Test extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
                 WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         setContentView(R.layout.activity_test);
-        keyt = getIntent().getExtras().getString("keyt");
+        String keyt = getIntent().getExtras().getString("keyt");
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         CDTimer();
         Nav();
-
         radiogroup();
         mois = new ArrayList<>();
         adapter_moi = new MoiAdapter(Test.this, mois);
@@ -79,12 +76,12 @@ public class Test extends AppCompatActivity {
         rcvDataMoi.setHasFixedSize(true);
         rcvDataMoi.setLayoutManager(new LinearLayoutManager(this));
         rcvDataMoi.setAdapter(adapter_moi);
-
+           /* keydatabase = getIntent().getStringExtra("khóa");
+            Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
         loadanswer(keyt);
         autocheck();
         Click();
-
 //        lnl = (LinearLayout) findViewById(R.id.linearlayout);
 //        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), );
 //        Bitmap blurredBitmap = BlurBuilder.blur(this, originalBitmap);
@@ -127,10 +124,6 @@ public class Test extends AppCompatActivity {
         });
 
     }
-    public String getterscored(){
-        return scored;
-    }
-
     public void loadanswer(String keyt) {
 
         rootDatabase.child("anhvan").child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -138,7 +131,7 @@ public class Test extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("answer"))
                     answer = dataSnapshot.child("answer").getValue().toString();
-                Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -148,49 +141,7 @@ public class Test extends AppCompatActivity {
         });
 
     }
-    public void loadsaveanswers(){
-        rootDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-               People people = new People(saveanswers,scored);
-               rootDatabase.child("People").child("de").child(keyt).child("dapandalam").setValue(people);
-                Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-//    void autocheck()
-//    {
-//        for(int i = 0; i < 50; i++)
-//        {
-//            for (int j = 0; j < 3; j++) {
-//                String quizid = "cau" + (i + 1) +(char)(97 + j);
-//                int resID = getResources().getIdentifier(quizid, "id", getPackageName());
-//                rdg[i].check(resID);
-////            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
-//    }
-        void autocheck()
-        {
-            for(int i = 0; i < 50; i++)
-            {
-                Random rand = new Random();
-                int r = rand.nextInt(4) + 97;
-
-                String quizid = "cau" + (i + 1) +(char)r;
-                int resID = getResources().getIdentifier(quizid, "id", getPackageName());
-                rdg[i].check(resID);
-        //            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
-
-
-            }
-        }
 
 
     private void anhxa() {
@@ -235,6 +186,20 @@ public class Test extends AppCompatActivity {
             });
         }
     }
+    void autocheck()
+    {
+        for(int i = 0; i < 50; i++)
+        {
+            Random rand = new Random();
+            int r = rand.nextInt(4) + 97;
+            String quizid = "cau" + (i + 1) +(char)r;
+            int resID = getResources().getIdentifier(quizid, "id", getPackageName());
+            rdg[i].check(resID);
+//            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
+
+
+        }
+    }
     private void Nav() {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
@@ -265,6 +230,7 @@ public class Test extends AppCompatActivity {
                 int index = 0;
                 for(int j = 0; j < lengthresult; j++)
                 {
+                    final int finalJ = j;
                     char c = answer.charAt(j);
                     temp = temp.concat(c + "");
                     if(c >= 'A' && c <= 'D')
@@ -274,9 +240,8 @@ public class Test extends AppCompatActivity {
                                 .getResources()
                                 .getResourceEntryName(rdg[index]
                                         .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
+                      saveanswers = saveanswers.concat(rdg[index].getResources().getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
                         Log.d("Result", temp + ":" + checkresult + "");
-                        saveanswers = saveanswers.concat(rdg[index].getResources().getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
-
                         if(checkresult)
                         {
                             score = score.add(scoreperanswer);
@@ -286,10 +251,9 @@ public class Test extends AppCompatActivity {
                         index++;
                     }
                 }
+               // Log.d("Save", saveanswers);
                 Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
                 Log.d("Score", score + "");
-                scored= score+"";
-                loadsaveanswers();
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
