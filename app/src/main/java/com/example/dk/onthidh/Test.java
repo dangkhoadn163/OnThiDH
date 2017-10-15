@@ -235,19 +235,6 @@ public class Test extends AppCompatActivity {
             });
         }
     }
-    void autocheck()
-    {
-        for(int i = 0; i < 50; i++)
-        {
-
-            String quizid = "cau" + (i + 1) +(char)97;
-            int resID = getResources().getIdentifier(quizid, "id", getPackageName());
-            rdg[i].check(resID);
-//            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
-
-
-        }
-    }
     private void Nav() {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
