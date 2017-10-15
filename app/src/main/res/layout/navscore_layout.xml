@@ -51,7 +51,7 @@
                     android:id="@+id/cau1a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="false"
+                    android:checked="true"
                     android:text="A" />
 
                 <RadioButton
