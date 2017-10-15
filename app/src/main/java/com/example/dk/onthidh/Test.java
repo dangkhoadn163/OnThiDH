@@ -189,12 +189,12 @@ public class Test extends AppCompatActivity {
     {
         for(int i = 0; i < 50; i++)
         {
-            for (int j = 0; j < 3; j++) {
-                String quizid = "cau" + (i + 1) +(char)(97 + j);
-                int resID = getResources().getIdentifier(quizid, "id", getPackageName());
-                rdg[i].check(resID);
+
+            String quizid = "cau" + (i + 1) +(char)97;
+            int resID = getResources().getIdentifier(quizid, "id", getPackageName());
+            rdg[i].check(resID);
 //            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
-            }
+
 
         }
     }
