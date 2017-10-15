@@ -79,6 +79,7 @@ public class Test extends AppCompatActivity {
             Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
         loadanswer(keyt);
+        autocheck();
         Click();
 //        lnl = (LinearLayout) findViewById(R.id.linearlayout);
 //        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), );
@@ -184,7 +185,19 @@ public class Test extends AppCompatActivity {
             });
         }
     }
+    void autocheck()
+    {
+        for(int i = 0; i < 50; i++)
+        {
+            for (int j = 0; j < 3; j++) {
+                String quizid = "cau" + (i + 1) +(char)(97 + j);
+                int resID = getResources().getIdentifier(quizid, "id", getPackageName());
+                rdg[i].check(resID);
+//            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
+            }
 
+        }
+    }
     private void Nav() {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
