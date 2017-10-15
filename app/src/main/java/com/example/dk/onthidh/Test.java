@@ -1,8 +1,6 @@
 package com.example.dk.onthidh;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -35,8 +33,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
-import static android.app.PendingIntent.getActivity;
 
 public class Test extends AppCompatActivity {
     private static final String TAG = "Test";
@@ -82,6 +78,7 @@ public class Test extends AppCompatActivity {
             Toast.makeText(this, keydatabase+"", Toast.LENGTH_SHORT).show();*/
         load(keyt);
         loadanswer(keyt);
+        Click();
 //        lnl = (LinearLayout) findViewById(R.id.linearlayout);
 //        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), );
 //        Bitmap blurredBitmap = BlurBuilder.blur(this, originalBitmap);
@@ -159,6 +156,14 @@ public class Test extends AppCompatActivity {
             rdg[i] = ((RadioGroup) findViewById(resID));
 //            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
         }
+    }
+    private void Click(){
+        imgClock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Test.this,Score.class));
+            }
+        });
     }
 
     private void radiogroup() {
