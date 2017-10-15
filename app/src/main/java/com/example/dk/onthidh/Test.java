@@ -166,6 +166,7 @@ public class Test extends AppCompatActivity {
     }
 
     private void Nav() {
+        //thang cho pha hoai
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
 
