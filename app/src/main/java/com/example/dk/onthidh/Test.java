@@ -236,7 +236,7 @@ public class Test extends AppCompatActivity {
                         index++;
                     }
                 }
-                Log.d("Save", saveanswers);
+               // Log.d("Save", saveanswers);
                 Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
                 Log.d("Score", score + "");
                 drawer.closeDrawer(GravityCompat.START);
