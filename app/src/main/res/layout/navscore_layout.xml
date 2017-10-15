@@ -18,7 +18,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:id="@+id/btnSave"
+        android:id="@+id/btnWatch"
         android:text="Xem chi tiết đáp án"
         android:gravity="center"
         android:layout_gravity="center"
@@ -28,8 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-
-
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +49,6 @@
                     android:id="@+id/cau1a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="A" />
 
                 <RadioButton
@@ -76,1756 +73,1756 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 2" />
-
-                <RadioButton
-                    android:id="@+id/cau2a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau2b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau2c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau2d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 3" />
-
-                <RadioButton
-                    android:id="@+id/cau3a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau3b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau3c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau3d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 4" />
-
-                <RadioButton
-                    android:id="@+id/cau4a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau4b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau4c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau4d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 5" />
-
-                <RadioButton
-                    android:id="@+id/cau5a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau5b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau5c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau5d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txvcau6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 6" />
-
-                <RadioButton
-                    android:id="@+id/cau6a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau6b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau6c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau6d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txvcau7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 7" />
-
-                <RadioButton
-                    android:id="@+id/cau7a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau7b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau7c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau7d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txvcau8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 8" />
-
-                <RadioButton
-                    android:id="@+id/cau8a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau8b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau8c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau8d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 9" />
-
-                <RadioButton
-                    android:id="@+id/cau9a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau9b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau9c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau9d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 10" />
-
-                <RadioButton
-                    android:id="@+id/cau10a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau10b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau10c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau10d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 11" />
-
-                <RadioButton
-                    android:id="@+id/cau11a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau11b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau11c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau11d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 12" />
-
-                <RadioButton
-                    android:id="@+id/cau12a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau12b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau12c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau12d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 13" />
-
-                <RadioButton
-                    android:id="@+id/cau13a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau13b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau13c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau13d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 14" />
-
-                <RadioButton
-                    android:id="@+id/cau14a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau14b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau14c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau14d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 15" />
-
-                <RadioButton
-                    android:id="@+id/cau15a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau15b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau15c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau15d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 16" />
-
-                <RadioButton
-                    android:id="@+id/cau16a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau16b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau16c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau16d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 17" />
-
-                <RadioButton
-                    android:id="@+id/cau17a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau17b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau17c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau17d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txvcau18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 18" />
-
-                <RadioButton
-                    android:id="@+id/cau18a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau18b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau18c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau18d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 19" />
-
-                <RadioButton
-                    android:id="@+id/cau19a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau19b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau19c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau19d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 20" />
-
-                <RadioButton
-                    android:id="@+id/cau20a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau20b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau20c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau20d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 21" />
-
-                <RadioButton
-                    android:id="@+id/cau21a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau21b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau21c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau21d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 22" />
-
-                <RadioButton
-                    android:id="@+id/cau22a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau22b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau22c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau22d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 23" />
-
-                <RadioButton
-                    android:id="@+id/cau23a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau23b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau23c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau23d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 24" />
-
-                <RadioButton
-                    android:id="@+id/cau24a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau24b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau24c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau24d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 25" />
-
-                <RadioButton
-                    android:id="@+id/cau25a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau25b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau25c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau25d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau26"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 26" />
-
-                <RadioButton
-                    android:id="@+id/cau26a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau26b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau26c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau26d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau27"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 27" />
-
-                <RadioButton
-                    android:id="@+id/cau27a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau27b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau27c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau27d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau28"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 28" />
-
-                <RadioButton
-                    android:id="@+id/cau28a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau28b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau28c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau28d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau29"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 29" />
-
-                <RadioButton
-                    android:id="@+id/cau29a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau29b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau29c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau29d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 30" />
-
-                <RadioButton
-                    android:id="@+id/cau30a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau30b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau30c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau30d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau31"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 31" />
-
-                <RadioButton
-                    android:id="@+id/cau31a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau31b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau31c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau31d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau32"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 32" />
-
-                <RadioButton
-                    android:id="@+id/cau32a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau32b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau32c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau32d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau33"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 33" />
-
-                <RadioButton
-                    android:id="@+id/cau33a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau33b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau33c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau33d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau34"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 34" />
-
-                <RadioButton
-                    android:id="@+id/cau34a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau34b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau34c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau34d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau35"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 35" />
-
-                <RadioButton
-                    android:id="@+id/cau35a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau35b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau35c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau35d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau36"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 36" />
-
-                <RadioButton
-                    android:id="@+id/cau36a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau36b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau36c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau36d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau37"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 37" />
-
-                <RadioButton
-                    android:id="@+id/cau37a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau37b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau37c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau37d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau38"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 38" />
-
-                <RadioButton
-                    android:id="@+id/cau38a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau38b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau38c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau38d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau39"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 39" />
-
-                <RadioButton
-                    android:id="@+id/cau39a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau39b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau39c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau39d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau40"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 40" />
-
-                <RadioButton
-                    android:id="@+id/cau40a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau40b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau40c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau40d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau41"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 41" />
-
-                <RadioButton
-                    android:id="@+id/cau41a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau41b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau41c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau41d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau42"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 42" />
-
-                <RadioButton
-                    android:id="@+id/cau42a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau42b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau42c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau42d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau43"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 43" />
-
-                <RadioButton
-                    android:id="@+id/cau43a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau43b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau43c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau43d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau44"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 44" />
-
-                <RadioButton
-                    android:id="@+id/cau44a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau44b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau44c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau44d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau45"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 45" />
-
-                <RadioButton
-                    android:id="@+id/cau45a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau45b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau45c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau45d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau46"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 46" />
-
-                <RadioButton
-                    android:id="@+id/cau46a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau46b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau46c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau46d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau47"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 47" />
-
-                <RadioButton
-                    android:id="@+id/cau47a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau47b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau47c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau47d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau48"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 48" />
-
-                <RadioButton
-                    android:id="@+id/cau48a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau48b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau48c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau48d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau49"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 49" />
-
-                <RadioButton
-                    android:id="@+id/cau49a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau49b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau49c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau49d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txvcau50"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Câu 50" />
-
-                <RadioButton
-                    android:id="@+id/cau50a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A" />
-
-                <RadioButton
-                    android:id="@+id/cau50b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="B" />
-
-                <RadioButton
-                    android:id="@+id/cau50c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C" />
-
-                <RadioButton
-                    android:id="@+id/cau50d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="D" />
-            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau2"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 2" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau2a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau2b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau2c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau2d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau3"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 3" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau3a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau3b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau3c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau3d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau4"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 4" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau4a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau4b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau4c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau4d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau5"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 5" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau5a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau5b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau5c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau5d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau6"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 6" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau6a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau6b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau6c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau6d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau7"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 7" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau7a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau7b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau7c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau7d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau8"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 8" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau8a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau8b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau8c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau8d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau9"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 9" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau9a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau9b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau9c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau9d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau10"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 10" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau10a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau10b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau10c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau10d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau11"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 11" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau11a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau11b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau11c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau11d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau12"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 12" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau12a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau12b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau12c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau12d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau13"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 13" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau13a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau13b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau13c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau13d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau14"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 14" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau14a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau14b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau14c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau14d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau15"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 15" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau15a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau15b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau15c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau15d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau16"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 16" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau16a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau16b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau16c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau16d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau17"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 17" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau17a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau17b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau17c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau17d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau18"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 18" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau18a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau18b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau18c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau18d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau19"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 19" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau19a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau19b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau19c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau19d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau20"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 20" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau20a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau20b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau20c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau20d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau21"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 21" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau21a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau21b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau21c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau21d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau22"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 22" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau22a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau22b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau22c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau22d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau23"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 23" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau23a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau23b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau23c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau23d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau24"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 24" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau24a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau24b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau24c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau24d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau25"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 25" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau25a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau25b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau25c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau25d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau26"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 26" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau26a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau26b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau26c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau26d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau27"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 27" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau27a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau27b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau27c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau27d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau28"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 28" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau28a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau28b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau28c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau28d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau29"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 29" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau29a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau29b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau29c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau29d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau30"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 30" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau30a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau30b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau30c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau30d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau31"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 31" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau31a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau31b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau31c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau31d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau32"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 32" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau32a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau32b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau32c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau32d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau33"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 33" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau33a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau33b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau33c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau33d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau34"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 34" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau34a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau34b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau34c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau34d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau35"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 35" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau35a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau35b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau35c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau35d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau36"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 36" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau36a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau36b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau36c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau36d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau37"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 37" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau37a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau37b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau37c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau37d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau38"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 38" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau38a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau38b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau38c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau38d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau39"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 39" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau39a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau39b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau39c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau39d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau40"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 40" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau40a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau40b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau40c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau40d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau41"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 41" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau41a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau41b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau41c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau41d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau42"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 42" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau42a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau42b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau42c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau42d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau43"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 43" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau43a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau43b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau43c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau43d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau44"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 44" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau44a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau44b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau44c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau44d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau45"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 45" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau45a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau45b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau45c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau45d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau46"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 46" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau46a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="false"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau46b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau46c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau46d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau47"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 47" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau47a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau47b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau47c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau47d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau48"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 48" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau48a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau48b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau48c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau48d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau49"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 49" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau49a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau49b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau49c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau49d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/txvcau50"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Câu 50" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau50a"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="A" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau50b"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="B" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau50c"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="C" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/cau50d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="D" />-->
+            <!--</LinearLayout>-->
         </LinearLayout>
     </ScrollView>
 
