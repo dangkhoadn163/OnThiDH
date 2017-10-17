@@ -152,8 +152,8 @@ public class Test extends AppCompatActivity {
         rootDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               People people = new People(saveanswers,scored);
-               rootDatabase.child("People").child("de").child(keyt).child("dapandalam").setValue(people);
+               Uid uid = new Uid(saveanswers,scored);
+               rootDatabase.child("Uid").child("de").child(keyt).child("dapandalam").setValue(uid);
                 Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
             }
 
