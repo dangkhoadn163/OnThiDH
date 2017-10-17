@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -20,7 +21,7 @@ public class Score extends AppCompatActivity {
     NavigationView navigation;
     RadioButton cau1a;
     Test s= new Test();
-
+    RadioButton[][] rdbtn = new RadioButton[50][4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +31,24 @@ public class Score extends AppCompatActivity {
         Demo();
     }
     private void anhxa() {
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         cau1a=(RadioButton)findViewById(R.id.cau1a);
+        for (int i = 0; i < 50; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+                String quizid = "cau" + (i + 1) + (char)(j + 97);
+                int resID = getResources().getIdentifier(quizid, "id", getPackageName());
+                rdbtn[i][j] = ((RadioButton) findViewById(resID));
+                Log.d("arr", quizid);
 
+
+            }
+
+
+
+        }
     }
     private void Demo(){
 
@@ -44,7 +58,7 @@ public class Score extends AppCompatActivity {
 //        cau1a.setTextColor(Color.RED);
 //or highlight color
 //        cau1a.setHighlightColor(Color.RED);
-        Toast.makeText(Score.this, s.getterscored()+"", Toast.LENGTH_SHORT).show();
+
         cau1a.setButtonTintList(ColorStateList.valueOf(Color.RED));
     }
     private void Nav() {
