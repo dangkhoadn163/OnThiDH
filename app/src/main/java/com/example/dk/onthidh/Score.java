@@ -92,7 +92,7 @@ public class Score extends AppCompatActivity {
         char cafter;
         String peranswer = "";
         int index = 0;
-        for(int i = 1; i < length; i++)
+        for(int i = 3; i < length; i++)
         {
             String indexString = "";
             c = useranswer.charAt(i);
@@ -101,13 +101,14 @@ public class Score extends AppCompatActivity {
             if(c >= '0' && c <= '9') {
                 indexString += c + "";
                 cafter = useranswer.charAt(i + 1);
-                if (cafter >= '0' && cafter <= '9') {
+                if (cafter >= '0' && cafter <= '9')
+                {
                     peranswer += cafter + "";
                     indexString += cafter + "";
                     i++;
                 }
                 index = (Integer.valueOf(indexString)) - 1;
-                Log.d("index", index + "");
+               // Log.d("index", index + "");
             }
 
             else if(c >= 'a' && c <= 'd' && useranswer.charAt(i - 1) >= '0' && useranswer.charAt(i -1) <= '9')
