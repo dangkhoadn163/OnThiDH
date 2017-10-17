@@ -31,7 +31,7 @@ public class Score extends AppCompatActivity {
         setContentView(R.layout.activity_score);
         anhxa();
         Nav();
-        Demo();
+       // Demo();
         youranswers();
     }
     private void anhxa() {
