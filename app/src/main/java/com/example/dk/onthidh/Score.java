@@ -80,6 +80,7 @@ public class Score extends AppCompatActivity {
             drawer.openDrawer(GravityCompat.START);
         return super.onOptionsItemSelected(item);
     }
+
     public void youranswers()
     {
         String useranswer = "cau1acau2dcau3acau4acau5acau6acau7acau8ccau9acau10dcau11dcau12dcau13c" +
@@ -114,6 +115,12 @@ public class Score extends AppCompatActivity {
             else if(c >= 'a' && c <= 'd' && useranswer.charAt(i - 1) >= '0' && useranswer.charAt(i -1) <= '9')
             {
                 rdbtn[index][(int)c - 97].setChecked(true);
+                for (int j = 0; j < 4; j++)
+                {
+                    if((int)c - 97 == j)
+                        continue;
+                    rdbtn[index][j].setEnabled(false);
+                }
                 peranswer = "";
             }
         }
