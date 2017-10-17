@@ -45,6 +45,7 @@ public class Test extends AppCompatActivity {
     String answer;
     String keyt;
     String scored;
+    String userid;
     private String saveanswers = "";
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
@@ -66,6 +67,7 @@ public class Test extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         setContentView(R.layout.activity_test);
         keyt = getIntent().getExtras().getString("keyt");
+        userid = getIntent().getExtras().getString("Uid2");
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
@@ -153,7 +155,7 @@ public class Test extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                Uid uid = new Uid(saveanswers,scored);
-               rootDatabase.child("Uid").child("de").child(keyt).child("dapandalam").setValue(uid);
+               rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").setValue(uid);
                 Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
             }
 
