@@ -92,36 +92,38 @@ public class Score extends AppCompatActivity {
         char cafter;
         String peranswer = "";
         int index = 0;
-        for(int i = 0; i < length; i++)
+        for(int i = 1; i < length; i++)
         {
             String indexString = "";
             c = useranswer.charAt(i);
-            cafter = useranswer.charAt(i + 1);
             peranswer += c + "";
-            if(c >= '0' && c <= '9')
-            {
+
+            if(c >= '0' && c <= '9') {
                 indexString += c + "";
-                if(cafter >= '0' && cafter <= '9')
-                {
+                cafter = useranswer.charAt(i + 1);
+                if (cafter >= '0' && cafter <= '9') {
                     peranswer += cafter + "";
                     indexString += cafter + "";
                     i++;
                 }
                 index = (Integer.valueOf(indexString)) - 1;
-                for(int j = 0; j < 4; j++)
-                {
-                    rdbtn[index][j].setChecked(true);
-                }
+                Log.d("index", index + "");
             }
-            else if(c >= 'a' && c <= 'd' && cafter == 'c')
+
+            else if(c >= 'a' && c <= 'd' && useranswer.charAt(i - 1) >= '0' && useranswer.charAt(i -1) <= '9')
             {
+                rdbtn[index][(int)c - 97].setChecked(true);
                 peranswer = "";
             }
-
-
         }
+
+
+
 
 
     }
 
+
 }
+
+
