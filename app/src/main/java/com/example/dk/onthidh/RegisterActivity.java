@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,9 +54,9 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-
                         // Lấy id của user vừa đăng kí:
                         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        Log.d("uid", "onComplete: uid=" + userID);
                         // Upload dữ liệu lên firebase database:
                         // Trước khi làm cái này nhớ nhúng thư viện:
                         // compile 'com.google.firebase:firebase-database:11.0.2'

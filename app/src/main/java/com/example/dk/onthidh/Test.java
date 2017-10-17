@@ -44,6 +44,7 @@ public class Test extends AppCompatActivity {
     private RadioGroup[] rdg = new RadioGroup[50];
     String answer;
     String keyt;
+    String uid;
     String scored;
     private String saveanswers = "";
     ArrayList<String> mois;
@@ -66,7 +67,8 @@ public class Test extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         setContentView(R.layout.activity_test);
         keyt = getIntent().getExtras().getString("keyt");
-//        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
+        uid = getIntent().getExtras().getString("Uid2");
+        Toast.makeText(Test.this, ""+uid, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         CDTimer();
@@ -84,6 +86,8 @@ public class Test extends AppCompatActivity {
         loadanswer(keyt);
         autocheck();
         Click();
+
+
 
 //        lnl = (LinearLayout) findViewById(R.id.linearlayout);
 //        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), );
@@ -152,8 +156,8 @@ public class Test extends AppCompatActivity {
         rootDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               People people = new People(saveanswers,scored);
-               rootDatabase.child("People").child("de").child(keyt).child("dapandalam").setValue(people);
+               Uid userid = new Uid(saveanswers,scored);
+               rootDatabase.child("People").child("de").child(keyt).child("dapandalam").setValue(userid);
                 Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
             }
 

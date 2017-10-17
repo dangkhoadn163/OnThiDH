@@ -8,12 +8,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    String uid;
     private Button btndethi,btnbaitap,btntailieu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        uid = getIntent().getExtras().getString("Uid");
         Anhxa ();
         setActionClick();
     }
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(),"Test", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, ListTest.class));
+                startActivity(new Intent(MainActivity.this, ListTest.class).putExtra("Uid",uid));
             }
         });
     }

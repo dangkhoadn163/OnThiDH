@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,12 +27,15 @@ public class ListTest extends AppCompatActivity {
     ArrayList<String> keys;
     private RecyclerView rcvData;
     private TextView txvLog;
+    String uid;
     DatabaseReference rootDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_test);
+        uid = getIntent().getExtras().getString("Uid");
+        Log.d("Uid1", "onComplete: Uid=" + uid);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
 
@@ -101,8 +105,10 @@ public class ListTest extends AppCompatActivity {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(ListTest.this,Test.class).putExtra("keyt",t));
-
+                        Intent intent= new Intent(ListTest.this,Test.class);
+                        intent.putExtra("keyt",t);
+                        intent.putExtra("Uid2", uid);
+                        ListTest.this.startActivity(intent);
                     }
                 });
 //                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
