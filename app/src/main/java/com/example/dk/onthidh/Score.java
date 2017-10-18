@@ -83,55 +83,71 @@ public class Score extends AppCompatActivity {
 
     public void youranswers()
     {
+        //Đây là câu trả lời của người dùng lấy từ firebase
         String useranswer = "cau1acau2dcau3acau4acau5acau6acau7acau8ccau9acau10dcau11dcau12dcau13c" +
             "cau14bcau15bcau16acau17ccau18dcau19ccau20bcau21acau22acau23bcau24dcau25bcau26acau27d" +
             "cau28ccau29bcau30acau31ccau32ccau33dcau34dcau35dcau36dcau37dcau38ccau39bcau40bcau41a" +
             "cau42dcau43dcau44acau45acau46bcau47dcau48bcau49dcau50a";
 
-        int length = useranswer.length();
+
+        String useranswerreplace = useranswer.replace("cau", "");
+
+
+
+        // Đây là đáp án của bài thi lấy từ firebase
+        String quizanswers = "1A2C3A4B5B6D7D8C9A10B11A12D13D14C15C16C17A18A19C20C21D22B23A24C25C26B" +
+                "27D28C29D30B31C32A33B34A35D36D37A38C39A40A41A42D43C44A45B46D47C48C49D50D";
+
+       // Log.d("user", useranswerreplace);
+        int index = 0;
+        int length = useranswerreplace.length();
+
         char c;
         char cafter;
-        String peranswer = "";
-        int index = 0;
-        for(int i = 3; i < length; i++)
+
+        char cquizans;
+        char cquizansafter;
+
+        for(int i = 0; i < length; i++)
         {
             String indexString = "";
-            c = useranswer.charAt(i);
-            peranswer += c + "";
-
-            if(c >= '0' && c <= '9') {
+            String indexStringquiz = "";
+            c = useranswerreplace.charAt(i);
+            cquizans = quizanswers.charAt(i);
+            if(c >= '0' && c <= '9' && cquizans >= '0' && cquizans <= '9')
+            {
                 indexString += c + "";
-                cafter = useranswer.charAt(i + 1);
-                if (cafter >= '0' && cafter <= '9')
+                indexStringquiz += cquizans + "";
+                cafter = useranswerreplace.charAt(i + 1);
+                cquizansafter = quizanswers.charAt(i + 1);
+                if (cafter >= '0' && cafter <= '9' && cquizansafter >= '0' && cquizansafter <= '9')
                 {
-                    peranswer += cafter + "";
                     indexString += cafter + "";
+                    indexStringquiz += cquizansafter + "";
                     i++;
                 }
                 index = (Integer.valueOf(indexString)) - 1;
-               // Log.d("index", index + "");
+               // Log.d("index", indexString + "");
             }
-
-            else if(c >= 'a' && c <= 'd' && useranswer.charAt(i - 1) >= '0' && useranswer.charAt(i -1) <= '9')
+            else if(c >= 'a' && c <= 'd' && useranswerreplace.charAt(i - 1) >= '0' && useranswerreplace.charAt(i -1) <= '9'
+                    && cquizans >= 'A' && cquizans <= 'D' && quizanswers.charAt(i - 1) >= '0' && quizanswers.charAt(i -1) <= '9')
             {
                 rdbtn[index][(int)c - 97].setChecked(true);
+                if(!rdbtn[index][(int)cquizans - 65].isChecked())
+                {
+                    rdbtn[index][(int)cquizans - 65].setButtonTintList(ColorStateList.valueOf(Color.RED));
+                    rdbtn[index][(int)cquizans - 65].setChecked(true);
+                }
                 for (int j = 0; j < 4; j++)
                 {
-                    if((int)c - 97 == j)
+                    if((int)c - 97 == j || (int)cquizans - 65 == j)
                         continue;
                     rdbtn[index][j].setEnabled(false);
                 }
-                peranswer = "";
+
             }
         }
-
-
-
-
-
     }
-
-
 }
 
 
