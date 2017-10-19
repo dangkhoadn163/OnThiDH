@@ -23,7 +23,6 @@ public class Score extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation;
     RadioButton cau1a;
-    Test s= new Test();
     RadioButton[][] rdbtn = new RadioButton[50][4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,6 @@ public class Score extends AppCompatActivity {
                 int resID = getResources().getIdentifier(quizid, "id", getPackageName());
                 rdbtn[i][j] = ((RadioButton) findViewById(resID));
                 Log.d("arr[]", rdbtn[i][j].getResources().getResourceEntryName(rdbtn[i][j].getId()));
-
             }
         }
     }
@@ -129,8 +127,7 @@ public class Score extends AppCompatActivity {
                 index = (Integer.valueOf(indexString)) - 1;
                // Log.d("index", indexString + "");
             }
-            else if(c >= 'a' && c <= 'd' && useranswerreplace.charAt(i - 1) >= '0' && useranswerreplace.charAt(i -1) <= '9'
-                    && cquizans >= 'A' && cquizans <= 'D' && quizanswers.charAt(i - 1) >= '0' && quizanswers.charAt(i -1) <= '9')
+            else if(c >= 'a' && c <= 'd' && cquizans >= 'A' && cquizans <= 'D' )
             {
                 rdbtn[index][(int)c - 97].setChecked(true);
                 if(!rdbtn[index][(int)cquizans - 65].isChecked())
@@ -144,7 +141,6 @@ public class Score extends AppCompatActivity {
                         continue;
                     rdbtn[index][j].setEnabled(false);
                 }
-
             }
         }
     }

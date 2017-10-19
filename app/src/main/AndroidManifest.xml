@@ -13,7 +13,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Theme">
-        <activity android:name=".Score">
+        <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +28,7 @@
         <activity
             android:name=".Test"
             android:label="@string/app_name" />
-        <!--<activity android:name=".Score"></activity>-->
+        <activity android:name=".Score"></activity>
     </application>
 
 </manifest>
