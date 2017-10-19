@@ -22,7 +22,6 @@ public class Score extends AppCompatActivity {
     DrawerLayout drawer;
     Toolbar toolbar;
     NavigationView navigation;
-    RadioButton cau1a;
     RadioButton[][] rdbtn = new RadioButton[50][4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class Score extends AppCompatActivity {
     private void anhxa() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        cau1a=(RadioButton)findViewById(R.id.cau1a);
         for (int i = 0; i < 50; i++)
         {
             for(int j = 0; j < 4; j++)
@@ -48,17 +46,17 @@ public class Score extends AppCompatActivity {
             }
         }
     }
-    private void Demo(){
-
-////You can set the background color
-//        cau1a.setBackgroundColor(Color.RED);
-////Text color
-//        cau1a.setTextColor(Color.RED);
-//or highlight color
-//        cau1a.setHighlightColor(Color.RED);
-
-        cau1a.setButtonTintList(ColorStateList.valueOf(Color.RED));
-    }
+//    private void Demo(){
+//
+//////You can set the background color
+////        cau1a.setBackgroundColor(Color.RED);
+//////Text color
+////        cau1a.setTextColor(Color.RED);
+////or highlight color
+////        cau1a.setHighlightColor(Color.RED);
+//
+//        cau1a.setButtonTintList(ColorStateList.valueOf(Color.RED));
+//    }
     private void Nav() {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
@@ -109,19 +107,19 @@ public class Score extends AppCompatActivity {
         for(int i = 0; i < length; i++)
         {
             String indexString = "";
-            String indexStringquiz = "";
+            //String indexStringquiz = "";
             c = useranswerreplace.charAt(i);
             cquizans = quizanswers.charAt(i);
             if(c >= '0' && c <= '9' && cquizans >= '0' && cquizans <= '9')
             {
                 indexString += c + "";
-                indexStringquiz += cquizans + "";
+               // indexStringquiz += cquizans + "";
                 cafter = useranswerreplace.charAt(i + 1);
                 cquizansafter = quizanswers.charAt(i + 1);
                 if (cafter >= '0' && cafter <= '9' && cquizansafter >= '0' && cquizansafter <= '9')
                 {
                     indexString += cafter + "";
-                    indexStringquiz += cquizansafter + "";
+                  //  indexStringquiz += cquizansafter + "";
                     i++;
                 }
                 index = (Integer.valueOf(indexString)) - 1;
