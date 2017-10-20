@@ -6,7 +6,7 @@ package com.example.dk.onthidh;
 
 public class Uid {
     public String answer;
-    public  String score;
+    public String score;
 
     public Uid() {
     }
@@ -15,8 +15,4 @@ public class Uid {
         this.answer = answer;
         this.score = score;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master

@@ -72,8 +72,6 @@ public class Test extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         CDTimer();
-
-
         radiogroup();
         mois = new ArrayList<>();
         adapter_moi = new MoiAdapter(Test.this, mois);
@@ -87,12 +85,6 @@ public class Test extends AppCompatActivity {
         autocheck();
         Nav();
 //        Click();
-
-//        lnl = (LinearLayout) findViewById(R.id.linearlayout);
-//        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), );
-//        Bitmap blurredBitmap = BlurBuilder.blur(this, originalBitmap);
-//        lnl.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
-//        lnl.getBackground().setAlpha(100);
     }
 
     public void load(String keyt) {
@@ -129,9 +121,6 @@ public class Test extends AppCompatActivity {
             }
         });
 
-    }
-    public String getterscored(){
-        return scored;
     }
 
     public void loadanswer(String keyt) {
