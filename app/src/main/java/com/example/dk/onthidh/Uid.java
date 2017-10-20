@@ -15,4 +15,8 @@ public class Uid {
         this.answer = answer;
         this.score = score;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
