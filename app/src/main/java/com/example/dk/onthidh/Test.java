@@ -72,7 +72,7 @@ public class Test extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         CDTimer();
-        Nav();
+
 
         radiogroup();
         mois = new ArrayList<>();
@@ -85,7 +85,8 @@ public class Test extends AppCompatActivity {
         load(keyt);
         loadanswer(keyt);
         autocheck();
-        Click();
+        Nav();
+//        Click();
 
 //        lnl = (LinearLayout) findViewById(R.id.linearlayout);
 //        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), );
@@ -140,7 +141,7 @@ public class Test extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("answer"))
                     answer = dataSnapshot.child("answer").getValue().toString();
-                Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -156,7 +157,7 @@ public class Test extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                Uid uid = new Uid(saveanswers,scored);
                rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").setValue(uid);
-                Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -215,7 +216,6 @@ public class Test extends AppCompatActivity {
         imgClock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Test.this,Score.class));
             }
         });
     }
@@ -292,6 +292,10 @@ public class Test extends AppCompatActivity {
                 Log.d("Score", score + "");
                 scored= score+"";
                 loadsaveanswers();
+                Intent intent= new Intent(Test.this,Score.class);
+                intent.putExtra("keyt111",keyt);
+                intent.putExtra("Uid111", userid);
+                Test.this.startActivity(intent);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
