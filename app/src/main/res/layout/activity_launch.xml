@@ -29,6 +29,7 @@
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
                 android:paddingRight="20dp"
+                android:text="khoa@gmail.com"
                 android:textColor="@color/colorWhite" />
 
             <EditText
@@ -39,6 +40,7 @@
                 android:background="@drawable/bg_edt2"
                 android:drawableRight="@drawable/ic_lock"
                 android:hint="Password"
+                android:text="123456"
                 android:inputType="textPassword"
                 android:paddingLeft="10dp"
                 android:paddingRight="20dp"

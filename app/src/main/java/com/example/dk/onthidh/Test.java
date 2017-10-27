@@ -42,7 +42,7 @@ public class Test extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation;
     private RadioGroup[] rdg = new RadioGroup[50];
-    String answer;
+    String answers;
     String keyt;
     String scored;
     String userid;
@@ -56,7 +56,6 @@ public class Test extends AppCompatActivity {
     private DatabaseReference rootDatabase;
     private CountDownTimer countDownTimer;
     private ImageButton imgClock, imgPen;
-    //
     private RecyclerView rcvDataMoi;
     private BigDecimal score = new BigDecimal("0.0");
     private BigDecimal scoreperanswer = new BigDecimal("0.2");
@@ -129,7 +128,7 @@ public class Test extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("answer"))
-                    answer = dataSnapshot.child("answer").getValue().toString();
+                    answers = dataSnapshot.child("answer").getValue().toString();
 //                Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
             }
 
@@ -140,6 +139,7 @@ public class Test extends AppCompatActivity {
         });
 
     }
+
     public void loadsaveanswers(){
         rootDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -155,20 +155,7 @@ public class Test extends AppCompatActivity {
             }
         });
     }
-//    void autocheck()
-//    {
-//        for(int i = 0; i < 50; i++)
-//        {
-//            for (int j = 0; j < 3; j++) {
-//                String quizid = "cau" + (i + 1) +(char)(97 + j);
-//                int resID = getResources().getIdentifier(quizid, "id", getPackageName());
-//                rdg[i].check(resID);
-////            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
-//    }
-        void autocheck()
+    void autocheck()
         {
             for(int i = 0; i < 50; i++)
             {
@@ -183,8 +170,6 @@ public class Test extends AppCompatActivity {
 
             }
         }
-
-
     private void anhxa() {
         imgClock = (ImageButton) findViewById(R.id.imageClock);
         imgPen = (ImageButton) findViewById(R.id.imagePencil);
@@ -226,11 +211,10 @@ public class Test extends AppCompatActivity {
             });
         }
     }
+
     private void Nav() {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
-
-
         ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.mipmap.ic_tracnghiem);
         ab.setTitle("DANGKHOADN");
@@ -251,12 +235,12 @@ public class Test extends AppCompatActivity {
                     }
                 }
                 Log.d("ID", idRdb );
-                int lengthresult = answer.length();
+                int lengthresult = answers.length();
                 String temp = "";
                 int index = 0;
                 for(int j = 0; j < lengthresult; j++)
                 {
-                    char c = answer.charAt(j);
+                    char c = answers.charAt(j);
                     temp = temp.concat(c + "");
                     if(c >= 'A' && c <= 'D')
                     {
@@ -267,7 +251,6 @@ public class Test extends AppCompatActivity {
                                         .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
                         Log.d("Result", temp + ":" + checkresult + "");
                         saveanswers = saveanswers.concat(rdg[index].getResources().getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
-
                         if(checkresult)
                         {
                             score = score.add(scoreperanswer);
@@ -279,6 +262,7 @@ public class Test extends AppCompatActivity {
                 }
                 Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
                 Log.d("Score", score + "");
+                saveanswers = saveanswers.replace("cau", "");
                 scored= score+"";
                 loadsaveanswers();
                 Intent intent= new Intent(Test.this,Score.class);
@@ -288,16 +272,7 @@ public class Test extends AppCompatActivity {
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
-//        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(MenuItem menuItem) {
-//                xulychonmenu(menuItem);
-//
-//                return false;
-//            }
-//        });
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -309,8 +284,6 @@ public class Test extends AppCompatActivity {
             drawer.openDrawer(GravityCompat.START);
         return super.onOptionsItemSelected(item);
     }
-
-
     private void CDTimer() {
         new CountDownTimer(3600000, 1000) {
 
@@ -329,7 +302,6 @@ public class Test extends AppCompatActivity {
 
         }.start();
     }
-
 }
 
 
