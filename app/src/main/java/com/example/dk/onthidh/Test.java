@@ -1,5 +1,6 @@
 package com.example.dk.onthidh;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -8,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -81,7 +83,7 @@ public class Test extends AppCompatActivity {
 
         load(keyt);
         loadanswer(keyt);
-        autocheck();
+//        autocheck();
         Nav();
 //        Click();
     }
@@ -210,6 +212,24 @@ public class Test extends AppCompatActivity {
             });
         }
     }
+    private void dialog(){
+        new AlertDialog.Builder(this)
+                .setTitle("Nộp bài thi")
+                .setMessage("Bạn có chắc chắn muốn nộp bài thi không?")
+                .setNegativeButton("Không", null)
+                .setPositiveButton("Nộp bài", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
+//                        Log.d("Score", score + "");
+                        loadsaveanswers();
+                        Intent intent= new Intent(Test.this,Score.class);
+                        intent.putExtra("keyt111",keyt);
+                        intent.putExtra("Uid111", userid);
+                        Test.this.startActivity(intent);
+                    }
+                }).create().show();
+    }
 
     private void Nav() {
         //set toolbar thay the cho actionbar
@@ -233,6 +253,7 @@ public class Test extends AppCompatActivity {
                         return;
                     }
                 }
+                dialog();
                 Log.d("ID", idRdb );
                 int lengthresult = answers.length();
                 String temp = "";
@@ -259,15 +280,8 @@ public class Test extends AppCompatActivity {
                         index++;
                     }
                 }
-                Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
-                Log.d("Score", score + "");
                 saveanswers = saveanswers.replace("cau", "");
                 scored= score+"";
-                loadsaveanswers();
-                Intent intent= new Intent(Test.this,Score.class);
-                intent.putExtra("keyt111",keyt);
-                intent.putExtra("Uid111", userid);
-                Test.this.startActivity(intent);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
