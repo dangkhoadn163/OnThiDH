@@ -122,7 +122,7 @@ public class Score extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("answer")) {
                     useranswer = dataSnapshot.child("answer").getValue().toString();
-                   loadquizanswer(keyt);
+                    loadquizanswer(keyt);
 
                 }
             }
@@ -213,19 +213,19 @@ public class Score extends AppCompatActivity {
             //String indexStringquiz = "";
             c = useranswer.charAt(i);
             cquizans = quizanswers.charAt(i);
-            if (c >= '0' && c <= '9' && cquizans >= '0' && cquizans <= '9') {
+            if (c >= '0' && c <= '9' && cquizans >= '0' && cquizans <= '9')
+            {
                 indexString += c + "";
-                // indexStringquiz += cquizans + "";
                 cafter = useranswer.charAt(i + 1);
                 cquizansafter = quizanswers.charAt(i + 1);
                 if (cafter >= '0' && cafter <= '9' && cquizansafter >= '0' && cquizansafter <= '9') {
                     indexString += cafter + "";
-                    //  indexStringquiz += cquizansafter + "";
                     i++;
                 }
                 index = (Integer.valueOf(indexString)) - 1;
-                // Log.d("index", indexString + "");
-            } else if (c >= 'a' && c <= 'd' && cquizans >= 'A' && cquizans <= 'D') {
+            }
+            else if (c >= 'a' && c <= 'd' && cquizans >= 'A' && cquizans <= 'D')
+            {
                 rdbtn[index][(int) c - 97].setChecked(true);
                 if (!rdbtn[index][(int) cquizans - 65].isChecked()) {
                     rdbtn[index][(int) cquizans - 65].setButtonTintList(ColorStateList.valueOf(Color.RED));

@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dk.onthidh.Test">
+
     <!-- The ActionBar -->
     <LinearLayout
+
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,13 +34,17 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/ic_clock" />
 
+
             <TextView
                 android:id="@+id/txtMinute"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+
+                />
+
 
             <TextView
                 android:id="@+id/txtSecond"

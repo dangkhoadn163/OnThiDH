@@ -86,7 +86,11 @@ public class Test extends AppCompatActivity {
 
         load(keyt);
         loadanswer(keyt);
+
         autocheck();
+
+        //autocheck();
+
         Nav();
 //        Click();
     }
@@ -302,7 +306,7 @@ public class Test extends AppCompatActivity {
     }
 
     private void CDTimer() {
-        new CountDownTimer(3600000, 1000) {
+        new CountDownTimer(5000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
@@ -311,12 +315,56 @@ public class Test extends AppCompatActivity {
                 int s = temp % 60;
                 String mstr = (getString(R.string.minute, m));
                 String sstr = (getString(R.string.second, s));
-                tvMinute.setText(":" + mstr);
-                tvSecond.setText("" + sstr);
+                tvMinute.setText("" + mstr);
+                tvSecond.setText(":" + sstr);
             }
 
             public void onFinish() {
-                tvSecond.setText("done!");
+               // tvSecond.setText("done!");
+                Toast.makeText(Test.this, "Đã hết giờ làm bài", Toast.LENGTH_SHORT).show();
+                int lengthresult = answers.length();
+                String temp = "";
+                int index = 0;
+                for(int j = 0; j < lengthresult; j++)
+                {
+                    char c = answers.charAt(j);
+                    temp = temp.concat(c + "");
+                    if(c >= 'A' && c <= 'D')
+                    {
+                        Log.d("Temp", temp);
+                        boolean checkresult = false;
+                        //Log.d("Result", temp + ":" + checkresult + "");
+                        if(rdg[index].getCheckedRadioButtonId() == -1)
+                        {
+                            saveanswers = saveanswers.concat("cau" + (index + 1) + "e");
+                            Log.d("timeup1", saveanswers);
+                            checkresult = false;
+
+                        }
+                        else
+                        {
+                            saveanswers = saveanswers.concat(rdg[index].getResources()
+                                    .getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
+                            checkresult = rdg[index]
+                                    .getResources()
+                                    .getResourceEntryName(rdg[index]
+                                            .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
+                        }
+
+                        if(checkresult)
+                        {
+                            score = score.add(scoreperanswer);
+                            Log.d("Scorestep", score + "");
+                        }
+                        temp = "";
+                        index++;
+                    }
+                }
+                saveanswers = saveanswers.replace("cau", "");
+                Log.d("timeup", saveanswers);
+                scored= score+"";
+                Log.d("score0", scored);
+                loadsaveanswers();
             }
 
         }.start();
