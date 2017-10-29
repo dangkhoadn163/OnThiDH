@@ -11,7 +11,7 @@ public class Moi {
     public Moi() {
     }
 
-    public Moi(String answer,String test,String text) {
+    public Moi(String answer,String test) {
 //        this.answer=answer;
         this.test = test;
 

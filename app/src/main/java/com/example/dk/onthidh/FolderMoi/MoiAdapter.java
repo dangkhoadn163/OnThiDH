@@ -43,7 +43,6 @@ public class MoiAdapter extends RecyclerView.Adapter<MoiAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             item_image = (ImageView) itemView.findViewById(R.id.item_image);
-
         }
     }
 }

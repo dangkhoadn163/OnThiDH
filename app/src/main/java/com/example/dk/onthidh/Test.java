@@ -87,7 +87,7 @@ public class Test extends AppCompatActivity {
     }
 
     public void load(String keyt) {
-        rootDatabase.child("anhvan").child(keyt).child("test").addChildEventListener(new ChildEventListener() {
+        rootDatabase.child("monhoc").child("anhvan").child(keyt).child("test").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String link = dataSnapshot.getValue().toString();
@@ -119,12 +119,11 @@ public class Test extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void loadanswer(String keyt) {
 
-        rootDatabase.child("anhvan").child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
+        rootDatabase.child("monhoc").child("anhvan").child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("answer"))

@@ -9,12 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -57,44 +53,9 @@ public class ListTest extends AppCompatActivity {
         });
 
     }
-    public void load(){
-        rootDatabase.child("anhvan").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-//                String key = dataSnapshot.getKey().toString();
-//                keys.add(key);
-//                Toast.makeText(ListTest.this, key+"" + keys.size(), Toast.LENGTH_SHORT).show();
-                MyFile data = dataSnapshot.getValue(MyFile.class);
-                files.add(data);
-                Toast.makeText(ListTest.this, data+"", Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
     private void loadList() {
         FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
-                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("anhvan")
+                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child("anhvan")
         ) {
             @Override
             protected void populateViewHolder(MyFileViewHolder viewHolder, final MyFile model, int position) {
