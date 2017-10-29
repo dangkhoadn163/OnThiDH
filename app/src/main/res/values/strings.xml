@@ -2,4 +2,6 @@
     <string name="app_name">OnThiDH</string>
     <string name="hello">hello</string>
     <string name="dethi">dethi</string>
+    <string name="minute">%02d</string>
+    <string name="second">%02d</string>
 </resources>
