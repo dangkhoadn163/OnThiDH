@@ -35,6 +35,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.Locale;
 import java.util.Random;
 
 public class Test extends AppCompatActivity {
@@ -61,6 +63,7 @@ public class Test extends AppCompatActivity {
     private RecyclerView rcvDataMoi;
     private BigDecimal score = new BigDecimal("0.0");
     private BigDecimal scoreperanswer = new BigDecimal("0.2");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,8 +148,8 @@ public class Test extends AppCompatActivity {
         rootDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               Uid uid = new Uid(saveanswers,scored);
-               rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").setValue(uid);
+                Uid uid = new Uid(saveanswers,scored);
+                rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").setValue(uid);
 //                Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
             }
 
@@ -157,20 +160,20 @@ public class Test extends AppCompatActivity {
         });
     }
     void autocheck()
+    {
+        for(int i = 0; i < 50; i++)
         {
-            for(int i = 0; i < 50; i++)
-            {
-                Random rand = new Random();
-                int r = rand.nextInt(4) + 97;
+            Random rand = new Random();
+            int r = rand.nextInt(4) + 97;
 
-                String quizid = "cau" + (i + 1) +(char)r;
-                int resID = getResources().getIdentifier(quizid, "id", getPackageName());
-                rdg[i].check(resID);
-        //            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
+            String quizid = "cau" + (i + 1) +(char)r;
+            int resID = getResources().getIdentifier(quizid, "id", getPackageName());
+            rdg[i].check(resID);
+            //            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
 
 
-            }
         }
+    }
     private void anhxa() {
         imgClock = (ImageButton) findViewById(R.id.imageClock);
         imgPen = (ImageButton) findViewById(R.id.imagePencil);
@@ -297,16 +300,19 @@ public class Test extends AppCompatActivity {
             drawer.openDrawer(GravityCompat.START);
         return super.onOptionsItemSelected(item);
     }
+
     private void CDTimer() {
         new CountDownTimer(3600000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
                 int temp = (int) millisUntilFinished / 1000;
-                int h = temp / 60;
+                int m = temp / 60;
                 int s = temp % 60;
-                tvMinute.setText(" " + h);
-                tvSecond.setText(":" + s);
+                String mstr = (getString(R.string.minute, m));
+                String sstr = (getString(R.string.second, s));
+                tvMinute.setText(":" + mstr);
+                tvSecond.setText("" + sstr);
             }
 
             public void onFinish() {
