@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v13.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -236,10 +237,7 @@ public class Score extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-//                        Intent mhchinh = new Intent(Score.this, MainActivity.class);
-//                        startActivity(mhchinh);
-//                        onPause();
-                        Toast.makeText(Score.this, "Main", Toast.LENGTH_SHORT).show();
+                        ActivityCompat.finishAffinity(Score.this);
                     }
                 }).create().show();
     }
