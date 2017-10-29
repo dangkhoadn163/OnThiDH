@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     String uid;
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         btndethi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"Test", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this, ListTest.class).putExtra("Uid",uid));
             }
         });

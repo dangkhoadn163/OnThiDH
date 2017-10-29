@@ -1,6 +1,7 @@
 package com.example.dk.onthidh;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -178,13 +180,24 @@ public class Score extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(true);
         navigation = (NavigationView) findViewById(R.id.nvcView);
         Button btnwatch = (Button) findViewById(R.id.btnWatch);
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home)
-            drawer.openDrawer(GravityCompat.START);
+        switch (item.getItemId()) {
+            case R.id.mnSetting:
+                startActivity(new Intent(Score.this, MainActivity.class).putExtra("Uid",userid));
+                break;
+            case android.R.id.home:
+                drawer.openDrawer(GravityCompat.START);
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
     public void youranswers() {

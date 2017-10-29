@@ -69,7 +69,7 @@ public class LaunchActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Dang nhap thanh cong
                         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        startActivity(new Intent(LaunchActivity.this,MainActivity.class).putExtra("Uid",userID));
+                        startActivity(new Intent(LaunchActivity.this,ChooseActivity.class).putExtra("Uid",userID));
 
                     } else {
                         // Dang nhap that bai

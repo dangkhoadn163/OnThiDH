@@ -83,7 +83,7 @@ public class Test extends AppCompatActivity {
 
         load(keyt);
         loadanswer(keyt);
-//        autocheck();
+        autocheck();
         Nav();
 //        Click();
     }

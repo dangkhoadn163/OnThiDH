@@ -13,19 +13,32 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Theme">
-        <activity android:name=".LaunchActivity">
+        <activity
+            android:name=".LaunchActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ListTest" />
-        <activity android:name=".Test" />
-        <activity android:name=".Score"/>
-        <!--<activity android:name=".Score"></activity>-->
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListTest"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Test"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Score"
+            android:screenOrientation="portrait" />
+        <!-- <activity android:name=".Score"></activity> -->
+        <activity android:name=".ChooseActivity"></activity>
     </application>
 
 </manifest>
