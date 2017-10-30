@@ -123,7 +123,6 @@ public class Score extends AppCompatActivity {
                 if (dataSnapshot.hasChild("answer")) {
                     useranswer = dataSnapshot.child("answer").getValue().toString();
                     loadquizanswer(keyt);
-
                 }
             }
 
@@ -201,7 +200,7 @@ public class Score extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void youranswers() {
-        Log.d("answer", useranswer + "");
+        Log.d("answer", quizanswers + "");
         int index = 0;
         int length = useranswer.length();
         char c;

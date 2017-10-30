@@ -9,13 +9,11 @@
 
     <!-- The ActionBar -->
     <LinearLayout
-
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:orientation="vertical">
-
         <include
             layout="@layout/toolbar"
             android:layout_width="match_parent"
@@ -25,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <ImageButton
                 android:id="@+id/imageClock"
                 android:layout_width="35dp"
@@ -33,19 +30,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/ic_clock" />
-
-
             <TextView
                 android:id="@+id/txtMinute"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:textSize="20dp"
-
-                />
-
-
+                android:textSize="20dp" />
             <TextView
                 android:id="@+id/txtSecond"
                 android:layout_width="40dp"
@@ -53,7 +44,6 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:textSize="20dp" />
-
             <ImageButton
                 android:id="@+id/imagePencil"
                 android:layout_width="35dp"
@@ -65,20 +55,17 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/pencil" />
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/LinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewTest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-
     <android.support.design.widget.NavigationView
         android:id="@+id/nvView"
         android:layout_width="wrap_content"

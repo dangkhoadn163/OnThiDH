@@ -35,8 +35,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.Locale;
 import java.util.Random;
 
 public class Test extends AppCompatActivity {
@@ -88,8 +86,6 @@ public class Test extends AppCompatActivity {
         loadanswer(keyt);
 
         autocheck();
-
-        //autocheck();
 
         Nav();
 //        Click();
@@ -304,7 +300,52 @@ public class Test extends AppCompatActivity {
             drawer.openDrawer(GravityCompat.START);
         return super.onOptionsItemSelected(item);
     }
+    private void timeup(){
+        Toast.makeText(Test.this, "Đã hết giờ làm bài", Toast.LENGTH_SHORT).show();
+        int lengthresult = answers.length();
+        String temp = "";
+        int index = 0;
+        for(int j = 0; j < lengthresult; j++)
+        {
+            char c = answers.charAt(j);
+            temp = temp.concat(c + "");
+            if(c >= 'A' && c <= 'D')
+            {
+                Log.d("Temp", temp);
+                boolean checkresult = false;
+                //Log.d("Result", temp + ":" + checkresult + "");
+                if(rdg[index].getCheckedRadioButtonId() == -1)
+                {
+                    saveanswers = saveanswers.concat("cau" + (index + 1) + "e");
+                    Log.d("timeup1", saveanswers);
+                    checkresult = false;
 
+                }
+                else
+                {
+                    saveanswers = saveanswers.concat(rdg[index].getResources()
+                            .getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
+                    checkresult = rdg[index]
+                            .getResources()
+                            .getResourceEntryName(rdg[index]
+                                    .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
+                }
+
+                if(checkresult)
+                {
+                    score = score.add(scoreperanswer);
+                    Log.d("Scorestep", score + "");
+                }
+                temp = "";
+                index++;
+            }
+        }
+        saveanswers = saveanswers.replace("cau", "");
+        Log.d("timeup", saveanswers);
+        scored= score+"";
+        Log.d("score0", scored);
+        loadsaveanswers();
+    }
     private void CDTimer() {
         new CountDownTimer(5000, 1000) {
 
@@ -321,52 +362,8 @@ public class Test extends AppCompatActivity {
 
             public void onFinish() {
                // tvSecond.setText("done!");
-                Toast.makeText(Test.this, "Đã hết giờ làm bài", Toast.LENGTH_SHORT).show();
-                int lengthresult = answers.length();
-                String temp = "";
-                int index = 0;
-                for(int j = 0; j < lengthresult; j++)
-                {
-                    char c = answers.charAt(j);
-                    temp = temp.concat(c + "");
-                    if(c >= 'A' && c <= 'D')
-                    {
-                        Log.d("Temp", temp);
-                        boolean checkresult = false;
-                        //Log.d("Result", temp + ":" + checkresult + "");
-                        if(rdg[index].getCheckedRadioButtonId() == -1)
-                        {
-                            saveanswers = saveanswers.concat("cau" + (index + 1) + "e");
-                            Log.d("timeup1", saveanswers);
-                            checkresult = false;
-
-                        }
-                        else
-                        {
-                            saveanswers = saveanswers.concat(rdg[index].getResources()
-                                    .getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
-                            checkresult = rdg[index]
-                                    .getResources()
-                                    .getResourceEntryName(rdg[index]
-                                            .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
-                        }
-
-                        if(checkresult)
-                        {
-                            score = score.add(scoreperanswer);
-                            Log.d("Scorestep", score + "");
-                        }
-                        temp = "";
-                        index++;
-                    }
-                }
-                saveanswers = saveanswers.replace("cau", "");
-                Log.d("timeup", saveanswers);
-                scored= score+"";
-                Log.d("score0", scored);
-                loadsaveanswers();
+                timeup();
             }
-
         }.start();
     }
 }
