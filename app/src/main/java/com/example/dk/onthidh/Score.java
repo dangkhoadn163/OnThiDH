@@ -61,6 +61,7 @@ public class Score extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         keyt = getIntent().getExtras().getString("keyt111");
         userid = getIntent().getExtras().getString("Uid111");
+        Log.d("huy", "aaaaaaaaaaaaaaaaaaaaaaa");
         anhxa();
         load(keyt);
         loadnameuser(userid);
@@ -225,14 +226,21 @@ public class Score extends AppCompatActivity {
             }
             else if (c >= 'a' && c <= 'd' && cquizans >= 'A' && cquizans <= 'D')
             {
-                rdbtn[index][(int) c - 97].setChecked(true);
-                if (!rdbtn[index][(int) cquizans - 65].isChecked()) {
-                    rdbtn[index][(int) cquizans - 65].setButtonTintList(ColorStateList.valueOf(Color.RED));
-                    rdbtn[index][(int) cquizans - 65].setChecked(true);
+                rdbtn[index][(int)(c - 97)].setChecked(true);
+                if (!rdbtn[index][(int)(cquizans - 65)].isChecked()) {
+                    rdbtn[index][(int)(cquizans - 65)].setButtonTintList(ColorStateList.valueOf(Color.RED));
+                    rdbtn[index][(int)(cquizans - 65)].setChecked(true);
                 }
                 for (int j = 0; j < 4; j++) {
-                    if ((int) c - 97 == j || (int) cquizans - 65 == j)
+                    if ((int)(c - 97) == j || (int)(cquizans - 65) == j)
                         continue;
+                    rdbtn[index][j].setEnabled(false);
+                }
+            }
+            else if(c == 'e')
+            {
+                for (int j = 0; j < 4; j++)
+                {
                     rdbtn[index][j].setEnabled(false);
                 }
             }

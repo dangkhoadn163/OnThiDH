@@ -48,6 +48,10 @@ public class Test extends AppCompatActivity {
     String keyt;
     String scored;
     String userid;
+    private String mstr;
+    private String sstr;
+    private int countMinute;
+    private int countSecond;
     private String saveanswers = "";
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
@@ -346,23 +350,31 @@ public class Test extends AppCompatActivity {
         Log.d("score0", scored);
         loadsaveanswers();
     }
+
     private void CDTimer() {
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(3600000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
                 int temp = (int) millisUntilFinished / 1000;
-                int m = temp / 60;
-                int s = temp % 60;
-                String mstr = (getString(R.string.minute, m));
-                String sstr = (getString(R.string.second, s));
+                countMinute = temp / 60;
+                countSecond = temp % 60;
+                mstr = (getString(R.string.minute, countMinute));
+                sstr = (getString(R.string.second, countSecond));
                 tvMinute.setText("" + mstr);
                 tvSecond.setText(":" + sstr);
             }
 
             public void onFinish() {
-               // tvSecond.setText("done!");
+                mstr = (getString(R.string.minute, 0));
+                sstr = (getString(R.string.second, 0));
+                tvMinute.setText("" + mstr);
+                tvSecond.setText(":" + sstr);
                 timeup();
+                Intent intent = new Intent(Test.this, Score.class);
+                intent.putExtra("keyt111",keyt);
+                intent.putExtra("Uid111", userid);
+                Test.this.startActivity(intent);
             }
         }.start();
     }
