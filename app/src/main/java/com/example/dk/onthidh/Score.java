@@ -226,13 +226,13 @@ public class Score extends AppCompatActivity {
             }
             else if (c >= 'a' && c <= 'd' && cquizans >= 'A' && cquizans <= 'D')
             {
-                rdbtn[index][(int)(c - 97)].setChecked(true);
-                if (!rdbtn[index][(int)(cquizans - 65)].isChecked()) {
-                    rdbtn[index][(int)(cquizans - 65)].setButtonTintList(ColorStateList.valueOf(Color.RED));
-                    rdbtn[index][(int)(cquizans - 65)].setChecked(true);
+                rdbtn[index][(int)c - 97].setChecked(true);
+                if (!rdbtn[index][(int)cquizans - 65].isChecked()) {
+                    rdbtn[index][(int)cquizans - 65].setButtonTintList(ColorStateList.valueOf(Color.RED));
+                    rdbtn[index][(int)cquizans - 65].setChecked(true);
                 }
                 for (int j = 0; j < 4; j++) {
-                    if ((int)(c - 97) == j || (int)(cquizans - 65) == j)
+                    if ((int)c - 97 == j || (int)cquizans - 65 == j)
                         continue;
                     rdbtn[index][j].setEnabled(false);
                 }
