@@ -137,6 +137,7 @@ public class Test extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("answer"))
                     answers = dataSnapshot.child("answer").getValue().toString();
+
 //                Toast.makeText(Test.this, answer+"", Toast.LENGTH_SHORT).show();
             }
 
@@ -323,7 +324,6 @@ public class Test extends AppCompatActivity {
                     saveanswers = saveanswers.concat("cau" + (index + 1) + "e");
                     Log.d("timeup1", saveanswers);
                     checkresult = false;
-
                 }
                 else
                 {
@@ -378,6 +378,7 @@ public class Test extends AppCompatActivity {
             }
         }.start();
     }
+
 }
 
 
