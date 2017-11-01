@@ -40,6 +40,7 @@ public class Score extends AppCompatActivity {
     String userid;
     String useranswer;
     String quizanswers;
+    String monhoc;
     Toolbar toolbar;
     NavigationView navigation;
     ArrayList<String> mois;
@@ -61,7 +62,7 @@ public class Score extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         keyt = getIntent().getExtras().getString("keyt111");
         userid = getIntent().getExtras().getString("Uid111");
-        Log.d("huy", "aaaaaaaaaaaaaaaaaaaaaaa");
+        monhoc = getIntent().getExtras().getString("monhoc");
         anhxa();
         load(keyt);
         loadnameuser(userid);
@@ -70,7 +71,7 @@ public class Score extends AppCompatActivity {
 
     }
     public void load(String keyt) {
-        rootDatabase.child("anhvan").child(keyt).child("test").addChildEventListener(new ChildEventListener() {
+        rootDatabase.child("monhoc").child(monhoc).child(keyt).child("test").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String link = dataSnapshot.getValue().toString();
@@ -142,7 +143,7 @@ public class Score extends AppCompatActivity {
     }
 
     public void loadquizanswer(String keyt) {
-        rootDatabase.child("monhoc").child("anhvan").child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
+        rootDatabase.child("monhoc").child(monhoc).child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("answer")) {
@@ -192,7 +193,10 @@ public class Score extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mnSetting:
-                startActivity(new Intent(Score.this, MainActivity.class).putExtra("Uid",userid));
+                Intent intent= new Intent(Score.this,MainActivity.class);
+                intent.putExtra("monhoc",monhoc);
+                intent.putExtra("Uid", userid);
+                Score.this.startActivity(intent);
                 break;
             case android.R.id.home:
                 drawer.openDrawer(GravityCompat.START);

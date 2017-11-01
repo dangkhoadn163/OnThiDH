@@ -23,7 +23,7 @@ public class ListTest extends AppCompatActivity {
     ArrayList<String> keys;
     private RecyclerView rcvData;
     private TextView txvLog;
-    String uid;
+    String uid,monhoc;
     DatabaseReference rootDatabase;
 
     @Override
@@ -31,6 +31,7 @@ public class ListTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_test);
         uid = getIntent().getExtras().getString("Uid");
+        monhoc = getIntent().getExtras().getString("monhoc");
         Log.d("Uid1", "onComplete: Uid=" + uid);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
@@ -55,7 +56,7 @@ public class ListTest extends AppCompatActivity {
     }
     private void loadList() {
         FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
-                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child("anhvan")
+                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child(monhoc)
         ) {
             @Override
             protected void populateViewHolder(MyFileViewHolder viewHolder, final MyFile model, int position) {
@@ -69,6 +70,7 @@ public class ListTest extends AppCompatActivity {
                         Intent intent= new Intent(ListTest.this,Test.class);
                         intent.putExtra("keyt",t);
                         intent.putExtra("Uid2", uid);
+                        intent.putExtra("monhoc",monhoc);
                         ListTest.this.startActivity(intent);
                     }
                 });

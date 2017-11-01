@@ -48,6 +48,7 @@ public class Test extends AppCompatActivity {
     String keyt;
     String scored;
     String userid;
+    String monhoc;
     private String mstr;
     private String sstr;
     private int countMinute;
@@ -74,6 +75,7 @@ public class Test extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         keyt = getIntent().getExtras().getString("keyt");
         userid = getIntent().getExtras().getString("Uid2");
+        monhoc = getIntent().getExtras().getString("monhoc");
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
@@ -88,7 +90,7 @@ public class Test extends AppCompatActivity {
 
         load(keyt);
         loadanswer(keyt);
-
+        loadnameuser(userid);
         autocheck();
 
         Nav();
@@ -96,7 +98,7 @@ public class Test extends AppCompatActivity {
     }
 
     public void load(String keyt) {
-        rootDatabase.child("monhoc").child("anhvan").child(keyt).child("test").addChildEventListener(new ChildEventListener() {
+        rootDatabase.child("monhoc").child(monhoc).child(keyt).child("test").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String link = dataSnapshot.getValue().toString();
@@ -132,7 +134,7 @@ public class Test extends AppCompatActivity {
 
     public void loadanswer(String keyt) {
 
-        rootDatabase.child("monhoc").child("anhvan").child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
+        rootDatabase.child("monhoc").child(monhoc).child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("answer"))
@@ -234,17 +236,30 @@ public class Test extends AppCompatActivity {
                         Intent intent= new Intent(Test.this,Score.class);
                         intent.putExtra("keyt111",keyt);
                         intent.putExtra("Uid111", userid);
+                        intent.putExtra("monhoc",monhoc);
                         Test.this.startActivity(intent);
                     }
                 }).create().show();
     }
+    public void loadnameuser(String userid) {
+        rootDatabase.child("account").child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild("name")) {
+                    getSupportActionBar().setTitle(dataSnapshot.child("name").getValue().toString());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+    }
     private void Nav() {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.mipmap.ic_tracnghiem);
-        ab.setTitle("DANGKHOADN");
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
 
@@ -260,6 +275,10 @@ public class Test extends AppCompatActivity {
                         Toast.makeText(Test.this, "Bạn chưa đánh câu " + (j + 1), Toast.LENGTH_SHORT).show();
                         return;
                     }
+                }
+                if(countMinute<=4){
+                    Toast.makeText(Test.this, "Còn 5 phút hết giờ làm bài!!! \n Không được nộp bài kể từ thời gian này !", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 dialog();
                 Log.d("ID", idRdb );
@@ -363,6 +382,9 @@ public class Test extends AppCompatActivity {
                 sstr = (getString(R.string.second, countSecond));
                 tvMinute.setText("" + mstr);
                 tvSecond.setText(":" + sstr);
+                if(countMinute==5&& countSecond==0){
+                    Toast.makeText(Test.this, "Còn 5 phút hết giờ làm bài !", Toast.LENGTH_SHORT).show();
+                }
             }
 
             public void onFinish() {
@@ -371,7 +393,9 @@ public class Test extends AppCompatActivity {
                 tvMinute.setText("" + mstr);
                 tvSecond.setText(":" + sstr);
                 timeup();
-                Intent intent = new Intent(Test.this, Score.class);
+                Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
+//                        Log.d("Score", score + "");
+                Intent intent= new Intent(Test.this,Score.class);
                 intent.putExtra("keyt111",keyt);
                 intent.putExtra("Uid111", userid);
                 Test.this.startActivity(intent);

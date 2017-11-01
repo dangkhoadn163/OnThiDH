@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-        <item
-            android:id="@+id/nav_first_fragment"
-            android:title="First"
-            app:showAsAction="always"
-            android:icon="@drawable/change"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+        <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_first_fragment"
+                    android:icon="@drawable/ic_house"
+                    android:title="Trang chủ" />
+                <item
+                    android:id="@+id/nav_second_fragment"
+                    android:icon="@drawable/ic_customer"
+                    android:title="Tài khoản" />
+                <item
+                    android:id="@+id/nav_third_fragment"
+                    android:title="Trợ giúp và phản hồi"
+                    android:icon="@drawable/ic_support"/>
+                <item
+                    android:id="@+id/nav_four_fragment"
+                    android:icon="@drawable/ic_chplay"
+                    android:title="Đánh giá" />
+
+        </group>
 </menu>

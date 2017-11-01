@@ -26,10 +26,10 @@
                 android:background="@drawable/bg_edt2"
                 android:drawableRight="@drawable/ic_mail"
                 android:hint="Email"
+                android:text="dangkhoadn163@gmail.com"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
                 android:paddingRight="20dp"
-                android:text="khoa@gmail.com"
                 android:textColor="@color/colorWhite" />
 
             <EditText
@@ -37,10 +37,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
+                android:text="123456"
                 android:background="@drawable/bg_edt2"
                 android:drawableRight="@drawable/ic_lock"
                 android:hint="Password"
-                android:text="123456"
                 android:inputType="textPassword"
                 android:paddingLeft="10dp"
                 android:paddingRight="20dp"
@@ -66,6 +66,15 @@
         android:text="register"
         android:textStyle="bold"
         android:textColor="@color/colorWhite"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/bg_btn1"/>
+    <Button
+        android:id="@+id/forgetpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="forget password"
+        android:textStyle="bold"
+        android:textColor="@color/colorGreen"
+        android:background="@drawable/bg_btn2"/>
 
 </LinearLayout>
