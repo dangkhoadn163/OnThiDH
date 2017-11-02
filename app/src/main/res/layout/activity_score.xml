@@ -25,6 +25,22 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_score"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="10"
+                android:textAllCaps="false"
+                android:textColor="#00838f"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="serif" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewTest"
                 android:layout_width="match_parent"
@@ -36,6 +52,7 @@
         android:id="@+id/nvcView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_gravity="start"
         android:background="@android:color/white">
         <include layout="@layout/navscore_layout" />

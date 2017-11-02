@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dk.onthidh.FolderMoi.MoiAdapter;
@@ -41,6 +42,7 @@ public class Score extends AppCompatActivity {
     String useranswer;
     String quizanswers;
     String monhoc;
+    String scoreuser;
     Toolbar toolbar;
     NavigationView navigation;
     ArrayList<String> mois;
@@ -48,11 +50,13 @@ public class Score extends AppCompatActivity {
     RadioButton[][] rdbtn = new RadioButton[50][4];
     private DatabaseReference rootDatabase;
     private RecyclerView rcvDataMoi;
+    private TextView tvscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        tvscore= (TextView)findViewById(R.id.tv_score);
         mois = new ArrayList<>();
         adapter_moi = new MoiAdapter(Score.this, mois);
         rcvDataMoi = (RecyclerView) findViewById(R.id.recyclerViewTest);
@@ -133,22 +137,33 @@ public class Score extends AppCompatActivity {
                 Toast.makeText(Score.this, useranswer+"", Toast.LENGTH_SHORT).show();
             }
         };
-        rootDatabase.child("account")
-                .child(userid)
-                .child("de")
-                .child(keyt)
-                .child("dapandalam")
-                .addValueEventListener(valueEventListener);
+        rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").addValueEventListener(valueEventListener);
 
     }
 
-    public void loadquizanswer(String keyt) {
+    public void loadquizanswer(final String keyt) {
         rootDatabase.child("monhoc").child(monhoc).child(keyt).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("answer")) {
                     quizanswers = dataSnapshot.child("answer").getValue().toString();
+                    loadscore(keyt,userid);
                     youranswers();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void loadscore(String keyt,String userid) {
+        rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild("score")) {
+                    scoreuser = dataSnapshot.child("score").getValue().toString();
+                    tvscore.setText(scoreuser+"/10");
                 }
             }
             @Override
