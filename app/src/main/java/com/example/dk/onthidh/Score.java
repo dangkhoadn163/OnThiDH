@@ -43,6 +43,7 @@ public class Score extends AppCompatActivity {
     String quizanswers;
     String monhoc;
     String scoreuser;
+    private int countquiz = 0;
     Toolbar toolbar;
     NavigationView navigation;
     ArrayList<String> mois;
@@ -68,10 +69,11 @@ public class Score extends AppCompatActivity {
         userid = getIntent().getExtras().getString("Uid111");
         monhoc = getIntent().getExtras().getString("monhoc");
         anhxa();
+        inintquiz(monhoc);
         load(keyt);
-        loadnameuser(userid);
+       // loadnameuser(userid);
         loaduseranswer(keyt, userid);
-        Nav();
+        //Nav();
 
     }
     public void load(String keyt) {
@@ -111,8 +113,10 @@ public class Score extends AppCompatActivity {
     private void anhxa() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        for (int i = 0; i < 50; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < 50; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
                 String quizid = "cau" + (i + 1) + (char) (j + 97);
                 int resID = getResources().getIdentifier(quizid, "id", getPackageName());
                 rdbtn[i][j] = ((RadioButton) findViewById(resID));
@@ -148,7 +152,7 @@ public class Score extends AppCompatActivity {
                 if (dataSnapshot.hasChild("answer")) {
                     quizanswers = dataSnapshot.child("answer").getValue().toString();
                     loadscore(keyt,userid);
-                    youranswers();
+
                 }
             }
             @Override
@@ -157,13 +161,16 @@ public class Score extends AppCompatActivity {
             }
         });
     }
-    public void loadscore(String keyt,String userid) {
+    public void loadscore(String keyt, final String userid) {
         rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("score")) {
                     scoreuser = dataSnapshot.child("score").getValue().toString();
-                    tvscore.setText(scoreuser+"/10");
+                    //tvscore.setText(scoreuser+"/10");
+                    scoreformat();
+                    loadnameuser(userid);
+                    Nav();
                 }
             }
             @Override
@@ -197,8 +204,8 @@ public class Score extends AppCompatActivity {
         navigation = (NavigationView) findViewById(R.id.nvcView);
         Button btnchitiet = (Button) findViewById(R.id.btnChitiet);
         TextView tvscore= (TextView) findViewById(R.id.txv_score);
-        tvscore.setText("HUY CUTO QUÁ !");
-
+        tvscore.setText(countrightanswer() + "/" + countquiz);
+        youranswers();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -221,7 +228,41 @@ public class Score extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void youranswers() {
+    private void scoreformat()
+    {
+        if((int)(Float.valueOf(scoreuser) * 10) == (Float.valueOf(scoreuser) * 10))
+        {
+            tvscore.setText(String.format("%.1f", Float.valueOf(scoreuser)) + "/10");
+        }
+        else
+        {
+            tvscore.setText(String.format("%.2f", Float.valueOf(scoreuser)) + "/10");
+        }
+    }
+    private void inintquiz(String monhoc)
+    {
+        if(monhoc.equals("anhvan"))
+        {
+            countquiz = 50;
+        }
+        else if(monhoc.equals("vatly") || monhoc.equals("hoahoc"))
+        {
+            countquiz = 40;
+        }
+        for(int i = countquiz; i < 50; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+                rdbtn[i][j].setEnabled(false);
+            }
+        }
+    }
+    private int countrightanswer()
+    {
+        return (int)(Float.valueOf(scoreuser) / (10.0 / countquiz));
+    }
+    public void youranswers()
+    {
         Log.d("answer", quizanswers + "");
         int index = 0;
         int length = useranswer.length();
@@ -229,7 +270,8 @@ public class Score extends AppCompatActivity {
         char cafter;
         char cquizans;
         char cquizansafter;
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++)
+        {
             String indexString = "";
             //String indexStringquiz = "";
             c = useranswer.charAt(i);
@@ -239,7 +281,8 @@ public class Score extends AppCompatActivity {
                 indexString += c + "";
                 cafter = useranswer.charAt(i + 1);
                 cquizansafter = quizanswers.charAt(i + 1);
-                if (cafter >= '0' && cafter <= '9' && cquizansafter >= '0' && cquizansafter <= '9') {
+                if (cafter >= '0' && cafter <= '9' && cquizansafter >= '0' && cquizansafter <= '9')
+                {
                     indexString += cafter + "";
                     i++;
                 }
@@ -248,11 +291,13 @@ public class Score extends AppCompatActivity {
             else if (c >= 'a' && c <= 'd' && cquizans >= 'A' && cquizans <= 'D')
             {
                 rdbtn[index][(int)c - 97].setChecked(true);
-                if (!rdbtn[index][(int)cquizans - 65].isChecked()) {
+                if (!rdbtn[index][(int)cquizans - 65].isChecked())
+                {
                     rdbtn[index][(int)cquizans - 65].setButtonTintList(ColorStateList.valueOf(Color.RED));
                     rdbtn[index][(int)cquizans - 65].setChecked(true);
                 }
-                for (int j = 0; j < 4; j++) {
+                for (int j = 0; j < 4; j++)
+                {
                     if ((int)c - 97 == j || (int)cquizans - 65 == j)
                         continue;
                     rdbtn[index][j].setEnabled(false);

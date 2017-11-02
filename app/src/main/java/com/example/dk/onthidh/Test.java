@@ -53,6 +53,8 @@ public class Test extends AppCompatActivity {
     private String sstr;
     private int countMinute;
     private int countSecond;
+    private byte countquiz;
+    private int time;
     private String saveanswers = "";
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
@@ -65,13 +67,11 @@ public class Test extends AppCompatActivity {
     private ImageButton imgClock, imgPen;
     private RecyclerView rcvDataMoi;
     private BigDecimal score = new BigDecimal("0.0");
-    private BigDecimal scoreperanswer = new BigDecimal("0.2");
+    private BigDecimal scoreperanswer = new BigDecimal("0.0");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
-                WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         setContentView(R.layout.activity_test);
         keyt = getIntent().getExtras().getString("keyt");
         userid = getIntent().getExtras().getString("Uid2");
@@ -79,6 +79,7 @@ public class Test extends AppCompatActivity {
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
+        initquiztimescore(monhoc);
         CDTimer();
         radiogroup();
         mois = new ArrayList<>();
@@ -168,17 +169,13 @@ public class Test extends AppCompatActivity {
     }
     void autocheck()
     {
-        for(int i = 0; i < 50; i++)
+        for(int i = 0; i < countquiz; i++)
         {
             Random rand = new Random();
             int r = rand.nextInt(4) + 97;
-
             String quizid = "cau" + (i + 1) +(char)r;
             int resID = getResources().getIdentifier(quizid, "id", getPackageName());
             rdg[i].check(resID);
-            //            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
-
-
         }
     }
     private void anhxa() {
@@ -270,14 +267,16 @@ public class Test extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String idRdb = "";
-                for (int j = 0; j < 50; j++) {
+                for (int j = 0; j < countquiz; j++) {
                     if ((rdg[j].getCheckedRadioButtonId()) == -1) {
-                        Toast.makeText(Test.this, "Bạn chưa đánh câu " + (j + 1), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Test.this, "Bạn chưa đánh câu " + (j + 1),
+                                Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
-                if(countMinute<=4){
-                    Toast.makeText(Test.this, "Còn 5 phút hết giờ làm bài!!! \n Không được nộp bài kể từ thời gian này !", Toast.LENGTH_SHORT).show();
+                if(countMinute <= 4){
+                    Toast.makeText(Test.this, "Còn 5 phút hết giờ làm bài!!! \n" +
+                            "Bạn sẽ không được nộp bài kể từ thời gian này !", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 dialog();
@@ -297,7 +296,8 @@ public class Test extends AppCompatActivity {
                                 .getResourceEntryName(rdg[index]
                                         .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
                         Log.d("Result", temp + ":" + checkresult + "");
-                        saveanswers = saveanswers.concat(rdg[index].getResources().getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
+                        saveanswers = saveanswers.concat(rdg[index].getResources()
+                                .getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
                         if(checkresult)
                         {
                             score = score.add(scoreperanswer);
@@ -308,7 +308,7 @@ public class Test extends AppCompatActivity {
                     }
                 }
                 saveanswers = saveanswers.replace("cau", "");
-                scored= score+"";
+                scored= score + "";
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -369,20 +369,41 @@ public class Test extends AppCompatActivity {
         Log.d("score0", scored);
         loadsaveanswers();
     }
-
+    private void initquiztimescore(String monhoc)
+    {
+        if(monhoc.equals("anhvan"))
+        {
+            time = 3600000;
+            countquiz = 50;
+            scoreperanswer = new BigDecimal("0.2");
+        }
+        else if(monhoc.equals("vatly") || monhoc.equals("hoahoc"))
+        {
+            time = 3000000;
+            countquiz = 40;
+            scoreperanswer = new BigDecimal("0.25");
+        }
+        for(int i = countquiz; i < 50; i++)
+        {
+            for(int j = 0; j <= 4; j++)
+            {
+                rdg[i].getChildAt(j).setEnabled(false);
+            }
+        }
+    }
     private void CDTimer() {
-        new CountDownTimer(3600000, 1000) {
+        new CountDownTimer(time, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
                 int temp = (int) millisUntilFinished / 1000;
                 countMinute = temp / 60;
                 countSecond = temp % 60;
-                mstr = (getString(R.string.minute, countMinute));
-                sstr = (getString(R.string.second, countSecond));
+                mstr = getString(R.string.minute, countMinute);
+                sstr = getString(R.string.second, countSecond);
                 tvMinute.setText("" + mstr);
                 tvSecond.setText(":" + sstr);
-                if(countMinute==5&& countSecond==0){
+                if(countMinute == 5 && countSecond == 0){
                     Toast.makeText(Test.this, "Còn 5 phút hết giờ làm bài !", Toast.LENGTH_SHORT).show();
                 }
             }
