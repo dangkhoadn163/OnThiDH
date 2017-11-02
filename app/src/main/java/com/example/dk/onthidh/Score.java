@@ -197,7 +197,7 @@ public class Score extends AppCompatActivity {
         navigation = (NavigationView) findViewById(R.id.nvcView);
         Button btnchitiet = (Button) findViewById(R.id.btnChitiet);
         TextView tvscore= (TextView) findViewById(R.id.txv_score);
-        tvscore.setText("HUY CUTO");
+        tvscore.setText("HUY CUTO QUÁ !");
 
     }
     @Override
