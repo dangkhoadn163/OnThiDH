@@ -195,7 +195,9 @@ public class Score extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
         navigation = (NavigationView) findViewById(R.id.nvcView);
-        Button btnwatch = (Button) findViewById(R.id.btnWatch);
+        Button btnchitiet = (Button) findViewById(R.id.btnChitiet);
+        TextView tvscore= (TextView) findViewById(R.id.txv_score);
+        tvscore.setText("HUY CUTO");
 
     }
     @Override
