@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +21,6 @@ public class ChooseActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation;
     private FirebaseAuth mAuth;
-    private Button btnmath, btnenglish, btnbiology, btnchemistry, btnphysic, btnedu, btnhistoty, btngeography;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +29,10 @@ public class ChooseActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         uid = getIntent().getExtras().getString("Uid");
         anhxa();
-//        anhvan();
-//        vatly();
         nav();
     }
 
     private void anhxa() {
-/*        btnenglish = (Button) findViewById(R.id.btn_english);
-        btnmath = (Button) findViewById(R.id.btn_math);
-        btnbiology = (Button) findViewById(R.id.btn_biology);
-        btnchemistry = (Button) findViewById(R.id.btn_chemistry);
-        btnphysic = (Button) findViewById(R.id.btn_physic);
-        btnedu = (Button) findViewById(R.id.btn_education);
-        btnhistoty = (Button) findViewById(R.id.btn_history);
-        btngeography = (Button) findViewById(R.id.btn_geography);*/
         drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
         toolbar=(Toolbar)findViewById(R.id.toolbar_main);
     }

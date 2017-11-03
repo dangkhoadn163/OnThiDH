@@ -20,8 +20,10 @@ public class Fragment1 extends Fragment {
         uid = getActivity().getIntent().getExtras().getString("Uid");
         btnenglish = (Button)view.findViewById(R.id.btn_english);
         btnphysic= (Button)view.findViewById(R.id.btn_physic);
+        btnchemistry=(Button)view.findViewById(R.id.btn_chemistry);
         anhvan();
         vatly();
+        hoahoc();
         return view;//super.onCreateView(inflater, container, savedInstanceState);
     }
     public void anhvan() {
@@ -45,6 +47,19 @@ public class Fragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 monhoc = "vatly";
+                intent.putExtra("monhoc", monhoc);
+                intent.putExtra("Uid", uid);
+                getActivity().startActivity(intent);
+            }
+        });
+    }
+    public void hoahoc() {
+        btnchemistry.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                monhoc = "hoahoc";
                 intent.putExtra("monhoc", monhoc);
                 intent.putExtra("Uid", uid);
                 getActivity().startActivity(intent);
