@@ -167,7 +167,6 @@ public class Score extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("score")) {
                     scoreuser = dataSnapshot.child("score").getValue().toString();
-                    //tvscore.setText(scoreuser+"/10");
                     scoreformat();
                     loadnameuser(userid);
                     Nav();

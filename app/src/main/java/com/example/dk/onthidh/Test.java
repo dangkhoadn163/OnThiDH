@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,7 +68,7 @@ public class Test extends AppCompatActivity {
     private RecyclerView rcvDataMoi;
     private BigDecimal score = new BigDecimal("0.0");
     private BigDecimal scoreperanswer = new BigDecimal("0.0");
-
+    ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +92,7 @@ public class Test extends AppCompatActivity {
         load(keyt);
         loadanswer(keyt);
         loadnameuser(userid);
-        autocheck();
+        //autocheck();
 
         Nav();
 //        Click();
@@ -257,7 +258,7 @@ public class Test extends AppCompatActivity {
         ab.setHomeAsUpIndicator(R.mipmap.ic_tracnghiem);
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
-
+        scrollView = (ScrollView)findViewById(R.id.scrollView);
         navigation = (NavigationView) findViewById(R.id.nvView);
         Button btnSave = (Button) findViewById(R.id.btnSave);
 
@@ -266,9 +267,11 @@ public class Test extends AppCompatActivity {
             public void onClick(View view) {
                 String idRdb = "";
                 for (int j = 0; j < countquiz; j++) {
-                    if ((rdg[j].getCheckedRadioButtonId()) == -1) {
+                    if ((rdg[j].getCheckedRadioButtonId()) == -1)
+                    {
                         Toast.makeText(Test.this, "Bạn chưa đánh câu " + (j + 1),
                                 Toast.LENGTH_SHORT).show();
+                        scrollView.smoothScrollTo(0, rdg[j].getTop());
                         return;
                     }
                 }
