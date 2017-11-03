@@ -12,14 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ChooseActivity extends AppCompatActivity {
     String uid;
-    String monhoc;
     DrawerLayout drawer;
     Toolbar toolbar;
     NavigationView navigation;
@@ -49,34 +47,6 @@ public class ChooseActivity extends AppCompatActivity {
         btngeography = (Button) findViewById(R.id.btn_geography);*/
         drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
         toolbar=(Toolbar)findViewById(R.id.toolbar_main);
-    }
-
-    public void anhvan() {
-        btnenglish.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChooseActivity.this, MainActivity.class);
-                monhoc = "anhvan";
-                intent.putExtra("monhoc", monhoc);
-                intent.putExtra("Uid", uid);
-                ChooseActivity.this.startActivity(intent);
-            }
-        });
-    }
-
-    public void vatly() {
-        btnphysic.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChooseActivity.this, MainActivity.class);
-                monhoc = "vatly";
-                intent.putExtra("monhoc", monhoc);
-                intent.putExtra("Uid", uid);
-                ChooseActivity.this.startActivity(intent);
-            }
-        });
     }
     public void nav(){
         setSupportActionBar(toolbar);

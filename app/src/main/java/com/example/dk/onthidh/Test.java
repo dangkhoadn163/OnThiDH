@@ -17,7 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -157,8 +156,7 @@ public class Test extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Uid uid = new Uid(saveanswers,scored);
-                rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").setValue(uid);
-//                Toast.makeText(Test.this, saveanswers+"", Toast.LENGTH_SHORT).show();
+                rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam").setValue(uid);
             }
 
             @Override

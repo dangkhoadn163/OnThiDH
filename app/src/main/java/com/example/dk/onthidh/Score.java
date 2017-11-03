@@ -141,7 +141,7 @@ public class Score extends AppCompatActivity {
                 Toast.makeText(Score.this, useranswer+"", Toast.LENGTH_SHORT).show();
             }
         };
-        rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").addValueEventListener(valueEventListener);
+        rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam").addValueEventListener(valueEventListener);
 
     }
 
@@ -162,7 +162,7 @@ public class Score extends AppCompatActivity {
         });
     }
     public void loadscore(String keyt, final String userid) {
-        rootDatabase.child("account").child(userid).child("de").child(keyt).child("dapandalam").addListenerForSingleValueEvent(new ValueEventListener() {
+        rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("score")) {
@@ -217,8 +217,8 @@ public class Score extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mnSetting:
-                Intent intent= new Intent(Score.this,MainActivity.class);
-                intent.putExtra("monhoc",monhoc);
+                Intent intent= new Intent(Score.this,ChooseActivity.class);
+//                intent.putExtra("monhoc",monhoc);
                 intent.putExtra("Uid", userid);
                 Score.this.startActivity(intent);
                 break;
