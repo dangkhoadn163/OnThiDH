@@ -16,11 +16,7 @@ import java.util.Calendar;
  */
 
 public class FirebaseController {
-    // Trước khi làm cái này nhớ nhúng thư viện:
-    // compile 'com.google.firebase:firebase-storage:11.0.2'
     public static void uploadAvatar(Context context, final String userID, Uri imageUri) {
-
-
         // upload hình Avatar lên storage và lấy đường dẫn (lúc này đã là url chứ không phải uri ):
         DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference()
                 .child("account")
@@ -28,11 +24,7 @@ public class FirebaseController {
         //Nhung library java.util.calendar
         Calendar c = Calendar.getInstance();
         String s = c.getTimeInMillis() + "";
-
-//        FirebaseStorage mStorage = FirebaseStorage.getInstance();
-//        StorageReference storageReference = mStorage.getReference();
-//        storageReference.child(s).putFile(imageUri);
-        // up hinh len database
+        // up hinh len storage database
         FirebaseStorage.getInstance().getReference().child(s).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -40,12 +32,7 @@ public class FirebaseController {
                 UploadDatabase(url,userID);
             }
         });
-
-
         // upload storage xong thì upload đường dẫn vào database:
-
-        //... chưa làm cái mẹ gì hết
-
     }
     // gán hình cho user
     private static void UploadDatabase(String url, String userID) {

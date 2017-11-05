@@ -1,7 +1,6 @@
 package com.example.dk.onthidh.Activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,13 +19,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dk.onthidh.Class.User;
 import com.example.dk.onthidh.CustomDialog.PhotoDialog;
 import com.example.dk.onthidh.Fragment.Fragment1;
 import com.example.dk.onthidh.Fragment.Fragment2;
 import com.example.dk.onthidh.Fragment.Fragment3;
 import com.example.dk.onthidh.Fragment.Fragment4;
 import com.example.dk.onthidh.R;
-import com.example.dk.onthidh.Class.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,8 +38,6 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import static com.example.dk.onthidh.CustomDialog.Constant.IMAGE_REQUEST_CODE;
 import static com.example.dk.onthidh.CustomDialog.FirebaseController.uploadAvatar;
-import static com.example.dk.onthidh.CustomDialog.SystemController.openCamera;
-import static com.example.dk.onthidh.CustomDialog.SystemController.openGallery;
 
 public class ChooseActivity extends AppCompatActivity {
     String uid;
@@ -100,28 +97,6 @@ public class ChooseActivity extends AppCompatActivity {
         }
     }
 
-    // Khỏi tạo và mở dialog mặc định:
-    private void openDefaultDialog() {
-        defaultDialog = new AlertDialog.Builder(ChooseActivity.this);
-        // đặt tiêu đề và chữ
-        defaultDialog.setTitle("....").setMessage("Chọn ");
-        defaultDialog.setPositiveButton("Từ thư viện", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // mo thu vien anh:
-                openGallery(context);
-            }
-        });
-        defaultDialog.setNegativeButton("Chụp ảnh mới", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // mo camera:
-                openCamera(context);
-            }
-        });
-        defaultDialog.create().show(); // khởi tạo và show dialog:
-    }
-
     // Khỏi tạo và mở dialog tùy chỉnh
     private void openCustomDialog() {
         customDialog = new PhotoDialog(ChooseActivity.this);
@@ -131,18 +106,6 @@ public class ChooseActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        //          SỬ DỤNG THƯ VIỆN CROP IMAGE (CẮT ẢNH)
-        //          compile 'com.theartofdev.edmodo:android-image-cropper:2.4.3'
-        //          và thêm activity crop image vào manifest ():
-        //--------------------------------------------------------------------------------------.
-        //                                                                                      |
-        //        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"     |
-        //                  android:theme="@style/Base.Theme.AppCompat" />                      |
-        //                                                                                      |
-        //--------------------------------------------------------------------------------------
-        //                                                thấy quả comment tỏ ra nguy hiểm ko :) ?
-
         super.onActivityResult(requestCode, resultCode, data);
         // Nếu nhận <ActivityResult> từ activity CHỌN ẢNH (không phân biệt từ thư viện hay chụp ảnh mới)
         // và kiểm tra có chọn ảnh hay không để xử lý hàm if này
@@ -170,15 +133,12 @@ public class ChooseActivity extends AppCompatActivity {
                 customDialog.dismiss();
                 // upload Avatar lên firebase
                 uploadAvatar(context, uid, imageUri);// Xem bên class FirebaseController
-
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-
                 // nếu xảy ra lỗi thì cũng đóng dialog luôn:
                 customDialog.dismiss();
             }
         }
     }
-
 
     public void nav(){
         setSupportActionBar(toolbar);
@@ -194,11 +154,6 @@ public class ChooseActivity extends AppCompatActivity {
         iv_picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // sử dụng dialog mặc định xài hàm này đơn giản (nhanh, gọn, lẹ, xấu)
-                // openDefaultDialog();
-
-                // sử dụng custom dialog xài hàm này (tốn thời gian tí, đẹp, so cool)
                 openCustomDialog();
             }
         });
@@ -216,7 +171,7 @@ public class ChooseActivity extends AppCompatActivity {
             }
         });
 
-    navigation=(NavigationView)findViewById(R.id.navview);
+        navigation=(NavigationView)findViewById(R.id.navview);
         navigation.setCheckedItem(R.id.nav_first_fragment);
         xulychonmenu(navigation.getMenu().getItem(0));
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

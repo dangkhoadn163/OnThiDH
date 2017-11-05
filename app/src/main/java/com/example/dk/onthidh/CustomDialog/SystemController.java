@@ -1,30 +1,14 @@
 package com.example.dk.onthidh.CustomDialog;
 
-/**
- * Created by DK on 11/5/2017.
- */
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-
 import java.io.File;
-
 import static com.example.dk.onthidh.CustomDialog.Constant.IMAGE_REQUEST_CODE;
-
-/**
- * Created by eagle on 7/25/2017.
- */
-
 public class SystemController {
-
-    // Để đọc ghi dữ liệu từ bộ nhớ thiết bị cần cấp quyền đọc/ghi cho ứng dụng: thêm 2 thẻ này vào manifests
-    // <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    // <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     // mở  camera
     public static void openCamera(Context context){
 
