@@ -49,7 +49,6 @@ public class ListTest extends AppCompatActivity {
         txvLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ListTest.this, Test.class));
             }
         });
 

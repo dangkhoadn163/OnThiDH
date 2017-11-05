@@ -15,10 +15,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LaunchActivity extends AppCompatActivity {
     private EditText Edtemail, Edtpass;
     private Button login, register,forget;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    String userID;
 
     private FirebaseAuth mAuth;
 
@@ -47,12 +50,12 @@ public class LaunchActivity extends AppCompatActivity {
                 sendemail();
             }
         });
+        remember();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mAuth.signOut();
     }
 
     // Anh xa cac widget
@@ -62,6 +65,30 @@ public class LaunchActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.loginuser);
         register = (Button) findViewById(R.id.registeruser);
         forget= (Button)findViewById(R.id.forgetpass);
+    }
+    private  void remember() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d("TAG", "onAuthStateChanged:signed_in:" + user.getUid());
+                    // Authenticated successfully with authData
+                    Intent intent = new Intent(LaunchActivity.this, ChooseActivity.class);
+                    intent.putExtra("Uid", userID);
+                    startActivity(intent);
+                } else {
+                    // User is signed out
+                    Log.d("TAG", "onAuthStateChanged:signed_out");
+                }
+            }
+        };
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     // Ham dang nhap firebase:
@@ -74,7 +101,7 @@ public class LaunchActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         // Dang nhap thanh cong
-                        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         startActivity(new Intent(LaunchActivity.this,ChooseActivity.class).putExtra("Uid",userID));
 
                     } else {
@@ -85,6 +112,7 @@ public class LaunchActivity extends AppCompatActivity {
             });
         }
     }
+
     private void sendemail(){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String emailAddress = Edtemail.getText().toString();

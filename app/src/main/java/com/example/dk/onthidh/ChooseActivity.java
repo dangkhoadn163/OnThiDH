@@ -21,6 +21,7 @@ public class ChooseActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

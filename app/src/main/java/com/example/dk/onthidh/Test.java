@@ -424,7 +424,15 @@ public class Test extends AppCompatActivity {
             }
         }.start();
     }
-
+    @Override
+    public void onBackPressed()
+    {
+        new AlertDialog.Builder(this)
+                .setTitle("Thoát ứng dụng?")
+                .setMessage("Bạn phải nộp bài hay đợi hết thời gian mới được thoát nhé !")
+                .setNegativeButton(":)", null)
+                .create().show();
+    }
 }
 
 
