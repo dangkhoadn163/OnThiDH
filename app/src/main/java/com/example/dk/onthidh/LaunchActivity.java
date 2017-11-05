@@ -76,7 +76,7 @@ public class LaunchActivity extends AppCompatActivity {
                     Log.d("TAG", "onAuthStateChanged:signed_in:" + user.getUid());
                     // Authenticated successfully with authData
                     Intent intent = new Intent(LaunchActivity.this, ChooseActivity.class);
-                    intent.putExtra("Uid", userID);
+                    intent.putExtra("Uid", user.getUid());
                     startActivity(intent);
                 } else {
                     // User is signed out

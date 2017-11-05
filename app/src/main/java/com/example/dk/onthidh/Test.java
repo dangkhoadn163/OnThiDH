@@ -90,9 +90,9 @@ public class Test extends AppCompatActivity {
         rcvDataMoi.setHasFixedSize(true);
         rcvDataMoi.setLayoutManager(new LinearLayoutManager(this));
         rcvDataMoi.setAdapter(adapter_moi);
+        loadnameuser(userid);
         load(keyt);
         loadanswer(keyt);
-        loadnameuser(userid);
         autocheck();
         Nav();
         ClickClock();
