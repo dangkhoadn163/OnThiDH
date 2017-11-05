@@ -49,6 +49,7 @@ public class Test extends AppCompatActivity {
     String scored;
     String userid;
     String monhoc;
+    int clock;
     private String mstr;
     private String sstr;
     private int countMinute;
@@ -76,6 +77,7 @@ public class Test extends AppCompatActivity {
         keyt = getIntent().getExtras().getString("keyt");
         userid = getIntent().getExtras().getString("Uid2");
         monhoc = getIntent().getExtras().getString("monhoc");
+        clock=1;
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
@@ -88,14 +90,12 @@ public class Test extends AppCompatActivity {
         rcvDataMoi.setHasFixedSize(true);
         rcvDataMoi.setLayoutManager(new LinearLayoutManager(this));
         rcvDataMoi.setAdapter(adapter_moi);
-
         load(keyt);
         loadanswer(keyt);
         loadnameuser(userid);
-        //autocheck();
-
+        autocheck();
         Nav();
-//        Click();
+        ClickClock();
     }
 
     public void load(String keyt) {
@@ -193,10 +193,19 @@ public class Test extends AppCompatActivity {
 //            Toast.makeText(Test.this, quizid,Toast.LENGTH_SHORT).show();
         }
     }
-    private void Click(){
+    private void ClickClock(){
         imgClock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clock= clock*-1;
+                if (clock==1){
+                    tvMinute.setVisibility(View.INVISIBLE);
+                    tvSecond.setVisibility(View.INVISIBLE);
+                }
+                else if(clock==-1) {
+                    tvMinute.setVisibility(View.VISIBLE);
+                    tvSecond.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
