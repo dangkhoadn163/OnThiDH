@@ -1,4 +1,4 @@
-package com.example.dk.onthidh;
+package com.example.dk.onthidh.Class;
 
 /**
  * Created by DK on 10/16/2017.

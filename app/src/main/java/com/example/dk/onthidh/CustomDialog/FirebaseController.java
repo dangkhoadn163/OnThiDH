@@ -1,4 +1,4 @@
-package com.example.dk.onthidh;
+package com.example.dk.onthidh.CustomDialog;
 
 import android.content.Context;
 import android.net.Uri;

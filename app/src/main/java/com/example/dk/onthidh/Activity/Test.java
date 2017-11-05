@@ -1,4 +1,4 @@
-package com.example.dk.onthidh;
+package com.example.dk.onthidh.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dk.onthidh.FolderMoi.MoiAdapter;
+import com.example.dk.onthidh.R;
+import com.example.dk.onthidh.Class.Uid;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

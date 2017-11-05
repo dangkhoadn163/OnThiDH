@@ -1,4 +1,4 @@
-package com.example.dk.onthidh;
+package com.example.dk.onthidh.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dk.onthidh.FolderMoi.MoiAdapter;
+import com.example.dk.onthidh.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -167,7 +168,6 @@ public class Score extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("score")) {
                     scoreuser = dataSnapshot.child("score").getValue().toString();
-                    //tvscore.setText(scoreuser+"/10");
                     scoreformat();
                     loadnameuser(userid);
                     Nav();

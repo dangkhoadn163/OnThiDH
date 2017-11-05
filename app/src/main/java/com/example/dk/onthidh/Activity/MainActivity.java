@@ -1,4 +1,4 @@
-package com.example.dk.onthidh;
+package com.example.dk.onthidh.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.dk.onthidh.R;
 
 public class MainActivity extends AppCompatActivity {
     String uid;

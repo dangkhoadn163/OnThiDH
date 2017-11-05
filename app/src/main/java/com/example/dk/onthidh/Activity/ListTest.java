@@ -1,4 +1,4 @@
-package com.example.dk.onthidh;
+package com.example.dk.onthidh.Activity;
 
 
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.dk.onthidh.MyFile.MyFile;
+import com.example.dk.onthidh.MyFile.MyFileAdapter;
+import com.example.dk.onthidh.MyFile.MyFileViewHolder;
+import com.example.dk.onthidh.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

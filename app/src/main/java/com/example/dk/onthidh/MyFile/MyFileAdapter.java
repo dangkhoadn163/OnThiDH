@@ -1,4 +1,4 @@
-package com.example.dk.onthidh;
+package com.example.dk.onthidh.MyFile;
 
 /**
  * Created by DK on 10/6/2017.
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.dk.onthidh.R;
 
 import java.util.List;
 
