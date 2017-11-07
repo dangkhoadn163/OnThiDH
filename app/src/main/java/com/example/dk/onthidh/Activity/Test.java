@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -72,6 +74,8 @@ public class Test extends AppCompatActivity {
     private BigDecimal score = new BigDecimal("0.0");
     private BigDecimal scoreperanswer = new BigDecimal("0.0");
     ScrollView scrollView;
+    ProgressBar progressBar;
+    CountDownTimer timercheck;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,11 +84,13 @@ public class Test extends AppCompatActivity {
         userid = getIntent().getExtras().getString("Uid2");
         monhoc = getIntent().getExtras().getString("monhoc");
         clock=1;
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         initquiztimescore(monhoc);
         CDTimer();
+        countup();
         radiogroup();
         mois = new ArrayList<>();
         adapter_moi = new MoiAdapter(Test.this, mois);
@@ -92,12 +98,16 @@ public class Test extends AppCompatActivity {
         rcvDataMoi.setHasFixedSize(true);
         rcvDataMoi.setLayoutManager(new LinearLayoutManager(this));
         rcvDataMoi.setAdapter(adapter_moi);
+        progressBar.setVisibility(View.VISIBLE);
         loadnameuser(userid);
         load(keyt);
         loadanswer(keyt);
         autocheck();
         Nav();
         ClickClock();
+
+
+
     }
 
     public void load(String keyt) {
@@ -108,6 +118,7 @@ public class Test extends AppCompatActivity {
                 if(link!=null){
                     mois.add(link);
                     adapter_moi.notifyDataSetChanged();
+                    Log.d("abc", adapter_moi.getItemId(0) + "");
                     Log.d(TAG,link);
                 }else{
                     Log.d(TAG,"KHONG CO DU LIEU");
@@ -435,6 +446,24 @@ public class Test extends AppCompatActivity {
             }
         }.start();
     }
+    private void countup() {
+        timercheck = new CountDownTimer(30 * 1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                //here you can have your logic to set dethi to edittext
+                if (adapter_moi.getter()) {
+                    progressBar.setVisibility(View.GONE);
+                    timercheck.cancel();
+                    Log.d("cd", millisUntilFinished + "");
+
+                }
+            }
+
+            public void onFinish() {
+
+            }
+        }.start() ;
+    }
     @Override
     public void onBackPressed()
     {
@@ -444,6 +473,8 @@ public class Test extends AppCompatActivity {
                 .setNegativeButton(":)", null)
                 .create().show();
     }
+
+
 }
 
 
