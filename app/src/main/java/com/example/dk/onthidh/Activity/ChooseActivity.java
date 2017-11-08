@@ -51,7 +51,6 @@ public class ChooseActivity extends AppCompatActivity {
     private Uri imageUri;
     private FirebaseAuth mAuth;
     private DatabaseReference rootDatabase;
-    private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override

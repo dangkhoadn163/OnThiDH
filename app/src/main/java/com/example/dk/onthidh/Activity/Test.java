@@ -1,11 +1,13 @@
 package com.example.dk.onthidh.Activity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v13.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -26,16 +28,16 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dk.onthidh.Class.Uid;
+import com.example.dk.onthidh.CustomDialog.DialogStart;
 import com.example.dk.onthidh.FolderMoi.MoiAdapter;
 import com.example.dk.onthidh.R;
-import com.example.dk.onthidh.Class.Uid;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -45,6 +47,8 @@ public class Test extends AppCompatActivity {
     private static final String TAG = "Test";
     DrawerLayout drawer;
     LinearLayout lnl;
+    private DialogStart dialognew;
+    ProgressDialog dialogstart;
     Toolbar toolbar;
     NavigationView navigation;
     private RadioGroup[] rdg = new RadioGroup[50];
@@ -75,7 +79,7 @@ public class Test extends AppCompatActivity {
     private BigDecimal scoreperanswer = new BigDecimal("0.0");
     ScrollView scrollView;
     ProgressBar progressBar;
-    CountDownTimer timercheck;
+    CountDownTimer timercheck,timestart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +88,9 @@ public class Test extends AppCompatActivity {
         userid = getIntent().getExtras().getString("Uid2");
         monhoc = getIntent().getExtras().getString("monhoc");
         clock=1;
-        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar = (ProgressBar)findViewById(R.id.progressBar1);
 //        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
+//        DialogStart();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         initquiztimescore(monhoc);
@@ -98,16 +103,13 @@ public class Test extends AppCompatActivity {
         rcvDataMoi.setHasFixedSize(true);
         rcvDataMoi.setLayoutManager(new LinearLayoutManager(this));
         rcvDataMoi.setAdapter(adapter_moi);
-        progressBar.setVisibility(View.VISIBLE);
         loadnameuser(userid);
         load(keyt);
         loadanswer(keyt);
         autocheck();
         Nav();
+        openCustomDialog();
         ClickClock();
-
-
-
     }
 
     public void load(String keyt) {
@@ -415,7 +417,7 @@ public class Test extends AppCompatActivity {
         }
     }
     private void CDTimer() {
-        new CountDownTimer(time, 1000) {
+        timestart = new CountDownTimer(time, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
@@ -444,7 +446,7 @@ public class Test extends AppCompatActivity {
                 intent.putExtra("Uid111", userid);
                 Test.this.startActivity(intent);
             }
-        }.start();
+        };
     }
     private void countup() {
         timercheck = new CountDownTimer(30 * 1000, 1000) {
@@ -452,17 +454,68 @@ public class Test extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
                 if (adapter_moi.getter()) {
-                    progressBar.setVisibility(View.GONE);
+                    dialognew.pbstart.setVisibility(View.GONE);
+                    dialognew.txvThoat.setVisibility(View.VISIBLE);
+                    dialognew.txvThi.setVisibility(View.VISIBLE);
+                    timestart.start();
+//                    dialogstart.dismiss();
+//                    DialogFinish();
                     timercheck.cancel();
                     Log.d("cd", millisUntilFinished + "");
 
                 }
             }
-
             public void onFinish() {
 
             }
         }.start() ;
+    }
+    // Khỏi tạo và mở dialog tùy chỉnh
+    private void openCustomDialog() {
+         dialognew= new DialogStart(Test.this);
+         dialognew.txvThoat.setVisibility(View.INVISIBLE);
+         dialognew.txvThi.setVisibility(View.INVISIBLE);
+         dialognew.txvThi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    dialognew.dismiss();
+            }
+        });
+        dialognew.txvThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityCompat.finishAffinity(Test.this);
+            }
+        });
+        dialognew.show();
+    }
+    public void DialogStart() {
+        dialogstart= new ProgressDialog(this);
+        dialogstart.setTitle("Cập nhật đề thi!");
+        dialogstart.setCanceledOnTouchOutside(false);
+        dialogstart.show();
+    }
+    public void DialogFinish(){
+        AlertDialog dialogfinish;
+        dialogfinish= new AlertDialog.Builder(this).create();
+        dialogfinish.setCanceledOnTouchOutside(false);
+        dialogfinish.setTitle("Thi ngay !!!");
+        dialogfinish.setButton(ProgressDialog.BUTTON_NEUTRAL, "Thi", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                        timestart.start();
+
+                    }
+                });
+        dialogfinish.setButton(ProgressDialog.BUTTON_NEGATIVE, "Thoát", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ActivityCompat.finishAffinity(Test.this);
+            }
+
+        });
+        dialogfinish.show();
+        dialogfinish.getWindow().setLayout(1100, 500);
     }
     @Override
     public void onBackPressed()
@@ -473,8 +526,6 @@ public class Test extends AppCompatActivity {
                 .setNegativeButton(":)", null)
                 .create().show();
     }
-
-
 }
 
 
