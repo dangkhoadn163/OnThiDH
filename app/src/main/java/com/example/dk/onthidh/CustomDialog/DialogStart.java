@@ -72,8 +72,6 @@ public class DialogStart {
                     {
                         check = false;
                     }
-
-
                 }
                 return true;
             }

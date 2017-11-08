@@ -465,16 +465,17 @@ public class Test extends AppCompatActivity {
                     dialognew.txvThoat.setVisibility(View.VISIBLE);
                     dialognew.txvThi.setVisibility(View.VISIBLE);
 
+                    if(checkClickDialog)
+                    {
+                        timercheck.cancel();
+                    }
                     if(!dialognew.isShowing() && !checkClickDialog)
                     {
                         timercheck.cancel();
                         timerstart.start();
                         Log.d("huy", "aaaaaaaaaaaaaaaaa");
                     }
-                    if(checkClickDialog)
-                    {
-                        timercheck.cancel();
-                    }
+
                     Log.d("cd", millisUntilFinished + "");
                 }
                 else
