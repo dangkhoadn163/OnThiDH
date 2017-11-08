@@ -4,13 +4,19 @@ package com.example.dk.onthidh.CustomDialog;
  * Created by DK on 11/8/2017.
  */
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.dk.onthidh.Activity.Test;
 import com.example.dk.onthidh.R;
 
 public class DialogStart {
@@ -21,6 +27,7 @@ public class DialogStart {
     public Context context;
     public ProgressBar pbstart;
     public TextView txvTitle, txvThoat, txvThi;
+    private boolean check = true;
 
     public DialogStart(final Context context) {
         this.context = context;
@@ -41,8 +48,40 @@ public class DialogStart {
         dialog.show();
 
     }
-
+    public boolean isShowing()
+    {
+        return dialog.isShowing();
+    }
     public void dismiss() {
         dialog.dismiss();
     }
+    public void dialogListener()
+    {
+        dialog.setOnKeyListener(new Dialog.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if(!pbstart.isShown())
+                    {
+                        dismiss();
+                    }
+                    else
+                    {
+                        check = false;
+                    }
+
+
+                }
+                return true;
+            }
+        });
+    }
+    public boolean getCheckBack()
+    {
+        return check;
+    }
+
 }

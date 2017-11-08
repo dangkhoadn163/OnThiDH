@@ -79,7 +79,8 @@ public class Test extends AppCompatActivity {
     private BigDecimal scoreperanswer = new BigDecimal("0.0");
     ScrollView scrollView;
     ProgressBar progressBar;
-    CountDownTimer timercheck,timestart;
+    CountDownTimer timercheck,timerstart;
+    AlertDialog.Builder dialogBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,13 +90,13 @@ public class Test extends AppCompatActivity {
         monhoc = getIntent().getExtras().getString("monhoc");
         clock=1;
         progressBar = (ProgressBar)findViewById(R.id.progressBar1);
-//        Toast.makeText(this, "" + keyt, Toast.LENGTH_SHORT).show();
-//        DialogStart();
+        dialognew= new DialogStart(Test.this);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhxa();
         initquiztimescore(monhoc);
-        CDTimer();
         countup();
+        CDTimer();
+        openCustomDialog();
         radiogroup();
         mois = new ArrayList<>();
         adapter_moi = new MoiAdapter(Test.this, mois);
@@ -108,7 +109,6 @@ public class Test extends AppCompatActivity {
         loadanswer(keyt);
         autocheck();
         Nav();
-        openCustomDialog();
         ClickClock();
     }
 
@@ -415,9 +415,14 @@ public class Test extends AppCompatActivity {
                 rdg[i].getChildAt(j).setEnabled(false);
             }
         }
+        mstr = getString(R.string.minute, (time / 1000) / 60);
+        sstr = getString(R.string.second, (time / 1000) % 60);
+        tvMinute.setText("" + mstr);
+        tvSecond.setText(":" + sstr);
+
     }
     private void CDTimer() {
-        timestart = new CountDownTimer(time, 1000) {
+        timerstart = new CountDownTimer(time, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
@@ -449,7 +454,7 @@ public class Test extends AppCompatActivity {
         };
     }
     private void countup() {
-        timercheck = new CountDownTimer(30 * 1000, 1000) {
+        timercheck = new CountDownTimer(time,  200) {
 
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
@@ -457,12 +462,20 @@ public class Test extends AppCompatActivity {
                     dialognew.pbstart.setVisibility(View.GONE);
                     dialognew.txvThoat.setVisibility(View.VISIBLE);
                     dialognew.txvThi.setVisibility(View.VISIBLE);
-                    timestart.start();
-//                    dialogstart.dismiss();
-//                    DialogFinish();
-                    timercheck.cancel();
+                    if(!dialognew.isShowing())
+                    {
+                        timercheck.cancel();
+                        timerstart.start();
+                    }
                     Log.d("cd", millisUntilFinished + "");
-
+                }
+                else
+                {
+                    if(!dialognew.getCheckBack())
+                    {
+                        Toast.makeText(Test.this, "         Đang tải dữ liệu.\n " +
+                                "Vui lòng chờ trong giây lát!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
             public void onFinish() {
@@ -472,13 +485,13 @@ public class Test extends AppCompatActivity {
     }
     // Khỏi tạo và mở dialog tùy chỉnh
     private void openCustomDialog() {
-         dialognew= new DialogStart(Test.this);
          dialognew.txvThoat.setVisibility(View.INVISIBLE);
          dialognew.txvThi.setVisibility(View.INVISIBLE);
          dialognew.txvThi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     dialognew.dismiss();
+                    timerstart.start();
             }
         });
         dialognew.txvThoat.setOnClickListener(new View.OnClickListener() {
@@ -488,43 +501,45 @@ public class Test extends AppCompatActivity {
             }
         });
         dialognew.show();
+        dialognew.dialogListener();
     }
-    public void DialogStart() {
-        dialogstart= new ProgressDialog(this);
-        dialogstart.setTitle("Cập nhật đề thi!");
-        dialogstart.setCanceledOnTouchOutside(false);
-        dialogstart.show();
-    }
-    public void DialogFinish(){
-        AlertDialog dialogfinish;
-        dialogfinish= new AlertDialog.Builder(this).create();
-        dialogfinish.setCanceledOnTouchOutside(false);
-        dialogfinish.setTitle("Thi ngay !!!");
-        dialogfinish.setButton(ProgressDialog.BUTTON_NEUTRAL, "Thi", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                        timestart.start();
 
-                    }
-                });
-        dialogfinish.setButton(ProgressDialog.BUTTON_NEGATIVE, "Thoát", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                ActivityCompat.finishAffinity(Test.this);
-            }
-
-        });
-        dialogfinish.show();
-        dialogfinish.getWindow().setLayout(1100, 500);
-    }
+//    public void DialogStart() {
+//        dialogstart= new ProgressDialog(this);
+//        dialogstart.setTitle("Cập nhật đề thi!");
+//        dialogstart.setCanceledOnTouchOutside(false);
+//        dialogstart.show();
+//    }
+//    public void DialogFinish(){
+//        AlertDialog dialogfinish;
+//        dialogfinish= new AlertDialog.Builder(this).create();
+//        dialogfinish.setCanceledOnTouchOutside(false);
+//        dialogfinish.setTitle("Thi ngay !!!");
+//        dialogfinish.setButton(ProgressDialog.BUTTON_NEUTRAL, "Thi", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                        timerstart.start();
+//
+//                    }
+//                });
+//        dialogfinish.setButton(ProgressDialog.BUTTON_NEGATIVE, "Thoát", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                ActivityCompat.finishAffinity(Test.this);
+//            }
+//
+//        });
+//        dialogfinish.show();
+//        dialogfinish.getWindow().setLayout(1100, 500);
+//    }
     @Override
     public void onBackPressed()
     {
-        new AlertDialog.Builder(this)
-                .setTitle("Thoát ứng dụng?")
-                .setMessage("Bạn phải nộp bài hay đợi hết thời gian mới được thoát nhé !")
-                .setNegativeButton(":)", null)
-                .create().show();
+        dialogBack = new AlertDialog.Builder(this);
+        dialogBack.setTitle("Thoát ứng dụng?") ;
+        dialogBack.setMessage("Bạn phải nộp bài hay đợi hết thời gian mới được thoát nhé !");
+        dialogBack.setNegativeButton(":)", null);
+        dialogBack.create().show();
     }
 }
 
