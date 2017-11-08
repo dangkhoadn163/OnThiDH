@@ -65,6 +65,7 @@ public class Test extends AppCompatActivity {
     private byte countquiz;
     private int time;
     private String saveanswers = "";
+    private boolean checkClickDialog = false;
     ArrayList<String> mois;
     MoiAdapter adapter_moi;
     private TextView tvMinute, tvSecond;
@@ -460,12 +461,19 @@ public class Test extends AppCompatActivity {
                 //here you can have your logic to set dethi to edittext
                 if (adapter_moi.getter()) {
                     dialognew.pbstart.setVisibility(View.GONE);
+                    dialognew.txvTitle.setText("Bạn đã sẵn sàng thi chưa?");
                     dialognew.txvThoat.setVisibility(View.VISIBLE);
                     dialognew.txvThi.setVisibility(View.VISIBLE);
-                    if(!dialognew.isShowing())
+
+                    if(!dialognew.isShowing() && !checkClickDialog)
                     {
                         timercheck.cancel();
                         timerstart.start();
+                        Log.d("huy", "aaaaaaaaaaaaaaaaa");
+                    }
+                    if(checkClickDialog)
+                    {
+                        timercheck.cancel();
                     }
                     Log.d("cd", millisUntilFinished + "");
                 }
@@ -490,6 +498,7 @@ public class Test extends AppCompatActivity {
          dialognew.txvThi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                    checkClickDialog = true;
                     dialognew.dismiss();
                     timerstart.start();
             }
