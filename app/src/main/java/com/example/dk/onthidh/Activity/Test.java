@@ -473,17 +473,19 @@ public class Test extends AppCompatActivity {
                     {
                         timercheck.cancel();
                         timerstart.start();
-                        Log.d("huy", "aaaaaaaaaaaaaaaaa");
                     }
 
                     Log.d("cd", millisUntilFinished + "");
                 }
                 else
                 {
-                    if(!dialognew.getCheckBack())
+                    if(!dialognew.getCheckBack() && dialognew.pbstart.isShown())
                     {
+
                         Toast.makeText(Test.this, "         Đang tải dữ liệu.\n " +
                                 "Vui lòng chờ trong giây lát!", Toast.LENGTH_SHORT).show();
+                        dialognew.setCheckBack(true);
+                        dialognew.txvTitle.setText("Vui lòng chờ trong giây lát!!!");
                     }
                 }
             }

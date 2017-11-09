@@ -81,5 +81,9 @@ public class DialogStart {
     {
         return check;
     }
+    public void setCheckBack(boolean check)
+    {
+        this.check = check;
+    }
 
 }
