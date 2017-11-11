@@ -8,14 +8,14 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical"
     android:gravity="bottom">
-
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_picture"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/ic_contact"
-        android:background="@color/colorWhite"/>
+        android:src="@drawable/ic_contact"
+        app:civ_border_color="@color/colorBlack"
+        app:civ_border_width="2dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
