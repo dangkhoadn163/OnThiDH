@@ -117,6 +117,9 @@ public class Score extends AppCompatActivity {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         for (int i = 0; i < 50; i++)
         {
+            String txvstr = "txvcau" + (i + 1);
+            int restxvID = getResources().getIdentifier(txvstr, "id", getPackageName());
+            txvArr[i] = ((TextView) findViewById(restxvID));
             for (int j = 0; j < 4; j++)
             {
                 String quizid = "cau" + (i + 1) + (char) (j + 97);
@@ -124,12 +127,6 @@ public class Score extends AppCompatActivity {
                 rdbtn[i][j] = ((RadioButton) findViewById(resID));
                 Log.d("arr[]", rdbtn[i][j].getResources().getResourceEntryName(rdbtn[i][j].getId()));
             }
-        }
-        for(int i = 0; i < 50; i++)
-        {
-            String txvstr = "txvcau" + (i + 1);
-            int resID = getResources().getIdentifier(txvstr, "id", getPackageName());
-            txvArr[i] = ((TextView) findViewById(resID));
         }
     }
 
