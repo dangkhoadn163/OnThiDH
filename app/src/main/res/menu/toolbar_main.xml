@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.MainActivity">
-    <item
+<!--    <item
         android:id="@+id/mnLogout"
         android:icon="@drawable/ic_logout"
         android:title=""
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" />-->
 
 </menu>
