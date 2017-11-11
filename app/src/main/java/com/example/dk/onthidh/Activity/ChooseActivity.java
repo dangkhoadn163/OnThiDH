@@ -25,6 +25,8 @@ import com.example.dk.onthidh.Fragment.Fragment1;
 import com.example.dk.onthidh.Fragment.Fragment2;
 import com.example.dk.onthidh.Fragment.Fragment3;
 import com.example.dk.onthidh.Fragment.Fragment4;
+import com.example.dk.onthidh.Fragment.Fragment5;
+import com.example.dk.onthidh.Fragment.Fragment6;
 import com.example.dk.onthidh.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -63,8 +65,8 @@ public class ChooseActivity extends AppCompatActivity {
         anhxa();
         loadnameuser(uid);
 
-    }
 
+    }
     private void anhxa() {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -95,6 +97,7 @@ public class ChooseActivity extends AppCompatActivity {
             nav();
         }
     }
+
 
     // Khỏi tạo và mở dialog tùy chỉnh
     private void openCustomDialog() {
@@ -194,6 +197,10 @@ public class ChooseActivity extends AppCompatActivity {
             classfragment=Fragment3.class;
         if(id==R.id.nav_four_fragment)
             classfragment=Fragment4.class;
+        if(id==R.id.nav_five_fragment)
+            classfragment=Fragment5.class;
+        if(id==R.id.nav_six_fragment)
+            classfragment=Fragment6.class;
         try {
             fragment=(Fragment)classfragment.newInstance();
 
@@ -215,10 +222,10 @@ public class ChooseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.mnLogout:
+/*            case R.id.mnLogout:
                 mAuth.signOut();
                 startActivity(new Intent(ChooseActivity.this, LaunchActivity.class));
-                break;
+                break;*/
             case android.R.id.home:
                 drawer.openDrawer(GravityCompat.START);
                 break;

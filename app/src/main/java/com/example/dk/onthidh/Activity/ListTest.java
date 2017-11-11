@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.dk.onthidh.MyFile.MyFile;
 import com.example.dk.onthidh.MyFile.MyFileAdapter;
@@ -26,7 +25,6 @@ public class ListTest extends AppCompatActivity {
     MyFileAdapter adapter;
     ArrayList<String> keys;
     private RecyclerView rcvData;
-    private TextView txvLog;
     String uid,monhoc;
     DatabaseReference rootDatabase;
 
@@ -41,22 +39,11 @@ public class ListTest extends AppCompatActivity {
         anhXa();
 
         adapter = new MyFileAdapter(this, files);
-//
 //        load();
         loadList();
-        Click();
-
     }
     public  static final String TAG = ListTest.class.getSimpleName();
 
-    private void Click(){
-        txvLog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
-    }
     private void loadList() {
         FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
                 MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child(monhoc)
@@ -84,7 +71,6 @@ public class ListTest extends AppCompatActivity {
         rcvData.setAdapter(myAdapterTest);
     }
     public void anhXa() {
-        txvLog = (TextView)findViewById(R.id.txvLog);
         keys = new ArrayList<>();
         rcvData = (RecyclerView) findViewById(R.id.recyclerViewImage);
         files = new ArrayList<>();
@@ -95,7 +81,6 @@ public class ListTest extends AppCompatActivity {
         /*Grid
         rcvData.setLayoutManager(new GridLayoutManager(this,2));*/
         rcvData.setAdapter(adapter);
-
         keys = new ArrayList<>();
     }
 }

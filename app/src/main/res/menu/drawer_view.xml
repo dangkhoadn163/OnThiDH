@@ -4,7 +4,7 @@
         <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_first_fragment"
-                    android:icon="@drawable/ic_house"
+                    android:icon="@drawable/ic_home"
                     android:title="Trang chủ" />
                 <item
                     android:id="@+id/nav_second_fragment"
@@ -18,6 +18,13 @@
                     android:id="@+id/nav_four_fragment"
                     android:icon="@drawable/ic_chplay"
                     android:title="Đánh giá" />
-
+                <item
+                    android:id="@+id/nav_five_fragment"
+                    android:icon="@drawable/ic_changepass"
+                    android:title="Đổi mật khẩu" />
+                <item
+                    android:id="@+id/nav_six_fragment"
+                    android:icon="@drawable/ic_exit"
+                    android:title="Đăng xuất" />
         </group>
 </menu>

@@ -11,8 +11,11 @@ import android.widget.Button;
 
 import com.example.dk.onthidh.Activity.MainActivity;
 import com.example.dk.onthidh.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Fragment1 extends Fragment {
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String uid;
     String monhoc;
     private Button btnmath, btnenglish, btnbiology, btnchemistry, btnphysic, btnedu, btnhistoty, btngeography;
@@ -68,6 +71,9 @@ public class Fragment1 extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
+    }
+    public void edu(){
+
     }
 }
 
