@@ -450,6 +450,7 @@ public class Test extends AppCompatActivity {
                 Intent intent= new Intent(Test.this,Score.class);
                 intent.putExtra("keyt111",keyt);
                 intent.putExtra("Uid111", userid);
+                intent.putExtra("monhoc",monhoc);
                 Test.this.startActivity(intent);
             }
         };
@@ -516,34 +517,6 @@ public class Test extends AppCompatActivity {
         dialognew.dialogListener();
     }
 
-//    public void DialogStart() {
-//        dialogstart= new ProgressDialog(this);
-//        dialogstart.setTitle("Cập nhật đề thi!");
-//        dialogstart.setCanceledOnTouchOutside(false);
-//        dialogstart.show();
-//    }
-//    public void DialogFinish(){
-//        AlertDialog dialogfinish;
-//        dialogfinish= new AlertDialog.Builder(this).create();
-//        dialogfinish.setCanceledOnTouchOutside(false);
-//        dialogfinish.setTitle("Thi ngay !!!");
-//        dialogfinish.setButton(ProgressDialog.BUTTON_NEUTRAL, "Thi", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                        timerstart.start();
-//
-//                    }
-//                });
-//        dialogfinish.setButton(ProgressDialog.BUTTON_NEGATIVE, "Thoát", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                ActivityCompat.finishAffinity(Test.this);
-//            }
-//
-//        });
-//        dialogfinish.show();
-//        dialogfinish.getWindow().setLayout(1100, 500);
-//    }
     @Override
     public void onBackPressed()
     {

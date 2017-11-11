@@ -53,7 +53,7 @@ public class Score extends AppCompatActivity {
     private DatabaseReference rootDatabase;
     private RecyclerView rcvDataMoi;
     private TextView tvscore;
-
+    TextView[] txvArr = new TextView[50];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +74,8 @@ public class Score extends AppCompatActivity {
         load(keyt);
        // loadnameuser(userid);
         loaduseranswer(keyt, userid);
-        //Nav();
+
+
 
     }
     public void load(String keyt) {
@@ -123,6 +124,12 @@ public class Score extends AppCompatActivity {
                 rdbtn[i][j] = ((RadioButton) findViewById(resID));
                 Log.d("arr[]", rdbtn[i][j].getResources().getResourceEntryName(rdbtn[i][j].getId()));
             }
+        }
+        for(int i = 0; i < 50; i++)
+        {
+            String txvstr = "txvcau" + (i + 1);
+            int resID = getResources().getIdentifier(txvstr, "id", getPackageName());
+            txvArr[i] = ((TextView) findViewById(resID));
         }
     }
 
@@ -251,6 +258,7 @@ public class Score extends AppCompatActivity {
         }
         for(int i = countquiz; i < 50; i++)
         {
+            txvArr[i].setEnabled(false);
             for(int j = 0; j < 4; j++)
             {
                 rdbtn[i][j].setEnabled(false);
@@ -264,6 +272,7 @@ public class Score extends AppCompatActivity {
     public void youranswers()
     {
         Log.d("answer", quizanswers + "");
+        Log.d("useranswer", useranswer + "");
         int index = 0;
         int length = useranswer.length();
         char c;
