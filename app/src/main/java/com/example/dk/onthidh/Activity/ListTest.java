@@ -44,9 +44,6 @@ public class ListTest extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
         Nav();
-
-        adapter = new MyFileAdapter(this, files);
-//        load();
         loadList();
     }
     public  static final String TAG = ListTest.class.getSimpleName();
@@ -72,10 +69,8 @@ public class ListTest extends AppCompatActivity {
                     }
                 });
 //                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
-
             }
         };
-        search();
         rcvData.setAdapter(myAdapterTest);
     }
     public void anhXa() {
@@ -83,10 +78,10 @@ public class ListTest extends AppCompatActivity {
         keys = new ArrayList<>();
         rcvData = (RecyclerView) findViewById(R.id.recyclerViewImage);
         files = new ArrayList<>();
-        adapter = new MyFileAdapter(this, files);
+        adapter = new MyFileAdapter(ListTest.this, files);
         rcvData.setHasFixedSize(true);
         //Linear
-        rcvData.setLayoutManager(new LinearLayoutManager(this));
+        rcvData.setLayoutManager(new LinearLayoutManager(ListTest.this));
         /*Grid
         rcvData.setLayoutManager(new GridLayoutManager(this,2));*/
         rcvData.setAdapter(adapter);
@@ -105,7 +100,7 @@ public class ListTest extends AppCompatActivity {
                 newText = newText.toLowerCase();
                 ArrayList<MyFile> newList = new ArrayList<MyFile>();
                 for (MyFile item : files) {
-                    String name = item.text.toString().toLowerCase();
+                    String name = item.text.toLowerCase();
                     Log.d("texttttttttt",name+"ooooooooo");
                     if (name.contains(newText)) {
                         newList.add(item);
@@ -120,7 +115,7 @@ public class ListTest extends AppCompatActivity {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.ic_change);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
