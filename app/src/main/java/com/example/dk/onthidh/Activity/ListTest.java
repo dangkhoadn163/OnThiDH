@@ -112,8 +112,8 @@ public class ListTest extends AppCompatActivity {
                     //Log.d("texttttttttt",name+"ooooooooo");
                     if (name.contains(newText)) {
                         newList.add(item);
-                        Log.d("texttttttttt",item.text+"ooooooooo");
-                        Log.d("huydeptrai",newList.size()+"ooooooooo");
+//                        Log.d("texttttttttt",item.text+"ooooooooo");
+//                        Log.d("huydeptrai",newList.size()+"ooooooooo");
 
                     }
                 }
