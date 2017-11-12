@@ -55,7 +55,7 @@ public class DialogStart {
     public void dismiss() {
         dialog.dismiss();
     }
-    public void dialogListener()
+    public void dialogListener(final CountDownTimer timerup, final CountDownTimer timerdown)
     {
         dialog.setOnKeyListener(new Dialog.OnKeyListener() {
 
@@ -66,6 +66,9 @@ public class DialogStart {
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
                     if(!pbstart.isShown())
                     {
+                        check = true;
+                        timerup.cancel();
+                        timerdown.start();
                         dismiss();
                     }
                     else

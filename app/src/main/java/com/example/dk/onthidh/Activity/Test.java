@@ -424,12 +424,11 @@ public class Test extends AppCompatActivity {
     }
     private void CDTimer() {
         timerstart = new CountDownTimer(time, 1000) {
-
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
-                int temp = (int) millisUntilFinished / 1000;
-                countMinute = temp / 60;
-                countSecond = temp % 60;
+                long temp = millisUntilFinished / 1000;
+                countMinute = (int)temp / 60;
+                countSecond = (int)temp % 60;
                 mstr = getString(R.string.minute, countMinute);
                 sstr = getString(R.string.second, countSecond);
                 tvMinute.setText("" + mstr);
@@ -465,17 +464,18 @@ public class Test extends AppCompatActivity {
                     dialognew.txvTitle.setText("Bạn đã sẵn sàng thi chưa?");
                     dialognew.txvThoat.setVisibility(View.VISIBLE);
                     dialognew.txvThi.setVisibility(View.VISIBLE);
+                    timercheck.cancel();
 
-                    if(checkClickDialog)
-                    {
-                        timercheck.cancel();
-                    }
-                    if(!dialognew.isShowing() && !checkClickDialog)
-                    {
-                        timercheck.cancel();
-                        timerstart.start();
-                    }
-
+//                    if(!dialognew.isShowing() && !checkClickDialog)
+//                    {
+//                        timercheck.cancel();
+//                        timerstart.start();
+//                    }
+//                    if(dialognew.getCheckBack() && !dialognew.isShowing() && !checkClickDialog)
+//                    {
+//                        timercheck.cancel();
+//                        timerstart.start();
+//                    }
                     Log.d("cd", millisUntilFinished + "");
                 }
                 else
@@ -502,9 +502,8 @@ public class Test extends AppCompatActivity {
          dialognew.txvThi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    checkClickDialog = true;
-                    dialognew.dismiss();
                     timerstart.start();
+                    timercheck.cancel();
             }
         });
         dialognew.txvThoat.setOnClickListener(new View.OnClickListener() {
@@ -514,7 +513,7 @@ public class Test extends AppCompatActivity {
             }
         });
         dialognew.show();
-        dialognew.dialogListener();
+        dialognew.dialogListener(timercheck, timerstart);
     }
 
     @Override
