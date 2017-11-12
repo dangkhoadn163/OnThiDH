@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.dk.onthidh.MyFile.MyFile;
@@ -16,16 +19,19 @@ import com.example.dk.onthidh.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 
 public class ListTest extends AppCompatActivity {
     private static final String listTest = "ListTest";
+    private MaterialSearchView searchviewww;
     ArrayList<MyFile> files;
     MyFileAdapter adapter;
     ArrayList<String> keys;
     private RecyclerView rcvData;
     String uid,monhoc;
+    Toolbar toolbar;
     DatabaseReference rootDatabase;
 
     @Override
@@ -37,6 +43,7 @@ public class ListTest extends AppCompatActivity {
         Log.d("Uid1", "onComplete: Uid=" + uid);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
+        Nav();
 
         adapter = new MyFileAdapter(this, files);
 //        load();
@@ -68,9 +75,11 @@ public class ListTest extends AppCompatActivity {
 
             }
         };
+        search();
         rcvData.setAdapter(myAdapterTest);
     }
     public void anhXa() {
+        searchviewww = (MaterialSearchView) findViewById(R.id.materialsearchview);
         keys = new ArrayList<>();
         rcvData = (RecyclerView) findViewById(R.id.recyclerViewImage);
         files = new ArrayList<>();
@@ -82,5 +91,49 @@ public class ListTest extends AppCompatActivity {
         rcvData.setLayoutManager(new GridLayoutManager(this,2));*/
         rcvData.setAdapter(adapter);
         keys = new ArrayList<>();
+        toolbar = (Toolbar) findViewById(R.id.toolbar_search);
+    }
+    private void search() {
+        searchviewww.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText = newText.toLowerCase();
+                ArrayList<MyFile> newList = new ArrayList<MyFile>();
+                for (MyFile item : files) {
+                    String name = item.text.toString().toLowerCase();
+                    Log.d("texttttttttt",name+"ooooooooo");
+                    if (name.contains(newText)) {
+                        newList.add(item);
+                    }
+                }
+                adapter.setfilter(newList);
+                return true;
+            }
+        });
+    }
+    private void Nav() {
+        //set toolbar thay the cho actionbar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_change);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_search, menu);
+        MenuItem item = menu.findItem(R.id.Search);
+        searchviewww.setMenuItem(item);
+        return true;
     }
 }

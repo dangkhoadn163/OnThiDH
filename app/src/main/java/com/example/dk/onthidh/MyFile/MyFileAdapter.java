@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.dk.onthidh.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder> {
@@ -54,5 +55,10 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
             txva = (TextView) itemView.findViewById(R.id.txvAnswer);
 
         }
+    }
+    public void setfilter(ArrayList<MyFile> newList){
+        files = new ArrayList<>();
+        files.addAll(newList);
+        notifyDataSetChanged();
     }
 }

@@ -3,7 +3,6 @@ package com.example.dk.onthidh.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         title();
     }
     private  void title(){
-        Log.d("mmm",monhoc);
         if(monhoc.equals("anhvan")){
             luyenthimon.setText("Luyện thi môn Anh Văn");
         }
