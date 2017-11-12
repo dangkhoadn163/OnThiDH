@@ -20,6 +20,7 @@ import java.util.List;
 public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder> {
     private Context mContext;
     private List<MyFile> files;
+    private List<MyFile> newList;
 
     public MyFileAdapter(Context mContext, List<MyFile> files) {
         this.mContext = mContext;
@@ -57,8 +58,8 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
         }
     }
     public void setfilter(ArrayList<MyFile> newList){
-        files = new ArrayList<>();
-        files.addAll(newList);
+        this.newList = new ArrayList<>();
+        this.newList.addAll(newList);
         notifyDataSetChanged();
     }
 }

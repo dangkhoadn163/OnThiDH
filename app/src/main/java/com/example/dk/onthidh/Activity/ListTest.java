@@ -100,13 +100,12 @@ public class ListTest extends AppCompatActivity {
                 newText = newText.toLowerCase();
                 ArrayList<MyFile> newList = new ArrayList<MyFile>();
                 for (MyFile item : files) {
-                    String name = item.text.toString().toLowerCase();
+                    String name = item.text.toLowerCase();
                     Log.d("texttttttttt",name+"ooooooooo");
                     if (name.contains(newText)) {
                         newList.add(item);
                     }
                 }
-                adapter.notifyDataSetChanged();
                 adapter.setfilter(newList);
                 return true;
             }
