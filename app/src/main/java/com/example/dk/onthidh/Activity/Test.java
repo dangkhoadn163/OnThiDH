@@ -502,6 +502,7 @@ public class Test extends AppCompatActivity {
          dialognew.txvThi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                    dialognew.dismiss();
                     timerstart.start();
                     timercheck.cancel();
             }
