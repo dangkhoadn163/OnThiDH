@@ -3,6 +3,7 @@ package com.example.dk.onthidh.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListTest extends AppCompatActivity {
     private static final String listTest = "ListTest";
@@ -44,7 +46,9 @@ public class ListTest extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
         Nav();
-        loadList();
+       loadList();
+        //countup();
+        search();
     }
     public  static final String TAG = ListTest.class.getSimpleName();
 
@@ -58,6 +62,9 @@ public class ListTest extends AppCompatActivity {
                 viewHolder.txvKey.setText(t);
                 viewHolder.setActionClick(model.text);
                 viewHolder.txvTenFile.setText(model.text);
+                files.add(model);
+                Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                adapter.notifyDataSetChanged();
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -72,6 +79,7 @@ public class ListTest extends AppCompatActivity {
             }
         };
         rcvData.setAdapter(myAdapterTest);
+
     }
     public void anhXa() {
         searchviewww = (MaterialSearchView) findViewById(R.id.materialsearchview);
@@ -79,7 +87,7 @@ public class ListTest extends AppCompatActivity {
         rcvData = (RecyclerView) findViewById(R.id.recyclerViewImage);
         files = new ArrayList<>();
         adapter = new MyFileAdapter(ListTest.this, files);
-        rcvData.setHasFixedSize(true);
+       // rcvData.setHasFixedSize(true);
         //Linear
         rcvData.setLayoutManager(new LinearLayoutManager(ListTest.this));
         /*Grid
@@ -101,12 +109,17 @@ public class ListTest extends AppCompatActivity {
                 ArrayList<MyFile> newList = new ArrayList<MyFile>();
                 for (MyFile item : files) {
                     String name = item.text.toLowerCase();
-                    Log.d("texttttttttt",name+"ooooooooo");
+                    //Log.d("texttttttttt",name+"ooooooooo");
                     if (name.contains(newText)) {
                         newList.add(item);
+                        Log.d("texttttttttt",item.text+"ooooooooo");
+                        Log.d("huydeptrai",newList.size()+"ooooooooo");
+
                     }
                 }
                 adapter.setfilter(newList);
+                rcvData.setAdapter(adapter);
+                rcvData.invalidate();
                 return true;
             }
         });
@@ -123,7 +136,22 @@ public class ListTest extends AppCompatActivity {
             }
         });
     }
+    private void countup() {
+        new CountDownTimer(3500000, 200) {
 
+            public void onTick(long millisUntilFinished) {
+                //here you can have your logic to set dethi to edittext
+                Log.d("1", millisUntilFinished + "aaaaaaaaaaaaaaaaaaaaaaa");
+                Log.d("file", files.size() + "");
+                loadList();
+            }
+
+
+            public void onFinish() {
+
+            }
+        }.start();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_search, menu);

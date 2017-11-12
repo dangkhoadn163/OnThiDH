@@ -6,6 +6,7 @@ package com.example.dk.onthidh.MyFile;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,10 @@ import java.util.List;
 
 public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder> {
     private Context mContext;
-    private List<MyFile> files;
-    private List<MyFile> newList;
+    private ArrayList<MyFile> files;
 
-    public MyFileAdapter(Context mContext, List<MyFile> files) {
+
+    public MyFileAdapter(Context mContext, ArrayList<MyFile> files) {
         this.mContext = mContext;
         this.files = files;
     }
@@ -58,8 +59,9 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
         }
     }
     public void setfilter(ArrayList<MyFile> newList){
-        this.newList = new ArrayList<>();
-        this.newList.addAll(newList);
-        notifyDataSetChanged();
+        this.files = new ArrayList<>();
+        this.files.addAll(newList);
+        Log.d("filesssssssssssss", files.size() + "");
+        this.notifyDataSetChanged();
     }
 }
