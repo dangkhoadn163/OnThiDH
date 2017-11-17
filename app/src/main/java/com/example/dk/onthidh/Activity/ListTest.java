@@ -13,13 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.dk.onthidh.Class.Uid;
 import com.example.dk.onthidh.MyFile.MyFile;
 import com.example.dk.onthidh.MyFile.MyFileAdapter;
 import com.example.dk.onthidh.MyFile.MyFileViewHolder;
 import com.example.dk.onthidh.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
@@ -35,6 +39,7 @@ public class ListTest extends AppCompatActivity {
     String uid,monhoc;
     Toolbar toolbar;
     DatabaseReference rootDatabase;
+    ArrayList<String> keystest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,48 @@ public class ListTest extends AppCompatActivity {
         rcvData.setAdapter(myAdapterTest);
 
     }
+
+    private void loadall(final String nameTest, final ArrayList<MyFile> newList)
+    {
+                DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference ref2;
+                ref2 = ref1.child("monhoc").child(monhoc);
+
+                ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Result will be holded Here
+                        for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
+                            String temp = dsp.child("text").getValue().toString().toLowerCase();
+                            String temp2 = nameTest.toLowerCase();
+                            Log.d("huyllll", temp2 + "");
+                            MyFile model = new MyFile();
+                            if (temp.contains(temp2))
+                            {
+                                Log.d("huy", model.text + "");
+                                Log.d("huyabc", newList.size() + "");
+                                Log.d("huyxyz", model.text + "");
+                                model.text = dsp.child("text").getValue().toString();
+                                newList.add(model);
+                               // adapter.notifyDataSetChanged();
+
+                            }
+                            adapter.setfilter(newList);
+                            rcvData.setAdapter(adapter);
+                            rcvData.invalidate();
+                            Log.d("count", rcvData.getChildCount() + "");
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+    }
     public void anhXa() {
         searchviewww = (MaterialSearchView) findViewById(R.id.materialsearchview);
         keys = new ArrayList<>();
@@ -107,19 +154,7 @@ public class ListTest extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 newText = newText.toLowerCase();
                 ArrayList<MyFile> newList = new ArrayList<MyFile>();
-                for (MyFile item : files) {
-                    String name = item.text.toLowerCase();
-                    //Log.d("texttttttttt",name+"ooooooooo");
-                    if (name.contains(newText)) {
-                        newList.add(item);
-//                        Log.d("texttttttttt",item.text+"ooooooooo");
-//                        Log.d("huydeptrai",newList.size()+"ooooooooo");
-
-                    }
-                }
-                adapter.setfilter(newList);
-                rcvData.setAdapter(adapter);
-                rcvData.invalidate();
+                loadall(newText, newList);
                 return true;
             }
         });

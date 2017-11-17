@@ -42,8 +42,6 @@ public class MoiAdapter extends RecyclerView.Adapter<MoiAdapter.ViewHolder> {
     //    Picasso.with(mContext).load(moi).placeholder(R.drawable.noimage).into(holder.item_image);
         check = false;
         load(moi, holder);
-
-
     }
 
     public void load(String url, ViewHolder holder)

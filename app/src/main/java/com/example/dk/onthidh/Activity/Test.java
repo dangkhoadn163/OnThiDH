@@ -82,6 +82,7 @@ public class Test extends AppCompatActivity {
     ProgressBar progressBar;
     CountDownTimer timercheck,timerstart;
     AlertDialog.Builder dialogBack;
+    AlertDialog dialogfinish;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -244,11 +245,11 @@ public class Test extends AppCompatActivity {
         }
     }
     private void dialog(){
-        new AlertDialog.Builder(this)
-                .setTitle("Nộp bài thi")
-                .setMessage("Bạn có chắc chắn muốn nộp bài thi không?")
-                .setNegativeButton("Không", null)
-                .setPositiveButton("Nộp bài", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder =  new AlertDialog.Builder(this);
+        builder.setTitle("Nộp bài thi");
+        builder.setMessage("Bạn có chắc chắn muốn nộp bài thi không?");
+        builder.setNegativeButton("Không", null);
+        builder.setPositiveButton("Nộp bài", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
@@ -260,7 +261,9 @@ public class Test extends AppCompatActivity {
                         intent.putExtra("monhoc",monhoc);
                         Test.this.startActivity(intent);
                     }
-                }).create().show();
+                });
+        dialogfinish = builder.create();
+        dialogfinish.show();
     }
     public void loadnameuser(String userid) {
         rootDatabase.child("account").child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -423,7 +426,7 @@ public class Test extends AppCompatActivity {
 
     }
     private void CDTimer() {
-        timerstart = new CountDownTimer(time, 1000) {
+        timerstart = new CountDownTimer(360000, 1000) {
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
                 long temp = millisUntilFinished / 1000;
@@ -435,6 +438,10 @@ public class Test extends AppCompatActivity {
                 tvSecond.setText(":" + sstr);
                 if(countMinute == 5 && countSecond == 0){
                     Toast.makeText(Test.this, "Còn 5 phút hết giờ làm bài !", Toast.LENGTH_SHORT).show();
+                }
+                if(countMinute < 3 && dialogfinish.isShowing())
+                {
+                    dialogfinish.dismiss();
                 }
             }
 
