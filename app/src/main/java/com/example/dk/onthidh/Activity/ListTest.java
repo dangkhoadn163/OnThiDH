@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,6 @@ public class ListTest extends AppCompatActivity {
     Toolbar toolbar;
     DatabaseReference rootDatabase;
     ArrayList<String> keystest;
-    ImageView imvHinhAnh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +90,10 @@ public class ListTest extends AppCompatActivity {
         rcvData.setAdapter(myAdapterTest);
 
     }
-
+    public static String removeDiacriticalMarks(String string) {
+        return Normalizer.normalize(string, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+    }
     private void loadall(final String nameTest, final ArrayList<MyFile> newList)
     {
                 DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
@@ -104,9 +107,11 @@ public class ListTest extends AppCompatActivity {
                         for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
                             String temp = dsp.child("text").getValue().toString().toLowerCase();
                             String temp2 = nameTest.toLowerCase();
+                            String comparetemp = removeDiacriticalMarks(temp);
+                            String comparetemp2 = removeDiacriticalMarks(temp2);
                             Log.d("huyllll", temp2 + "");
                             MyFile model = new MyFile();
-                            if (temp.contains(temp2))
+                            if (temp.contains(temp2) || comparetemp.contains(comparetemp2))
                             {
                                 Log.d("huy", model.text + "");
                                 Log.d("huyabc", newList.size() + "");
