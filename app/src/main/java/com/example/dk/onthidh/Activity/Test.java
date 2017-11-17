@@ -189,7 +189,7 @@ public class Test extends AppCompatActivity {
         {
             Random rand = new Random();
             int r = rand.nextInt(4) + 97;
-            String quizid = "cau" + (i + 1) +(char)r;
+            String quizid = "cau" + (i + 1) + (char)r;
             int resID = getResources().getIdentifier(quizid, "id", getPackageName());
             rdg[i].check(resID);
         }
@@ -439,10 +439,14 @@ public class Test extends AppCompatActivity {
                 if(countMinute == 5 && countSecond == 0){
                     Toast.makeText(Test.this, "Còn 5 phút hết giờ làm bài !", Toast.LENGTH_SHORT).show();
                 }
-                if(countMinute < 3 && dialogfinish.isShowing())
+                if(dialogfinish != null)
                 {
-                    dialogfinish.dismiss();
+                    if(countMinute < 3 && dialogfinish.isShowing())
+                    {
+                        dialogfinish.dismiss();
+                    }
                 }
+
             }
 
             public void onFinish() {
