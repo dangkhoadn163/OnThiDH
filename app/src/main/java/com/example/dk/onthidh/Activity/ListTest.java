@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.dk.onthidh.Class.Uid;
 import com.example.dk.onthidh.MyFile.MyFile;
@@ -40,7 +43,7 @@ public class ListTest extends AppCompatActivity {
     Toolbar toolbar;
     DatabaseReference rootDatabase;
     ArrayList<String> keystest;
-
+    ImageView imvHinhAnh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +55,6 @@ public class ListTest extends AppCompatActivity {
         anhXa();
         Nav();
        loadList();
-        //countup();
         search();
     }
     public  static final String TAG = ListTest.class.getSimpleName();
@@ -61,6 +63,8 @@ public class ListTest extends AppCompatActivity {
         FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
                 MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child(monhoc)
         ) {
+
+
             @Override
             protected void populateViewHolder(MyFileViewHolder viewHolder, final MyFile model, int position) {
                 final String t = getRef(position).getKey().toString();
@@ -107,9 +111,20 @@ public class ListTest extends AppCompatActivity {
                                 Log.d("huy", model.text + "");
                                 Log.d("huyabc", newList.size() + "");
                                 Log.d("huyxyz", model.text + "");
+                                Log.d("getkey", dsp.getKey());
                                 model.text = dsp.child("text").getValue().toString();
                                 newList.add(model);
-                               // adapter.notifyDataSetChanged();
+                                adapter.notifyDataSetChanged();
+                                adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        Intent intent= new Intent(ListTest.this,Test.class);
+                                        intent.putExtra("keyt",dsp.getRef().getKey());
+                                        intent.putExtra("Uid2", uid);
+                                        intent.putExtra("monhoc",monhoc);
+                                        ListTest.this.startActivity(intent);
+                                    }
+                                });
 
                             }
                             adapter.setfilter(newList);
@@ -170,22 +185,6 @@ public class ListTest extends AppCompatActivity {
                 finish();
             }
         });
-    }
-    private void countup() {
-        new CountDownTimer(3500000, 200) {
-
-            public void onTick(long millisUntilFinished) {
-                //here you can have your logic to set dethi to edittext
-                Log.d("1", millisUntilFinished + "aaaaaaaaaaaaaaaaaaaaaaa");
-                Log.d("file", files.size() + "");
-                loadList();
-            }
-
-
-            public void onFinish() {
-
-            }
-        }.start();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,13 +26,18 @@ import java.util.List;
 public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<MyFile> files;
-    View item;
+    private static OnItemClickListener listener;
 
-    public MyFileAdapter(Context mContext, ArrayList<MyFile> files) {
+    public MyFileAdapter(Context mContext, ArrayList<MyFile> filesr) {
         this.mContext = mContext;
         this.files = files;
     }
-
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
@@ -54,11 +60,18 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
         public ImageView img;
         public TextView txtv;
         public TextView txva;
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.imvHinhAnh);
             txtv = (TextView) itemView.findViewById(R.id.txvTenFile);
             txva = (TextView) itemView.findViewById(R.id.txvAnswer);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null)
+                        listener.onItemClick(itemView, getLayoutPosition());
+                }
+            });
 
         }
     }
