@@ -426,7 +426,7 @@ public class Test extends AppCompatActivity {
 
     }
     private void CDTimer() {
-        timerstart = new CountDownTimer(360000, 1000) {
+        timerstart = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 //here you can have your logic to set dethi to edittext
                 long temp = millisUntilFinished / 1000;
