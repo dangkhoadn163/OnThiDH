@@ -111,7 +111,7 @@ public class ListTest extends AppCompatActivity {
                             String comparetemp2 = removeDiacriticalMarks(temp2);
                             Log.d("huyllll", temp2 + "");
                             MyFile model = new MyFile();
-                            if (temp.contains(temp2) || comparetemp.contains(comparetemp2))
+                            if (temp.contains(temp2) || (comparetemp.contains(comparetemp2) && temp2.contains(comparetemp2)))
                             {
                                 Log.d("huy", model.text + "");
                                 Log.d("huyabc", newList.size() + "");
@@ -145,8 +145,6 @@ public class ListTest extends AppCompatActivity {
 
                     }
                 });
-
-
     }
     public void anhXa() {
         searchviewww = (MaterialSearchView) findViewById(R.id.materialsearchview);
