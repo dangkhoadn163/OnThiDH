@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.LoginFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,6 +58,7 @@ public class Test extends AppCompatActivity {
     String scored;
     String userid;
     String monhoc;
+    String tende;
     int clock;
     private String mstr;
     private String sstr;
@@ -90,6 +92,9 @@ public class Test extends AppCompatActivity {
         keyt = getIntent().getExtras().getString("keyt");
         userid = getIntent().getExtras().getString("Uid2");
         monhoc = getIntent().getExtras().getString("monhoc");
+        tende = getIntent().getExtras().getString("tende");
+        Log.d("tende", tende);
+
         clock=1;
         progressBar = (ProgressBar)findViewById(R.id.progressBar1);
         dialognew= new DialogStart(Test.this);
@@ -109,7 +114,7 @@ public class Test extends AppCompatActivity {
         loadnameuser(userid);
         load(keyt);
         loadanswer(keyt);
-        autocheck();
+        autoCheck();
         Nav();
         ClickClock();
     }
@@ -174,7 +179,10 @@ public class Test extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Uid uid = new Uid(saveanswers,scored);
+                String nameTest = tende;
+                Log.d("nameTest", nameTest);
                 rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam").setValue(uid);
+                rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("nametest").setValue(nameTest);
             }
 
             @Override
@@ -183,7 +191,7 @@ public class Test extends AppCompatActivity {
             }
         });
     }
-    void autocheck()
+    void autoCheck()
     {
         for(int i = 0; i < countquiz; i++)
         {
@@ -423,7 +431,6 @@ public class Test extends AppCompatActivity {
         sstr = getString(R.string.second, (time / 1000) % 60);
         tvMinute.setText("" + mstr);
         tvSecond.setText(":" + sstr);
-
     }
     private void CDTimer() {
         timerstart = new CountDownTimer(time, 1000) {
@@ -446,9 +453,7 @@ public class Test extends AppCompatActivity {
                         dialogfinish.dismiss();
                     }
                 }
-
             }
-
             public void onFinish() {
                 mstr = (getString(R.string.minute, 0));
                 sstr = (getString(R.string.second, 0));
@@ -460,7 +465,7 @@ public class Test extends AppCompatActivity {
                 Intent intent= new Intent(Test.this,Score.class);
                 intent.putExtra("keyt111",keyt);
                 intent.putExtra("Uid111", userid);
-                intent.putExtra("monhoc",monhoc);
+                intent.putExtra("monhoc", monhoc);
                 Test.this.startActivity(intent);
             }
         };
@@ -493,7 +498,6 @@ public class Test extends AppCompatActivity {
                 {
                     if(!dialognew.getCheckBack() && dialognew.pbstart.isShown())
                     {
-
                         Toast.makeText(Test.this, "         Đang tải dữ liệu.\n " +
                                 "Vui lòng chờ trong giây lát!", Toast.LENGTH_SHORT).show();
                         dialognew.setCheckBack(true);
