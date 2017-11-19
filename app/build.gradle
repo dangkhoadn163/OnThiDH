@@ -20,7 +20,13 @@ android {
         }
     }
 }
-
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    //noinspection GradleCompatible
+    compile 'com.android.support:design:23.0.1'
+}
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -33,9 +39,6 @@ dependencies {
             cruncherEnabled = false
         }
     }
-
-
-
     compile 'com.android.support:support-v13:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -55,6 +58,11 @@ dependencies {
     compile 'com.theartofdev.edmodo:android-image-cropper:2.4.3'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    //noinspection GradleCompatible
+    compile 'com.android.support:design:23.0.1'
     testCompile 'junit:junit:4.12'
 
 }

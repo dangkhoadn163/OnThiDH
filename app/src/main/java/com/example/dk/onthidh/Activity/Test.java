@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.LoginFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -258,18 +257,18 @@ public class Test extends AppCompatActivity {
         builder.setMessage("Bạn có chắc chắn muốn nộp bài thi không?");
         builder.setNegativeButton("Không", null);
         builder.setPositiveButton("Nộp bài", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(Test.this, "Điểm của bạn là: " + score, Toast.LENGTH_SHORT).show();
 //                        Log.d("Score", score + "");
-                        loadsaveanswers();
-                        Intent intent= new Intent(Test.this,Score.class);
-                        intent.putExtra("keyt111",keyt);
-                        intent.putExtra("Uid111", userid);
-                        intent.putExtra("monhoc",monhoc);
-                        Test.this.startActivity(intent);
-                    }
-                });
+                loadsaveanswers();
+                Intent intent= new Intent(Test.this,Score.class);
+                intent.putExtra("keyt111",keyt);
+                intent.putExtra("Uid111", userid);
+                intent.putExtra("monhoc",monhoc);
+                Test.this.startActivity(intent);
+            }
+        });
         dialogfinish = builder.create();
         dialogfinish.show();
     }
@@ -512,14 +511,14 @@ public class Test extends AppCompatActivity {
     }
     // Khỏi tạo và mở dialog tùy chỉnh
     private void openCustomDialog() {
-         dialognew.txvThoat.setVisibility(View.INVISIBLE);
-         dialognew.txvThi.setVisibility(View.INVISIBLE);
-         dialognew.txvThi.setOnClickListener(new View.OnClickListener() {
+        dialognew.txvThoat.setVisibility(View.INVISIBLE);
+        dialognew.txvThi.setVisibility(View.INVISIBLE);
+        dialognew.txvThi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    dialognew.dismiss();
-                    timerstart.start();
-                    timercheck.cancel();
+                dialognew.dismiss();
+                timerstart.start();
+                timercheck.cancel();
             }
         });
         dialognew.txvThoat.setOnClickListener(new View.OnClickListener() {

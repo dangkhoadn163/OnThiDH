@@ -27,6 +27,7 @@ import com.example.dk.onthidh.Fragment.Fragment3;
 import com.example.dk.onthidh.Fragment.Fragment4;
 import com.example.dk.onthidh.Fragment.Fragment5;
 import com.example.dk.onthidh.Fragment.Fragment6;
+import com.example.dk.onthidh.Fragment.Fragment7;
 import com.example.dk.onthidh.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -201,6 +202,8 @@ public class ChooseActivity extends AppCompatActivity {
             classfragment=Fragment5.class;
         if(id==R.id.nav_six_fragment)
             classfragment=Fragment6.class;
+        if(id==R.id.nav_seven_fragment)
+            classfragment=Fragment7.class;
         try {
             fragment=(Fragment)classfragment.newInstance();
 

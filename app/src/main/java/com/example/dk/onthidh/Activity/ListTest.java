@@ -3,7 +3,6 @@ package com.example.dk.onthidh.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.example.dk.onthidh.Class.Uid;
 import com.example.dk.onthidh.MyFile.MyFile;
 import com.example.dk.onthidh.MyFile.MyFileAdapter;
 import com.example.dk.onthidh.MyFile.MyFileViewHolder;
@@ -31,7 +26,6 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListTest extends AppCompatActivity {
     private static final String listTest = "ListTest";
@@ -54,8 +48,8 @@ public class ListTest extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
         Nav();
-        //loadList();
-        loadOld();
+        loadList();
+//        loadOld();
         search();
     }
     public  static final String TAG = ListTest.class.getSimpleName();
@@ -143,51 +137,51 @@ public class ListTest extends AppCompatActivity {
     }
     private void loadAll(final String nameTest, final ArrayList<MyFile> newList)
     {
-                DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
-                DatabaseReference ref2;
-                ref2 = ref1.child("monhoc").child(monhoc);
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ref2;
+        ref2 = ref1.child("monhoc").child(monhoc);
 
-                ref2.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Result will be holded Here
-                        for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
-                            String temp = dsp.child("text").getValue().toString().toLowerCase();
-                            String temp2 = nameTest.toLowerCase();
-                            String comparetemp = removeDiacriticalMarks(temp);
-                            String comparetemp2 = removeDiacriticalMarks(temp2);
+        ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Result will be holded Here
+                for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    String temp = dsp.child("text").getValue().toString().toLowerCase();
+                    String temp2 = nameTest.toLowerCase();
+                    String comparetemp = removeDiacriticalMarks(temp);
+                    String comparetemp2 = removeDiacriticalMarks(temp2);
 
-                            MyFile model = new MyFile();
-                            if (temp.contains(temp2) || (comparetemp.contains(comparetemp2) && temp2.contains(comparetemp2)))
-                            {
-                                Log.d("huy", model.text + "");
-                                Log.d("huyabc", newList.size() + "");
-                                Log.d("huyxyz", model.text + "");
-                                Log.d("getkey", dsp.getKey());
-                                model.text = dsp.child("text").getValue().toString();
-                                newList.add(model);
-                                adapter.notifyDataSetChanged();
-                                adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(View view, int position) {
-                                        Intent intent= new Intent(ListTest.this,Test.class);
-                                        intent.putExtra("keyt",dsp.getRef().getKey());
-                                        intent.putExtra("Uid2", uid);
-                                        intent.putExtra("monhoc",monhoc);
-                                        ListTest.this.startActivity(intent);
-                                    }
-                                });
+                    MyFile model = new MyFile();
+                    if (temp.contains(temp2) || (comparetemp.contains(comparetemp2) && temp2.contains(comparetemp2)))
+                    {
+                        Log.d("huy", model.text + "");
+                        Log.d("huyabc", newList.size() + "");
+                        Log.d("huyxyz", model.text + "");
+                        Log.d("getkey", dsp.getKey());
+                        model.text = dsp.child("text").getValue().toString();
+                        newList.add(model);
+                        adapter.notifyDataSetChanged();
+                        adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent= new Intent(ListTest.this,Test.class);
+                                intent.putExtra("keyt",dsp.getRef().getKey());
+                                intent.putExtra("Uid2", uid);
+                                intent.putExtra("monhoc",monhoc);
+                                ListTest.this.startActivity(intent);
                             }
-                            adapter.setfilter(newList);
-                            rcvData.setAdapter(adapter);
-                            rcvData.invalidate();
-                        }
+                        });
                     }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    adapter.setfilter(newList);
+                    rcvData.setAdapter(adapter);
+                    rcvData.invalidate();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+            }
+        });
     }
     public void anhXa() {
         searchviewww = (MaterialSearchView) findViewById(R.id.materialsearchview);
@@ -195,7 +189,7 @@ public class ListTest extends AppCompatActivity {
         rcvData = (RecyclerView) findViewById(R.id.recyclerViewImage);
         files = new ArrayList<>();
         adapter = new MyFileAdapter(ListTest.this, files);
-       // rcvData.setHasFixedSize(true);
+        // rcvData.setHasFixedSize(true);
         //Linear
         rcvData.setLayoutManager(new LinearLayoutManager(ListTest.this));
         /*Grid

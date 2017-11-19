@@ -1,16 +1,16 @@
 package com.example.dk.onthidh.Fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.support.annotation.Nullable;
+        import android.support.v4.app.Fragment;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
 
-import com.example.dk.onthidh.Activity.LaunchActivity;
-import com.example.dk.onthidh.R;
-import com.google.firebase.auth.FirebaseAuth;
+        import com.example.dk.onthidh.Activity.LaunchActivity;
+        import com.example.dk.onthidh.R;
+        import com.google.firebase.auth.FirebaseAuth;
 
 public class Fragment6 extends Fragment {
     private FirebaseAuth mAuth;
