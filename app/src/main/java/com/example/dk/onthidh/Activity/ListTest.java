@@ -207,6 +207,8 @@ public class ListTest extends AppCompatActivity {
                         {
                             //int length = nTemp2 < nTemp ? nTemp2 : nTemp;
                             accentTemp = accentTemp.replaceAll("̉đ", "đ");
+                            nTemp = accentTemp.length();
+//                            nTemp2 = accentTemp2.length();
                             for(int i = 0; i < nTemp2; i++)
                             {
                                 for(int j = 0; j < nTemp; j++)
