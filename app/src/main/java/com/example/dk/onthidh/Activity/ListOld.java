@@ -27,7 +27,7 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import java.text.Normalizer;
 import java.util.ArrayList;
 
-public class ListTest extends AppCompatActivity {
+public class ListOld extends AppCompatActivity {
     private static final String listTest = "ListTest";
     private MaterialSearchView searchviewww;
     ArrayList<MyFile> files;
@@ -41,15 +41,15 @@ public class ListTest extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_test);
+        setContentView(R.layout.activity_list_old);
         uid = getIntent().getExtras().getString("Uid");
         monhoc = getIntent().getExtras().getString("monhoc");
         Log.d("Uid1", "onComplete: Uid=" + uid);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
         Nav();
-        loadList();
-//        loadOld();
+//        loadList();
+        loadOld();
         search();
     }
     public  static final String TAG = ListTest.class.getSimpleName();
@@ -70,12 +70,12 @@ public class ListTest extends AppCompatActivity {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent= new Intent(ListTest.this,Test.class);
+                        Intent intent= new Intent(ListOld.this,Test.class);
                         intent.putExtra("keyt",t);
                         intent.putExtra("Uid2", uid);
                         intent.putExtra("monhoc",monhoc);
                         intent.putExtra("tende", model.text);
-                        ListTest.this.startActivity(intent);
+                        ListOld.this.startActivity(intent);
                     }
                 });
 //                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
@@ -100,6 +100,17 @@ public class ListTest extends AppCompatActivity {
                             model.text = dataSnapshot.child("nametest").getValue().toString();
                             viewHolder.setActionClick(model.text);
                             viewHolder.txvTenFile.setText(model.text);
+                            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent= new Intent(ListOld.this,Score.class);
+                                    intent.putExtra("keyt222",t);
+                                    intent.putExtra("Uid222", uid);
+                                    intent.putExtra("monhoc2",monhoc);
+                                    intent.putExtra("tende", model.text);
+                                    ListOld.this.startActivity(intent);
+                                }
+                            });
                             Log.d("huy", model.text);
                         }
                     }
@@ -116,13 +127,13 @@ public class ListTest extends AppCompatActivity {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent= new Intent(ListTest.this,Test.class);
+                        Intent intent= new Intent(ListOld.this,Score.class);
                         intent.putExtra("keyt",t);
                         intent.putExtra("Uid2", uid);
                         intent.putExtra("monhoc",monhoc);
                         intent.putExtra("tende", model.text);
                         Log.d("tende", model.text);
-                        ListTest.this.startActivity(intent);
+                        ListOld.this.startActivity(intent);
                     }
                 });
 //                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
@@ -145,7 +156,7 @@ public class ListTest extends AppCompatActivity {
                 sb.append(c);
                 Log.d("char", c + "");
             }
-               //sb.append(c);
+            //sb.append(c);
 
         }
         return sb.toString();
@@ -154,7 +165,7 @@ public class ListTest extends AppCompatActivity {
     {
         DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref2;
-        ref2 = ref1.child("monhoc").child(monhoc);
+        ref2 = ref1.child("account").child(uid).child(monhoc).child("de");
 
         ref2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -192,11 +203,11 @@ public class ListTest extends AppCompatActivity {
                             adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
-                                    Intent intent= new Intent(ListTest.this,Test.class);
+                                    Intent intent= new Intent(ListOld.this,Score.class);
                                     intent.putExtra("keyt",dsp.getRef().getKey());
                                     intent.putExtra("Uid2", uid);
                                     intent.putExtra("monhoc",monhoc);
-                                    ListTest.this.startActivity(intent);
+                                    ListOld.this.startActivity(intent);
                                 }
                             });
                         }
@@ -219,11 +230,11 @@ public class ListTest extends AppCompatActivity {
                                         adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
                                             @Override
                                             public void onItemClick(View view, int position) {
-                                                Intent intent = new Intent(ListTest.this, Test.class);
+                                                Intent intent = new Intent(ListOld.this, Score.class);
                                                 intent.putExtra("keyt", dsp.getRef().getKey());
                                                 intent.putExtra("Uid2", uid);
                                                 intent.putExtra("monhoc", monhoc);
-                                                ListTest.this.startActivity(intent);
+                                                ListOld.this.startActivity(intent);
                                             }
                                         });
                                         break;
@@ -240,11 +251,11 @@ public class ListTest extends AppCompatActivity {
                         adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                Intent intent= new Intent(ListTest.this,Test.class);
+                                Intent intent= new Intent(ListOld.this,Score.class);
                                 intent.putExtra("keyt",dsp.getRef().getKey());
                                 intent.putExtra("Uid2", uid);
                                 intent.putExtra("monhoc",monhoc);
-                                ListTest.this.startActivity(intent);
+                                ListOld.this.startActivity(intent);
                             }
                         });
                     }
@@ -264,10 +275,10 @@ public class ListTest extends AppCompatActivity {
         keys = new ArrayList<>();
         rcvData = (RecyclerView) findViewById(R.id.recyclerViewImage);
         files = new ArrayList<>();
-        adapter = new MyFileAdapter(ListTest.this, files);
+        adapter = new MyFileAdapter(ListOld.this, files);
         // rcvData.setHasFixedSize(true);
         //Linear
-        rcvData.setLayoutManager(new LinearLayoutManager(ListTest.this));
+        rcvData.setLayoutManager(new LinearLayoutManager(ListOld.this));
         /*Grid
         rcvData.setLayoutManager(new GridLayoutManager(this,2));*/
         rcvData.setAdapter(adapter);
@@ -285,7 +296,7 @@ public class ListTest extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 newText = newText.toLowerCase();
                 ArrayList<MyFile> newList = new ArrayList<MyFile>();
-                loadAll(newText, newList);
+//                loadAll(newText, newList);
                 return true;
             }
         });

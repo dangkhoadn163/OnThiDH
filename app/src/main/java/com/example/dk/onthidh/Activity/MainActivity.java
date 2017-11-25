@@ -12,7 +12,7 @@ import com.example.dk.onthidh.R;
 public class MainActivity extends AppCompatActivity {
     String uid;
     String monhoc;
-    private Button btndethi,btnbaitap,btntailieu;
+    private Button btndethi,btnbaitap,btntailieu,btndedathi;
     private TextView luyenthimon;
 
     @Override
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         btndethi = (Button) findViewById(R.id.dethi);
         btntailieu = (Button) findViewById(R.id.tailieu);
         btnbaitap = (Button) findViewById(R.id.baitap);
+        btndedathi= (Button)findViewById(R.id.dedathi);
         luyenthimon= (TextView)findViewById(R.id.tv_title);
     }
     public void setActionClick(){
@@ -64,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this,ListTest.class);
+                intent.putExtra("monhoc",monhoc);
+                intent.putExtra("Uid", uid);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+        btndedathi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this,ListOld.class);
                 intent.putExtra("monhoc",monhoc);
                 intent.putExtra("Uid", uid);
                 MainActivity.this.startActivity(intent);

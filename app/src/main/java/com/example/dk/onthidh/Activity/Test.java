@@ -541,6 +541,3 @@ public class Test extends AppCompatActivity {
         dialogBack.create().show();
     }
 }
-
-
-

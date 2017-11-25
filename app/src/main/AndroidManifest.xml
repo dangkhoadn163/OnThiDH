@@ -37,11 +37,13 @@
         <activity
             android:name=".Activity.Score"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activity.ChooseActivity"
+        <activity
+            android:name=".Activity.ChooseActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name=".Activity.ListOld"></activity>
     </application>
 
 </manifest>

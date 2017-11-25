@@ -235,4 +235,12 @@ public class ChooseActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        /*restart*/
+//        finish();
+//        startActivity(getIntent());
+    }
 }

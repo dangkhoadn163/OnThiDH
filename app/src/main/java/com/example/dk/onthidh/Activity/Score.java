@@ -38,11 +38,11 @@ import java.util.ArrayList;
 public class Score extends AppCompatActivity {
     private static final String TAG = "Test";
     DrawerLayout drawer;
-    String keyt;
-    String userid;
+    String keyt,key;
+    String userid,uid;
     String useranswer;
     String quizanswers;
-    String monhoc;
+    String monhoc,monhoc2,tende;
     String scoreuser;
     private int countquiz = 0;
     Toolbar toolbar;
@@ -67,16 +67,38 @@ public class Score extends AppCompatActivity {
         rcvDataMoi.setAdapter(adapter_moi);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         keyt = getIntent().getExtras().getString("keyt111");
+        if (keyt != null) {
+            keyt = getIntent().getExtras().getString("keyt111");
+        }
+        else {
+            key = getIntent().getExtras().getString("keyt222");
+            keyt=key;
+        }
+
         userid = getIntent().getExtras().getString("Uid111");
+        if(userid!=null){
+            userid = getIntent().getExtras().getString("Uid111");
+        }
+        else {
+            uid = getIntent().getExtras().getString("Uid222");
+            userid=uid;
+        }
+
         monhoc = getIntent().getExtras().getString("monhoc");
+        if(monhoc!=null){
+            monhoc = getIntent().getExtras().getString("monhoc");
+        }
+        else {
+            monhoc2 = getIntent().getExtras().getString("monhoc2");
+            monhoc=monhoc2;
+        }
+        tende= getIntent().getExtras().getString("tende");
+        Toast.makeText(this, ""+tende, Toast.LENGTH_SHORT).show();
         anhxa();
         inintquiz(monhoc);
         load(keyt);
        // loadnameuser(userid);
         loaduseranswer(keyt, userid);
-
-
-
     }
     public void load(String keyt) {
         rootDatabase.child("monhoc").child(monhoc).child(keyt).child("test").addChildEventListener(new ChildEventListener() {
