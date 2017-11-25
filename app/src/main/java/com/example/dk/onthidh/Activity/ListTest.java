@@ -26,6 +26,7 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListTest extends AppCompatActivity {
     private static final String listTest = "ListTest";
@@ -50,6 +51,7 @@ public class ListTest extends AppCompatActivity {
         Nav();
         loadList();
 //        loadOld();
+        Log.d("abc", "truong thpt tran hung dao tphcm 2017 lan 2".contains("lan 1") + "");
         search();
     }
     public  static final String TAG = ListTest.class.getSimpleName();
@@ -145,8 +147,6 @@ public class ListTest extends AppCompatActivity {
                 sb.append(c);
                 Log.d("char", c + "");
             }
-               //sb.append(c);
-
         }
         return sb.toString();
     }
@@ -161,7 +161,12 @@ public class ListTest extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Result will be holded Here
                 for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    MyFile model = new MyFile();
+                    List <String> accentTemp2Arr = new ArrayList<String>();
+                    List <String> accentTempArr = new ArrayList<String>();
+                    List<String> temp2Arr = new ArrayList<String>();
+                    List<String> tempArr = new ArrayList<String>();
+
+                    final MyFile model = new MyFile();
                     String temp = dsp.child("text").getValue().toString().toLowerCase();
                     String temp2 = nameTest.toLowerCase();
                     String comparetemp = removeDiacriticalMarks(temp);
@@ -174,12 +179,109 @@ public class ListTest extends AppCompatActivity {
                     String replaceD = comparetemp.replaceAll("đ", "d");
                     String replaceD2 = comparetemp2.replaceAll("đ", "d");
                     Log.d("huy", replaceD + "");
+                    replaceD2.contains(" ");
+
+                    if(replaceD2.contains(" ") && (!replaceD.contains(replaceD2) && !temp.contains(temp2)))
+                    {
+                        int posStartTemp2 = 0;
+                        int posStartTemp = 0;
+                        int lengthTemp2 = temp2.length();
+                        int lengthTemp = temp.length();
+                        //Temp2
+                        for (int i = 0; i < lengthTemp2; i++)
+                        {
+                            String subStrTemp2;
+                            if (temp2.charAt(i) == (char) 32) {
+                                subStrTemp2 = temp2.substring(posStartTemp2, i);
+                                temp2Arr.add(subStrTemp2);
+                                accentTemp2Arr.add(flattenToAscii(temp2Arr.get(temp2Arr.size() - 1)).toString());
+                                posStartTemp2 = i + 1;
+                                Log.d("posStart", posStartTemp2 + "");
+                                i = posStartTemp2;
+                            }
+                            if (i == lengthTemp2 - 1) {
+                                subStrTemp2 = temp2.substring(posStartTemp2);
+                                temp2Arr.add(subStrTemp2);
+                                accentTemp2Arr.add(flattenToAscii(temp2Arr.get(temp2Arr.size() - 1)).toString());
+                                break;
+                            }
+                        }
+                        //Temp
+                        for(int i = 0; i < lengthTemp; i++)
+                        {
+                            String subStrTemp;
+                            if(temp.charAt(i) == (char)32)
+                            {
+                                subStrTemp = temp.substring(posStartTemp, i);
+                                tempArr.add(subStrTemp);
+                                accentTempArr.add(flattenToAscii(tempArr.get(tempArr.size() - 1)).toString());
+                                posStartTemp = i + 1;
+                                Log.d("posStart", posStartTemp + "");
+                                i = posStartTemp;
+                            }
+                            if(i == lengthTemp - 1)
+                            {
+                                subStrTemp = temp.substring(posStartTemp);
+                                tempArr.add(subStrTemp);
+                                accentTempArr.add(flattenToAscii(tempArr.get(tempArr.size() - 1)).toString());
+                                break;
+                            }
+                        }
+                        Log.d("temp2DArr", temp2Arr + "");
+                        Log.d("tempArr", tempArr + "");
+                        Log.d("accentTemp2Arr", accentTemp2Arr + "");
+                        Log.d("accentTempArr", accentTempArr + "");
+                        int lengthTemp2tArr = temp2Arr.size();
+                        Log.d("lengthTemp2tArr", lengthTemp2tArr + "");
+                        int countContains = 0;
+                        for(int i = 0; i < lengthTemp2tArr; i++)
+                        {
+
+                           // String compareArrTemp = removeDiacriticalMarks(tempArr.get(i));
+                            String compareArrTemp2 = removeDiacriticalMarks(temp2Arr.get(i));
+                            String accentArrTemp2 = flattenToAscii(temp2Arr.get(i)).toString();
+                            int nTemp2Arr = accentArrTemp2.length();
+                            Log.d("replaceD", replaceD + "");
+                            //String replaceDArr = compareArrTemp.replaceAll("đ", "d");
+                            String replaceD2Arr = compareArrTemp2.replaceAll("đ", "d");
+
+
+                            if ((temp.contains(temp2Arr.get(i)) || (replaceD.contains(replaceD2Arr)
+                                    && temp2Arr.get(i).contains(replaceD2Arr))))
+                            {
+                               countContains++;
+                            }
+                            if(countContains == lengthTemp2tArr)
+                            {
+                                if ((temp.contains(temp2Arr.get(i)) || (replaceD.contains(replaceD2Arr)
+                                        && temp2Arr.get(i).contains(replaceD2Arr))))
+                                {
+                                    Log.d("temp2ArrItem", temp2Arr.get(i) + "");
+                                    Log.d("temp2ArrList", temp2Arr + "");
+                                    model.text = dsp.child("text").getValue().toString();
+                                    newList.add(model);
+                                    adapter.notifyDataSetChanged();
+                                    adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            Intent intent= new Intent(ListTest.this,Test.class);
+                                            intent.putExtra("keyt",dsp.getRef().getKey());
+                                            intent.putExtra("Uid2", uid);
+                                            intent.putExtra("monhoc",monhoc);
+                                            intent.putExtra("tende", model.text);
+                                            ListTest.this.startActivity(intent);
+                                        }
+                                    });
+
+                                }
+                            }
+                        }
+                    }
                     if(replaceD.contains(replaceD2) && nTemp2 != 0 && !check)
                     {
                         int pos = replaceD.indexOf(replaceD2);
                         String sb = temp.substring(pos, temp2.length() + pos);
                         String accentTemp = flattenToAscii(sb).toString();
-                        int nTemp = accentTemp.length();
                         Log.d("sb", sb);
                         Log.d("accentTemp", accentTemp);
                         Log.d("accentTemp2", accentTemp2);
@@ -196,16 +298,15 @@ public class ListTest extends AppCompatActivity {
                                     intent.putExtra("keyt",dsp.getRef().getKey());
                                     intent.putExtra("Uid2", uid);
                                     intent.putExtra("monhoc",monhoc);
+                                    intent.putExtra("tende", model.text);
                                     ListTest.this.startActivity(intent);
                                 }
                             });
                         }
                         else if(!accentTemp.contains(accentTemp2) && !check)
                         {
-                            //int length = nTemp2 < nTemp ? nTemp2 : nTemp;
                             accentTemp = accentTemp.replaceAll("̉đ", "đ");
-                            nTemp = accentTemp.length();
-//                            nTemp2 = accentTemp2.length();
+                            int nTemp = accentTemp.length();
                             for(int i = 0; i < nTemp2; i++)
                             {
                                 for(int j = 0; j < nTemp; j++)
@@ -223,6 +324,7 @@ public class ListTest extends AppCompatActivity {
                                                 intent.putExtra("keyt", dsp.getRef().getKey());
                                                 intent.putExtra("Uid2", uid);
                                                 intent.putExtra("monhoc", monhoc);
+                                                intent.putExtra("tende", model.text);
                                                 ListTest.this.startActivity(intent);
                                             }
                                         });
@@ -244,6 +346,7 @@ public class ListTest extends AppCompatActivity {
                                 intent.putExtra("keyt",dsp.getRef().getKey());
                                 intent.putExtra("Uid2", uid);
                                 intent.putExtra("monhoc",monhoc);
+                                intent.putExtra("tende", model.text);
                                 ListTest.this.startActivity(intent);
                             }
                         });
