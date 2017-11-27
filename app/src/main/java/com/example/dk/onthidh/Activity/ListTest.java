@@ -216,7 +216,7 @@ public class ListTest extends AppCompatActivity {
                         int pos = replaceD.indexOf(replaceD2);
                         String sb = temp.substring(pos, temp2.length() + pos);
                         String accentTemp = flattenToAscii(sb).toString();
-
+                        accentTemp = accentTemp.replaceAll("̂", "̀̂");
                         Log.d("sb", sb);
                         Log.d("accentTemp", accentTemp);
                         Log.d("accentTemp2", accentTemp2);
@@ -291,8 +291,6 @@ public class ListTest extends AppCompatActivity {
                                 temp2Arr.add(subStrTemp2);
                                 break;
                             }
-
-
                         }
 
                         int lengthTemp2tArr = temp2Arr.size();
@@ -411,7 +409,6 @@ public class ListTest extends AppCompatActivity {
                             }
                         }
                     }
-
                     adapter.setfilter(newList);
                     rcvData.setAdapter(adapter);
                     rcvData.invalidate();
