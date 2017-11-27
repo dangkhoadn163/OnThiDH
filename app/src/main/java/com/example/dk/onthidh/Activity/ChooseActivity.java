@@ -58,6 +58,7 @@ public class ChooseActivity extends AppCompatActivity {
     private DatabaseReference rootDatabase;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,8 @@ public class ChooseActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         uid = getIntent().getExtras().getString("Uid");
+        name = "";
+        email = "";
         anhxa();
         loadnameuser(uid);
 
@@ -201,7 +204,10 @@ public class ChooseActivity extends AppCompatActivity {
         if(id==R.id.nav_four_fragment)
             classfragment=Fragment4.class;
         if(id==R.id.nav_five_fragment)
-            classfragment=Fragment5.class;
+        {
+            openChangeDialogChangePass();
+            drawer.closeDrawers();
+        }
         if(id==R.id.nav_six_fragment)
             classfragment=Fragment6.class;
         if(id==R.id.nav_seven_fragment)
@@ -237,7 +243,10 @@ public class ChooseActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    private void openChangeDialogChangePass() {
+        changepassDiaglog = new ChangepassDiaglog(this);
+        changepassDiaglog.show();
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

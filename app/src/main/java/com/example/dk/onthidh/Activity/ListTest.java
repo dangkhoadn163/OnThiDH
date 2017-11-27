@@ -63,21 +63,37 @@ public class ListTest extends AppCompatActivity {
             @Override
             protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, final int position) {
                 final String t = getRef(position).getKey().toString();
-                viewHolder.txvTenFile.setText(model.text);
-                files.add(model);
-                Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                adapter.notifyDataSetChanged();
-                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                rootDatabase.child("account").child(uid).child(monhoc).child("de").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(ListTest.this, Test.class);
-                        intent.putExtra("keyt", t);
-                        intent.putExtra("Uid2", uid);
-                        intent.putExtra("monhoc", monhoc);
-                        intent.putExtra("tende", model.text);
-                        ListTest.this.startActivity(intent);
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (!dataSnapshot.hasChild(t))
+                        {
+                            viewHolder.txvTenFile.setText(model.text);
+                            files.add(model);
+                            //Log.d("itemCount", adapter.getItemCount() + "");;
+                            Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                            adapter.notifyDataSetChanged();
+                            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(ListTest.this, Test.class);
+                                    intent.putExtra("keyt", t);
+                                    intent.putExtra("Uid2", uid);
+                                    intent.putExtra("monhoc", monhoc);
+                                    intent.putExtra("tende", model.text);
+                                    ListTest.this.startActivity(intent);
+                                }
+                            });
+                        }
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
+
 
 //                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
             }
