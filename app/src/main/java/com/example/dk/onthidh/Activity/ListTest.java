@@ -1,6 +1,7 @@
 package com.example.dk.onthidh.Activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +9,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.dk.onthidh.MyFile.MyFile;
 import com.example.dk.onthidh.MyFile.MyFileAdapter;
@@ -61,10 +64,8 @@ public class ListTest extends AppCompatActivity {
                 MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child(monhoc)
         ) {
             @Override
-            protected void populateViewHolder(MyFileViewHolder viewHolder, final MyFile model, int position) {
+            protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, final int position) {
                 final String t = getRef(position).getKey().toString();
-                //viewHolder.txvKey.setText(t);
-                viewHolder.setActionClick(model.text);
                 viewHolder.txvTenFile.setText(model.text);
                 files.add(model);
                 Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -72,14 +73,15 @@ public class ListTest extends AppCompatActivity {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent= new Intent(ListTest.this,Test.class);
-                        intent.putExtra("keyt",t);
+                        Intent intent = new Intent(ListTest.this, Test.class);
+                        intent.putExtra("keyt", t);
                         intent.putExtra("Uid2", uid);
-                        intent.putExtra("monhoc",monhoc);
+                        intent.putExtra("monhoc", monhoc);
                         intent.putExtra("tende", model.text);
                         ListTest.this.startActivity(intent);
                     }
                 });
+
 //                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
             }
         };
@@ -91,7 +93,7 @@ public class ListTest extends AppCompatActivity {
                 MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("account").child(uid).child(monhoc).child("de")
         ) {
             @Override
-            protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, int position) {
+            protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, final int position) {
                 final String t = getRef(position).getKey().toString();
                 viewHolder.txvKey.setText(t);
                 //viewHolder.setActionClick(model.text);
@@ -104,6 +106,7 @@ public class ListTest extends AppCompatActivity {
                             viewHolder.txvTenFile.setText(model.text);
                             Log.d("huy", model.text);
                         }
+
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -161,8 +164,6 @@ public class ListTest extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Result will be holded Here
                 for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    List <String> accentTemp2Arr = new ArrayList<String>();
-                    List <String> accentTempArr = new ArrayList<String>();
                     List<String> temp2Arr = new ArrayList<String>();
                     List<String> tempArr = new ArrayList<String>();
 
@@ -173,115 +174,36 @@ public class ListTest extends AppCompatActivity {
                     String comparetemp2 = removeDiacriticalMarks(temp2);
 
                     String accentTemp2 = flattenToAscii(temp2).toString();
+                    accentTemp2 = accentTemp2.replaceAll("̂", "̀̂");
                     int nTemp2 = accentTemp2.length();
                     boolean check = false;
 
                     String replaceD = comparetemp.replaceAll("đ", "d");
                     String replaceD2 = comparetemp2.replaceAll("đ", "d");
-                    Log.d("huy", replaceD + "");
-                    replaceD2.contains(" ");
-
-                    if(replaceD2.contains(" ") && (!replaceD.contains(replaceD2) && !temp.contains(temp2)))
+                    if ((temp.contains(temp2) || (replaceD.contains(replaceD2) && temp2.contains(replaceD2))) && !check)
                     {
-                        int posStartTemp2 = 0;
-                        int posStartTemp = 0;
-                        int lengthTemp2 = temp2.length();
-                        int lengthTemp = temp.length();
-                        //Temp2
-                        for (int i = 0; i < lengthTemp2; i++)
-                        {
-                            String subStrTemp2;
-                            if (temp2.charAt(i) == (char) 32) {
-                                subStrTemp2 = temp2.substring(posStartTemp2, i);
-                                temp2Arr.add(subStrTemp2);
-                                accentTemp2Arr.add(flattenToAscii(temp2Arr.get(temp2Arr.size() - 1)).toString());
-                                posStartTemp2 = i + 1;
-                                Log.d("posStart", posStartTemp2 + "");
-                                i = posStartTemp2;
+                        check = true;
+                        model.text = dsp.child("text").getValue().toString();
+                        newList.add(model);
+                        adapter.notifyDataSetChanged();
+                        adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent= new Intent(ListTest.this,Test.class);
+                                intent.putExtra("keyt",dsp.getRef().getKey());
+                                intent.putExtra("Uid2", uid);
+                                intent.putExtra("monhoc",monhoc);
+                                intent.putExtra("tende", model.text);
+                                ListTest.this.startActivity(intent);
                             }
-                            if (i == lengthTemp2 - 1) {
-                                subStrTemp2 = temp2.substring(posStartTemp2);
-                                temp2Arr.add(subStrTemp2);
-                                accentTemp2Arr.add(flattenToAscii(temp2Arr.get(temp2Arr.size() - 1)).toString());
-                                break;
-                            }
-                        }
-                        //Temp
-                        for(int i = 0; i < lengthTemp; i++)
-                        {
-                            String subStrTemp;
-                            if(temp.charAt(i) == (char)32)
-                            {
-                                subStrTemp = temp.substring(posStartTemp, i);
-                                tempArr.add(subStrTemp);
-                                accentTempArr.add(flattenToAscii(tempArr.get(tempArr.size() - 1)).toString());
-                                posStartTemp = i + 1;
-                                Log.d("posStart", posStartTemp + "");
-                                i = posStartTemp;
-                            }
-                            if(i == lengthTemp - 1)
-                            {
-                                subStrTemp = temp.substring(posStartTemp);
-                                tempArr.add(subStrTemp);
-                                accentTempArr.add(flattenToAscii(tempArr.get(tempArr.size() - 1)).toString());
-                                break;
-                            }
-                        }
-                        Log.d("temp2DArr", temp2Arr + "");
-                        Log.d("tempArr", tempArr + "");
-                        Log.d("accentTemp2Arr", accentTemp2Arr + "");
-                        Log.d("accentTempArr", accentTempArr + "");
-                        int lengthTemp2tArr = temp2Arr.size();
-                        Log.d("lengthTemp2tArr", lengthTemp2tArr + "");
-                        int countContains = 0;
-                        for(int i = 0; i < lengthTemp2tArr; i++)
-                        {
-
-                           // String compareArrTemp = removeDiacriticalMarks(tempArr.get(i));
-                            String compareArrTemp2 = removeDiacriticalMarks(temp2Arr.get(i));
-                            String accentArrTemp2 = flattenToAscii(temp2Arr.get(i)).toString();
-                            int nTemp2Arr = accentArrTemp2.length();
-                            Log.d("replaceD", replaceD + "");
-                            //String replaceDArr = compareArrTemp.replaceAll("đ", "d");
-                            String replaceD2Arr = compareArrTemp2.replaceAll("đ", "d");
-
-
-                            if ((temp.contains(temp2Arr.get(i)) || (replaceD.contains(replaceD2Arr)
-                                    && temp2Arr.get(i).contains(replaceD2Arr))))
-                            {
-                               countContains++;
-                            }
-                            if(countContains == lengthTemp2tArr)
-                            {
-                                if ((temp.contains(temp2Arr.get(i)) || (replaceD.contains(replaceD2Arr)
-                                        && temp2Arr.get(i).contains(replaceD2Arr))))
-                                {
-                                    Log.d("temp2ArrItem", temp2Arr.get(i) + "");
-                                    Log.d("temp2ArrList", temp2Arr + "");
-                                    model.text = dsp.child("text").getValue().toString();
-                                    newList.add(model);
-                                    adapter.notifyDataSetChanged();
-                                    adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(View view, int position) {
-                                            Intent intent= new Intent(ListTest.this,Test.class);
-                                            intent.putExtra("keyt",dsp.getRef().getKey());
-                                            intent.putExtra("Uid2", uid);
-                                            intent.putExtra("monhoc",monhoc);
-                                            intent.putExtra("tende", model.text);
-                                            ListTest.this.startActivity(intent);
-                                        }
-                                    });
-
-                                }
-                            }
-                        }
+                        });
                     }
                     if(replaceD.contains(replaceD2) && nTemp2 != 0 && !check)
                     {
                         int pos = replaceD.indexOf(replaceD2);
                         String sb = temp.substring(pos, temp2.length() + pos);
                         String accentTemp = flattenToAscii(sb).toString();
+
                         Log.d("sb", sb);
                         Log.d("accentTemp", accentTemp);
                         Log.d("accentTemp2", accentTemp2);
@@ -305,6 +227,7 @@ public class ListTest extends AppCompatActivity {
                         }
                         else if(!accentTemp.contains(accentTemp2) && !check)
                         {
+                            check = true;
                             accentTemp = accentTemp.replaceAll("̉đ", "đ");
                             int nTemp = accentTemp.length();
                             for(int i = 0; i < nTemp2; i++)
@@ -334,23 +257,148 @@ public class ListTest extends AppCompatActivity {
                             }
                         }
                     }
-                    if ((temp.contains(temp2) || (replaceD.contains(replaceD2) && temp2.contains(replaceD2))) && !check)
+
+                    if(replaceD2.contains(" ") && !replaceD.contains(replaceD2))
                     {
-                        model.text = dsp.child("text").getValue().toString();
-                        newList.add(model);
-                        adapter.notifyDataSetChanged();
-                        adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-                                Intent intent= new Intent(ListTest.this,Test.class);
-                                intent.putExtra("keyt",dsp.getRef().getKey());
-                                intent.putExtra("Uid2", uid);
-                                intent.putExtra("monhoc",monhoc);
-                                intent.putExtra("tende", model.text);
-                                ListTest.this.startActivity(intent);
+                        int posStartTemp2 = 0;
+                        int lengthTemp2 = temp2.length();
+                        //Temp2
+                        for (int i = 0; i < lengthTemp2; i++)
+                        {
+                            String subStrTemp2;
+                            if (temp2.charAt(i) == (char) 32) {
+                                subStrTemp2 = temp2.substring(posStartTemp2, i);
+                                temp2Arr.add(subStrTemp2);
+                                posStartTemp2 = i + 1;
+                                Log.d("posStart", posStartTemp2 + "");
+                                i = posStartTemp2;
                             }
-                        });
+                            if (i == lengthTemp2 - 1) {
+                                subStrTemp2 = temp2.substring(posStartTemp2);
+                                temp2Arr.add(subStrTemp2);
+                                break;
+                            }
+
+
+                        }
+
+                        int lengthTemp2tArr = temp2Arr.size();
+                        int countContains = 0;
+                        for(int i = 0; i < lengthTemp2tArr; i++)
+                        {
+                            if((i != 0 && temp2Arr.get(i).contains("1"))
+                                    || (i != 0 && temp2Arr.get(i).contains("2"))
+                                    || (i != 0 && temp2Arr.get(i).contains("3")))
+                            {
+                                if("lan".contains(removeDiacriticalMarks(temp2Arr.get(i - 1))))
+                                {
+                                    temp2Arr.set(i - 1, temp2Arr.get(i - 1)
+                                            + " " + temp2Arr.get(i));
+                                    temp2Arr.remove(i);
+                                    lengthTemp2tArr = temp2Arr.size();
+                                    i--;
+
+                                }
+                            }
+                            Log.d("temp2DArr", temp2Arr + "");
+                            String compareArrTemp2 = removeDiacriticalMarks(temp2Arr.get(i));
+                            String accentArrTemp2 = flattenToAscii(temp2Arr.get(i)).toString();
+                            int nTemp2Arr = accentArrTemp2.length();
+                            Log.d("replaceD", replaceD + "");
+                            String replaceD2Arr = compareArrTemp2.replaceAll("đ", "d");
+
+                            if ((temp.contains(temp2Arr.get(i)) || (replaceD.contains(replaceD2Arr)
+                                    && temp2Arr.get(i).contains(replaceD2Arr))
+                                    || (replaceD.contains(replaceD2Arr)
+                                    && (nTemp2Arr != 0))))
+                            {
+                               countContains++;
+                            }
+
+                            if(countContains == lengthTemp2tArr)
+                            {
+                                if(replaceD.contains(replaceD2Arr) && nTemp2Arr != 0)
+                                {
+                                    int pos = replaceD.indexOf(replaceD2Arr);
+                                    String sb = temp.substring(pos, temp2Arr.get(i).length() + pos);
+                                    String accentArrTemp = flattenToAscii(sb).toString();
+                                    Log.d("sb", sb);
+                                    Log.d("accentTemp", accentArrTemp);
+                                    Log.d("accentTemp2", accentArrTemp2);
+                                    if(accentArrTemp.contains(accentArrTemp2) && !check)
+                                    {
+                                        check = true;
+                                        model.text = dsp.child("text").getValue().toString();
+                                        newList.add(model);
+                                        adapter.notifyDataSetChanged();
+                                        adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(View view, int position) {
+                                                Intent intent= new Intent(ListTest.this,Test.class);
+                                                intent.putExtra("keyt",dsp.getRef().getKey());
+                                                intent.putExtra("Uid2", uid);
+                                                intent.putExtra("monhoc",monhoc);
+                                                intent.putExtra("tende", model.text);
+                                                ListTest.this.startActivity(intent);
+                                            }
+                                        });
+                                    }
+                                    else if(!accentArrTemp.contains(accentTemp2) && !check)
+                                    {
+                                        accentArrTemp = accentArrTemp.replaceAll("̉đ", "đ");
+                                        int nTempArr = accentArrTemp.length();
+                                        for(int h = 0; h < nTemp2Arr; h++)
+                                        {
+                                            for(int k = 0; k < nTempArr; k++)
+                                            {
+                                                if (accentArrTemp2.charAt(h) == accentArrTemp.charAt(k) && !check)
+                                                {
+                                                    check = true;
+                                                    model.text = dsp.child("text").getValue().toString();
+                                                    newList.add(model);
+                                                    adapter.notifyDataSetChanged();
+                                                    adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                                                        @Override
+                                                        public void onItemClick(View view, int position) {
+                                                            Intent intent = new Intent(ListTest.this, Test.class);
+                                                            intent.putExtra("keyt", dsp.getRef().getKey());
+                                                            intent.putExtra("Uid2", uid);
+                                                            intent.putExtra("monhoc", monhoc);
+                                                            intent.putExtra("tende", model.text);
+                                                            ListTest.this.startActivity(intent);
+                                                        }
+                                                    });
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                if ((temp.contains(temp2Arr.get(i)) || (replaceD.contains(replaceD2Arr)
+                                        && temp2Arr.get(i).contains(replaceD2Arr))) && !check)
+                                {
+                                    check = true;
+                                    Log.d("temp2ArrItem", temp2Arr.get(i) + "");
+                                    Log.d("temp2ArrList", temp2Arr + "");
+                                    model.text = dsp.child("text").getValue().toString();
+                                    newList.add(model);
+                                    adapter.notifyDataSetChanged();
+                                    adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            Intent intent= new Intent(ListTest.this,Test.class);
+                                            intent.putExtra("keyt",dsp.getRef().getKey());
+                                            intent.putExtra("Uid2", uid);
+                                            intent.putExtra("monhoc",monhoc);
+                                            intent.putExtra("tende", model.text);
+                                            ListTest.this.startActivity(intent);
+                                        }
+                                    });
+                                }
+                            }
+                        }
                     }
+
                     adapter.setfilter(newList);
                     rcvData.setAdapter(adapter);
                     rcvData.invalidate();
@@ -380,8 +428,10 @@ public class ListTest extends AppCompatActivity {
     private void search() {
         searchviewww.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public boolean onQueryTextSubmit(String query)
+            {
+
+                return true;
             }
 
             @Override
