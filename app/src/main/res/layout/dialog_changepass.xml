@@ -8,40 +8,40 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/dialog_photo_title"
+        android:id="@+id/dialog_change_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="2dp"
         android:background="@color/colorBlue"
         android:gravity="center"
         android:maxLength="30"
-        android:text="Chọn ảnh đại diện của bạn"
+        android:text="Đổi mật khẩu"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_margin="2dp"
         android:background="@color/colorWhite"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/dialog_photo_cam"
+        <EditText
+            android:id="@+id/edt_newpass"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="25dp"
-            android:src="@drawable/ic_camera" />
+            android:layout_height="wrap_content"
+            android:hint="Nhập mật khẩu mới"
+            android:textSize="15sp"
+            android:inputType="textPassword"/>
 
-        <ImageView
-            android:id="@+id/dialog_photo_gal"
+        <EditText
+            android:id="@+id/edt_confirm"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="25dp"
-            android:src="@drawable/ic_photo" />
+            android:layout_height="wrap_content"
+            android:hint="Xác nhận lại mật khẩu mới"
+            android:textSize="15sp"
+            android:inputType="textPassword"/>
 
     </LinearLayout>
 
@@ -50,18 +50,28 @@
         android:layout_height="50dp"
         android:layout_margin="2dp"
         android:orientation="horizontal">
-
         <TextView
-            android:id="@+id/dialog_photo_close"
+            android:id="@+id/dialog_change_confirm"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/colorWhite"
             android:gravity="center"
-            android:text="CLOSE"
+            android:layout_weight="1"
+            android:text="Đổi"
+            android:textColor="@color/colorBlue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/dialog_change_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:text="Hủy"
             android:textColor="@color/colorRed"
             android:textSize="16sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
 </LinearLayout>

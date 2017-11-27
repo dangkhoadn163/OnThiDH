@@ -356,5 +356,3 @@ public class Score extends AppCompatActivity {
                 }).create().show();
     }
 }
-
-

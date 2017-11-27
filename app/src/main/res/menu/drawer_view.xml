@@ -17,17 +17,30 @@
                     android:id="@+id/nav_four_fragment"
                     android:icon="@drawable/ic_chplay"
                     android:title="Đánh giá" />
-                <item
+<!--                <item
                     android:id="@+id/nav_five_fragment"
                     android:icon="@drawable/ic_changepass"
                     android:title="Đổi mật khẩu" />
                 <item
                     android:id="@+id/nav_six_fragment"
                     android:icon="@drawable/ic_exit"
-                    android:title="Đăng xuất" />
+                    android:title="Đăng xuất" />-->
                 <item
                     android:id="@+id/nav_seven_fragment"
                     android:icon="@drawable/ic_testold"
                     android:title="Xem lại đề đã làm" />
+                <item android:title="">
+                        <menu>
+                                <item
+                                    android:icon="@drawable/ic_changepass"
+                                    android:title="Đổi mật khẩu"
+                                    android:id="@+id/nav_five_fragment"/>
+                                <item
+                                    android:id="@+id/nav_six_fragment"
+                                    android:icon="@drawable/ic_exit"
+                                    android:title="Đăng xuất" />
+                        </menu>
+                </item>
         </group>
+
 </menu>

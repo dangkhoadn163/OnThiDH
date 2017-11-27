@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dk.onthidh.Class.User;
+import com.example.dk.onthidh.CustomDialog.ChangepassDiaglog;
 import com.example.dk.onthidh.CustomDialog.PhotoDialog;
 import com.example.dk.onthidh.Fragment.Fragment1;
 import com.example.dk.onthidh.Fragment.Fragment2;
@@ -50,6 +51,7 @@ public class ChooseActivity extends AppCompatActivity {
     String name, email;
     private AlertDialog.Builder defaultDialog;
     private PhotoDialog customDialog;
+    private ChangepassDiaglog changepassDiaglog;
     private Context context;
     private Uri imageUri;
     private FirebaseAuth mAuth;
