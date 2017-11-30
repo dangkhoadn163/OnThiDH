@@ -7,13 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.dk.onthidh.MyFile.MyFile;
 import com.example.dk.onthidh.R;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
@@ -22,9 +24,9 @@ import java.util.List;
 
 
 public class Fragment7 extends Fragment {
-    private TabLayout tabLayout1,tabLayout2;
+    private TabLayout tabLayout1,tabLayout2,tabLayout3,tabLayout4;
     private ViewPager viewPager;
-    ImageView imvsearch;
+    Toolbar toolbar;
     MaterialSearchView searchview;
 
     @Nullable
@@ -32,40 +34,25 @@ public class Fragment7 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment7,container,false);
         viewPager = (ViewPager)view.findViewById(R.id.viewpager);
-        imvsearch= (ImageView) view.findViewById(R.id.imv_search);
-        searchview = (MaterialSearchView)getActivity().findViewById(R.id.materialsearchviewfragment);
+        toolbar = (Toolbar)getActivity().findViewById(R.id.toolbar);
+        searchview = (MaterialSearchView)getActivity().findViewById(R.id.materialsearchview);
         setupViewPager(viewPager);
         tabLayout1 = (TabLayout)view.findViewById(R.id.tabs1);
         tabLayout2 = (TabLayout)view.findViewById(R.id.tabs2);
+/*        tabLayout3 = (TabLayout)view.findViewById(R.id.tabs3);
+        tabLayout4 = (TabLayout)view.findViewById(R.id.tabs4);*/
         tabLayout1.setupWithViewPager(viewPager);
         tabLayout2.setupWithViewPager(viewPager);
-        imvsearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("searchhhh","dit me tui bay");
-                searchview.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        newText = newText.toLowerCase();
-                        ArrayList<MyFile> newList = new ArrayList<MyFile>();
-//                loadAll(newText, newList);
-                        Log.d("searchhhh","dit me tui bay");
-                        return true;
-                    }
-                });
-            }
-        });
+/*        tabLayout3.setupWithViewPager(viewPager);
+        tabLayout4.setupWithViewPager(viewPager);*/
         return view;
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         adapter.addFragment(new OneFragment(), "ONE");
         adapter.addFragment(new TwoFragment(), "TWO");
+/*        adapter.addFragment(new OneFragment(), "THREE");
+        adapter.addFragment(new TwoFragment(), "FOUR");*/
         viewPager.setAdapter(adapter);
     }
 
@@ -91,12 +78,48 @@ public class Fragment7 extends Fragment {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
-
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
     }
+    private void search(){
+        searchview.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Do some magic
+                Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Do something that differs the Activity's menu here
+        getActivity().getMenuInflater().inflate(R.menu.search, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Search : {
+                searchview.setMenuItem(item);
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }
 

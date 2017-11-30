@@ -283,7 +283,7 @@ public class ListOld extends AppCompatActivity {
         rcvData.setLayoutManager(new GridLayoutManager(this,2));*/
         rcvData.setAdapter(adapter);
         keys = new ArrayList<>();
-        toolbar = (Toolbar) findViewById(R.id.toolbar_search);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
     }
     private void search() {
         searchviewww.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
@@ -315,7 +315,7 @@ public class ListOld extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_search, menu);
+        getMenuInflater().inflate(R.menu.search, menu);
         MenuItem item = menu.findItem(R.id.Search);
         searchviewww.setMenuItem(item);
         return true;

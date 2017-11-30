@@ -21,13 +21,12 @@ import android.widget.TextView;
 
 import com.example.dk.onthidh.Class.User;
 import com.example.dk.onthidh.CustomDialog.ChangepassDiaglog;
+import com.example.dk.onthidh.CustomDialog.LogoutDialog;
 import com.example.dk.onthidh.CustomDialog.PhotoDialog;
 import com.example.dk.onthidh.Fragment.Fragment1;
 import com.example.dk.onthidh.Fragment.Fragment2;
 import com.example.dk.onthidh.Fragment.Fragment3;
 import com.example.dk.onthidh.Fragment.Fragment4;
-import com.example.dk.onthidh.Fragment.Fragment5;
-import com.example.dk.onthidh.Fragment.Fragment6;
 import com.example.dk.onthidh.Fragment.Fragment7;
 import com.example.dk.onthidh.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +51,7 @@ public class ChooseActivity extends AppCompatActivity {
     private AlertDialog.Builder defaultDialog;
     private PhotoDialog customDialog;
     private ChangepassDiaglog changepassDiaglog;
+    private LogoutDialog logoutDialog;
     private Context context;
     private Uri imageUri;
     private FirebaseAuth mAuth;
@@ -75,7 +75,7 @@ public class ChooseActivity extends AppCompatActivity {
     }
     private void anhxa() {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
     public void loadnameuser(String uid) {
@@ -209,7 +209,10 @@ public class ChooseActivity extends AppCompatActivity {
             drawer.closeDrawers();
         }
         if(id==R.id.nav_six_fragment)
-            classfragment=Fragment6.class;
+        {
+            openLogoutDialog();
+            drawer.closeDrawers();
+        }
         if(id==R.id.nav_seven_fragment)
             classfragment=Fragment7.class;
         try {
@@ -246,6 +249,10 @@ public class ChooseActivity extends AppCompatActivity {
     private void openChangeDialogChangePass() {
         changepassDiaglog = new ChangepassDiaglog(this);
         changepassDiaglog.show();
+    }
+    private void openLogoutDialog() {
+        logoutDialog = new LogoutDialog(this);
+        logoutDialog.show();
     }
     @Override
     public void onBackPressed() {

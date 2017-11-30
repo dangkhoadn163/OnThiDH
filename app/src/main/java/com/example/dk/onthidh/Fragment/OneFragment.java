@@ -41,7 +41,7 @@ public class OneFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_one, container, false);
-        searchview = (MaterialSearchView)view.findViewById(R.id.materialsearchviewfragment);
+        searchview = (MaterialSearchView)getActivity().findViewById(R.id.materialsearchview);
         toolbar = (Toolbar)view.findViewById(R.id.toolbar_fragment);
 /*        rcvData = (RecyclerView)view.findViewById(R.id.recyclerViewImage);
         uid = getActivity().getIntent().getExtras().getString("Uid");
