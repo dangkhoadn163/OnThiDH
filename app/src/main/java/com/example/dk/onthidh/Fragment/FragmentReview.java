@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Fragment7 extends Fragment {
-    private TabLayout tabLayout1,tabLayout2,tabLayout3,tabLayout4;
+public class FragmentReview extends Fragment {
+    private TabLayout tabLayout;
     private ViewPager viewPager;
     Toolbar toolbar;
     MaterialSearchView searchview;
@@ -32,27 +32,26 @@ public class Fragment7 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment7,container,false);
+        View view=inflater.inflate(R.layout.fragmentreview,container,false);
         viewPager = (ViewPager)view.findViewById(R.id.viewpager);
         toolbar = (Toolbar)getActivity().findViewById(R.id.toolbar);
         searchview = (MaterialSearchView)getActivity().findViewById(R.id.materialsearchview);
         setupViewPager(viewPager);
-        tabLayout1 = (TabLayout)view.findViewById(R.id.tabs1);
-        tabLayout2 = (TabLayout)view.findViewById(R.id.tabs2);
-/*        tabLayout3 = (TabLayout)view.findViewById(R.id.tabs3);
-        tabLayout4 = (TabLayout)view.findViewById(R.id.tabs4);*/
-        tabLayout1.setupWithViewPager(viewPager);
-        tabLayout2.setupWithViewPager(viewPager);
-/*        tabLayout3.setupWithViewPager(viewPager);
-        tabLayout4.setupWithViewPager(viewPager);*/
+        tabLayout = (TabLayout)view.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
         return view;
     }
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-        adapter.addFragment(new OneFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "TWO");
-/*        adapter.addFragment(new OneFragment(), "THREE");
-        adapter.addFragment(new TwoFragment(), "FOUR");*/
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter.addFrag(new MathFragment(), "Toán");
+        adapter.addFrag(new EnglishFragment(), "Anh văn");
+        adapter.addFrag(new PhysicFragment(), "Vật lý");
+        adapter.addFrag(new ChemistryFragment(), "Hóa học");
+        adapter.addFrag(new HistoryFragment(), "Lịch sử");
+        adapter.addFrag(new GeographyFragment(), "Địa lý");
+        adapter.addFrag(new EducationFragment(), "GDCD");
+        adapter.addFrag(new BiologyFragment(), "Sinh học");
         viewPager.setAdapter(adapter);
     }
 
@@ -74,10 +73,11 @@ public class Fragment7 extends Fragment {
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        public void addFrag(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
+
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);

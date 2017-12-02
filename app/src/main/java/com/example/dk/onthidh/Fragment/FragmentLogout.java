@@ -11,13 +11,13 @@ import com.example.dk.onthidh.CustomDialog.LogoutDialog;
 import com.example.dk.onthidh.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Fragment6 extends Fragment {
+public class FragmentLogout extends Fragment {
     private FirebaseAuth mAuth;
     private LogoutDialog logoutDialog;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment6,container,false);
+        View view=inflater.inflate(R.layout.fragmentlogout,container,false);
         openLogoutDialog();
         return view;
     }

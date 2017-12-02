@@ -12,11 +12,11 @@ import com.example.dk.onthidh.R;
  * Created by DK on 11/1/2017.
  */
 
-public class Fragment2 extends Fragment {
+public class FragmentAccount extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment2,container,false);
+        View view=inflater.inflate(R.layout.fragmentacount,container,false);
         return view;//super.onCreateView(inflater, container, savedInstanceState);
     }
 }

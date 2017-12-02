@@ -23,11 +23,11 @@ import com.example.dk.onthidh.Class.User;
 import com.example.dk.onthidh.CustomDialog.ChangepassDiaglog;
 import com.example.dk.onthidh.CustomDialog.LogoutDialog;
 import com.example.dk.onthidh.CustomDialog.PhotoDialog;
-import com.example.dk.onthidh.Fragment.Fragment1;
-import com.example.dk.onthidh.Fragment.Fragment2;
-import com.example.dk.onthidh.Fragment.Fragment3;
-import com.example.dk.onthidh.Fragment.Fragment4;
-import com.example.dk.onthidh.Fragment.Fragment7;
+import com.example.dk.onthidh.Fragment.FragmentMain;
+import com.example.dk.onthidh.Fragment.FragmentAccount;
+import com.example.dk.onthidh.Fragment.FragmentSupport;
+import com.example.dk.onthidh.Fragment.FragmentRate;
+import com.example.dk.onthidh.Fragment.FragmentReview;
 import com.example.dk.onthidh.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -196,13 +196,13 @@ public class ChooseActivity extends AppCompatActivity {
         Fragment fragment=null;
         Class classfragment=null;
         if(id==R.id.nav_first_fragment)
-            classfragment=Fragment1.class;
+            classfragment=FragmentMain.class;
         if(id==R.id.nav_second_fragment)
-            classfragment=Fragment2.class;
+            classfragment=FragmentAccount.class;
         if(id==R.id.nav_third_fragment)
-            classfragment=Fragment3.class;
+            classfragment=FragmentSupport.class;
         if(id==R.id.nav_four_fragment)
-            classfragment=Fragment4.class;
+            classfragment=FragmentRate.class;
         if(id==R.id.nav_five_fragment)
         {
             openChangeDialogChangePass();
@@ -214,7 +214,7 @@ public class ChooseActivity extends AppCompatActivity {
             drawer.closeDrawers();
         }
         if(id==R.id.nav_seven_fragment)
-            classfragment=Fragment7.class;
+            classfragment=FragmentReview.class;
         try {
             fragment=(Fragment)classfragment.newInstance();
 
