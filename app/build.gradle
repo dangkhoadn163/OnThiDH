@@ -64,7 +64,6 @@ dependencies {
     //noinspection GradleCompatible
     compile 'com.android.support:design:23.0.1'
     testCompile 'junit:junit:4.12'
-
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -55,7 +55,7 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="start"
         android:background="@android:color/white">
-        <include layout="@layout/navscore_layout" />
+        <include layout="@layout/nav_score" />
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
 

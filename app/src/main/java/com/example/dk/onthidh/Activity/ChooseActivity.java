@@ -23,11 +23,11 @@ import com.example.dk.onthidh.Class.User;
 import com.example.dk.onthidh.CustomDialog.ChangepassDiaglog;
 import com.example.dk.onthidh.CustomDialog.LogoutDialog;
 import com.example.dk.onthidh.CustomDialog.PhotoDialog;
-import com.example.dk.onthidh.Fragment.FragmentMain;
 import com.example.dk.onthidh.Fragment.FragmentAccount;
-import com.example.dk.onthidh.Fragment.FragmentSupport;
+import com.example.dk.onthidh.Fragment.FragmentMain;
 import com.example.dk.onthidh.Fragment.FragmentRate;
 import com.example.dk.onthidh.Fragment.FragmentReview;
+import com.example.dk.onthidh.Fragment.FragmentSupport;
 import com.example.dk.onthidh.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,8 +36,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.dk.onthidh.CustomDialog.Constant.IMAGE_REQUEST_CODE;
 import static com.example.dk.onthidh.CustomDialog.FirebaseController.uploadAvatar;
@@ -156,7 +157,7 @@ public class ChooseActivity extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(true);
         TextView tv_name= (TextView) findViewById(R.id.tv_name);
         TextView tv_email= (TextView) findViewById(R.id.tv_email);
-        final ImageView iv_picture= (ImageView)findViewById(R.id.iv_picture);
+        ImageView iv_picture= (CircleImageView) findViewById(R.id.iv_picture);
         tv_email.setText(email);
         tv_name.setText(name);
         iv_picture.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +171,7 @@ public class ChooseActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = new User();
                 user = dataSnapshot.getValue(User.class);
-                Picasso.with(ChooseActivity.this).load(user.avatar).into(iv_picture);
+//                Picasso.with(ChooseActivity.this).load(user.avatar).into(iv_picture);
             }
 
             @Override

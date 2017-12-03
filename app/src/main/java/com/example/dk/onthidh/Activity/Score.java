@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -99,6 +100,40 @@ public class Score extends AppCompatActivity {
         load(keyt);
        // loadnameuser(userid);
         loaduseranswer(keyt, userid);
+    }
+    public void loaddetailresult(String keyt) {
+        rootDatabase.child("monhoc").child(monhoc).child(keyt).child("detailresult").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String link = dataSnapshot.getValue().toString();
+                if(link!=null){
+                    mois.add(link);
+                    adapter_moi.notifyDataSetChanged();
+                }else{
+                    Log.d(TAG,"KHONG CO DU LIEU");
+                }
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
     public void load(String keyt) {
         rootDatabase.child("monhoc").child(monhoc).child(keyt).child("test").addChildEventListener(new ChildEventListener() {
@@ -229,6 +264,12 @@ public class Score extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(true);
         navigation = (NavigationView) findViewById(R.id.nvcView);
         Button btnchitiet = (Button) findViewById(R.id.btnChitiet);
+        btnchitiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loaddetailresult(keyt);
+            }
+        });
         TextView tvscore= (TextView) findViewById(R.id.txv_score);
         tvscore.setText(countrightanswer() + "/" + countquiz);
         youranswers();

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         btndethi = (Button) findViewById(R.id.dethi);
         btntailieu = (Button) findViewById(R.id.tailieu);
         btnbaitap = (Button) findViewById(R.id.baitap);
-        btndedathi= (Button)findViewById(R.id.dedathi);
+//        btndedathi= (Button)findViewById(R.id.dedathi);
         luyenthimon= (TextView)findViewById(R.id.tv_title);
     }
     public void setActionClick(){
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
-        btndedathi.setOnClickListener(new View.OnClickListener() {
+        /*btndedathi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(MainActivity.this,ListOld.class);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("Uid", uid);
                 MainActivity.this.startActivity(intent);
             }
-        });
+        });*/
     }
 
 }
