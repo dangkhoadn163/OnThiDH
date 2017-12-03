@@ -45,8 +45,6 @@ public class MathFragment extends Fragment {
         // rcvData.setHasFixedSize(true);
         //Linear
         rcvData.setLayoutManager(new LinearLayoutManager(getActivity()));
-        /*Grid
-        rcvData.setLayoutManager(new GridLayoutManager(this,2));*/
         rcvData.setAdapter(adapter);
         keys = new ArrayList<>();
         loadOld();

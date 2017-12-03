@@ -6,27 +6,30 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v13.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dk.onthidh.FolderMoi.MoiAdapter;
+import com.example.dk.onthidh.Fragment.DetailResult_Fragment;
+import com.example.dk.onthidh.Fragment.Score_Fragment;
 import com.example.dk.onthidh.R;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,11 +37,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Score extends AppCompatActivity {
     private static final String TAG = "Test";
     DrawerLayout drawer;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     String keyt,key;
     String userid,uid;
     String useranswer;
@@ -52,20 +58,18 @@ public class Score extends AppCompatActivity {
     MoiAdapter adapter_moi;
     RadioButton[][] rdbtn = new RadioButton[50][4];
     private DatabaseReference rootDatabase;
-    private RecyclerView rcvDataMoi;
     private TextView tvscore;
     TextView[] txvArr = new TextView[50];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
         tvscore= (TextView)findViewById(R.id.tv_score);
-        mois = new ArrayList<>();
-        adapter_moi = new MoiAdapter(Score.this, mois);
-        rcvDataMoi = (RecyclerView) findViewById(R.id.recyclerViewTest);
-        rcvDataMoi.setHasFixedSize(true);
-        rcvDataMoi.setLayoutManager(new LinearLayoutManager(this));
-        rcvDataMoi.setAdapter(adapter_moi);
+        viewPager = (ViewPager)findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout = (TabLayout)findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         keyt = getIntent().getExtras().getString("keyt111");
         if (keyt != null) {
@@ -97,11 +101,46 @@ public class Score extends AppCompatActivity {
         Toast.makeText(this, ""+tende, Toast.LENGTH_SHORT).show();
         anhxa();
         inintquiz(monhoc);
-        load(keyt);
+/*        load(keyt);*/
        // loadnameuser(userid);
         loaduseranswer(keyt, userid);
     }
-    public void loaddetailresult(String keyt) {
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFrag(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new Score_Fragment(), "Kết quả");
+        adapter.addFrag(new DetailResult_Fragment(), "Chi tiết kết quả");
+        viewPager.setAdapter(adapter);
+    }
+
+    /*public void loaddetailresult(String keyt) {
         rootDatabase.child("monhoc").child(monhoc).child(keyt).child("detailresult").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -134,8 +173,8 @@ public class Score extends AppCompatActivity {
             }
         });
 
-    }
-    public void load(String keyt) {
+    }*/
+/*    public void load(String keyt) {
         rootDatabase.child("monhoc").child(monhoc).child(keyt).child("test").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -168,7 +207,7 @@ public class Score extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
     private void anhxa() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -264,12 +303,12 @@ public class Score extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(true);
         navigation = (NavigationView) findViewById(R.id.nvcView);
         Button btnchitiet = (Button) findViewById(R.id.btnChitiet);
-        btnchitiet.setOnClickListener(new View.OnClickListener() {
+        /*btnchitiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loaddetailresult(keyt);
             }
-        });
+        });*/
         TextView tvscore= (TextView) findViewById(R.id.txv_score);
         tvscore.setText(countrightanswer() + "/" + countquiz);
         youranswers();
