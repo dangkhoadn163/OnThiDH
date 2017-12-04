@@ -1,0 +1,48 @@
+
+PHẦN CHẮC CHẮN SẼ LÀM
+-------------------------------------------------------
+tìm kiếm đề(version hiện tại: 4.0)*
+sửa firebase(chia khu vực trong đề, chia info** và monhoc trong account)*
+email lấy về chưa kịp*
+chỉ thi được 1 lần*
+bỏ thanh toolbar*
+đưa "đổi mật khẩu" vô "tài khoản"
+danh sách đề chưa làm*
+phần tài khoản của người dùng
+Xem chi tiết kết quả thi(load chung với Score)
+
+
+
+GHI CHÚ:
+	(*): Độ ưu tiên(cần làm bây giờ)
+	(**): info
+		+ Avatar
+		+ Họ tên(bắt buộc)
+		+ Trường
+		+ Địa chỉ:
+		+ Khối:
+		+ Ngày sinh
+
+
+PHẦN ẢO CMN TƯỞNG
+-------------------------------------------------------
+
+hệ thống bạn bè(kết bạn)
+danh sách bạn bè(nhắn tin, xoá, thêm, hiển thị người dụng online/offline)
+forum thảo luận trong mỗi đề(đặt trong Score)
+tiền tệ trong app(đổi ra card điện thoại, ví, bút, máy tính, áo,.....)
+shop
+đổi tiền trong app lấy vật phẩm
+phúc khảo kết quả thi
+thông báo cá nhân(cái chuông như trong fb: thông báo kết bạn, tin nhắn của hệ thống, tin nhắn từ bạn bè,....)
+tương tác với thành viên khác(xem trang cá nhân, nhắn tin, kết bạn, xoá bạn bè,....)
+phần làm bài tập theo chương
+bảng xếp hạng người dùng(top 5 tặng tiền trong app theo thứ tự lớn tới nhỏ)
+hệ thống thi đấu giữa các người dùng(chọn ngẫu nhiên giữa các người dùng với nhau)
+sẽ có phần thưởng cho người dùng khi truy cập vào app 7 ngày liên tiếp(nhật ký truy cập)
+mỗi lần thi xong người dùng phải đợi 30p đề có thể thi tiếp đề mới (nếu muốn skip phải xem quảng cáo)
+
+
+
+
+
