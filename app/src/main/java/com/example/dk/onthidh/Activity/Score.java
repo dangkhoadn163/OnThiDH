@@ -351,7 +351,8 @@ public class Score extends AppCompatActivity {
         {
             countquiz = 50;
         }
-        else if(monhoc.equals("vatly") || monhoc.equals("hoahoc"))
+        else if(monhoc.equals("vatly") || monhoc.equals("hoahoc") || monhoc.equals("dialy")
+                || monhoc.equals("lichsu") || monhoc.equals("sinhhoc"))
         {
             countquiz = 40;
         }

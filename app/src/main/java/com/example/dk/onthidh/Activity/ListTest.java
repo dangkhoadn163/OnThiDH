@@ -2,6 +2,7 @@ package com.example.dk.onthidh.Activity;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.dk.onthidh.MyFile.MyFile;
 import com.example.dk.onthidh.MyFile.MyFileAdapter;
@@ -34,6 +36,7 @@ public class ListTest extends AppCompatActivity {
     ArrayList<MyFile> files;
     MyFileAdapter adapter;
     ArrayList<String> keys;
+    ArrayList<String> keyAccount;
     private RecyclerView rcvData;
     String uid,monhoc;
     Toolbar toolbar;
@@ -45,17 +48,83 @@ public class ListTest extends AppCompatActivity {
         setContentView(R.layout.activity_list_test);
         uid = getIntent().getExtras().getString("Uid");
         monhoc = getIntent().getExtras().getString("monhoc");
+        keyAccount = new ArrayList<String>();
         Log.d("Uid1", "onComplete: Uid=" + uid);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
         Nav();
-        loadList();
+        //loadList();
 //        loadOld();
+        loadList2();
         Log.d("abc", "truong thpt tran hung dao tphcm 2017 lan 2".contains("lan 1") + "");
         search();
+
     }
     public  static final String TAG = ListTest.class.getSimpleName();
+    private void loadList2()
+    {
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ref2;
+        ref2 = ref1.child("monhoc").child(monhoc);
+        DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ref4;
+        ref4 = ref3.child("account").child(uid).child(monhoc).child("de");
 
+        ref4.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Result will be holded Here
+                for (final DataSnapshot dsp : dataSnapshot.getChildren())
+                {
+                      Log.d("keyAccount", dsp.getRef().getKey() + "");
+                      keyAccount.add(dsp.getRef().getKey());
+
+
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Result will be holded Here
+                for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
+
+                    if(!keyAccount.contains(dsp.getRef().getKey()))
+                    {
+                        final MyFile model = new MyFile();
+                        model.text = dsp.child("text").getValue().toString();
+                        files.add(0,model);
+                        //adapter.notifyDataSetChanged();
+                        adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent= new Intent(ListTest.this,Test.class);
+                                Log.d("postion", position + "/" + dsp.getRef().getKey() + "/" + model.text);
+                                intent.putExtra("keyt",dsp.getRef().getKey());
+                                intent.putExtra("Uid2", uid);
+                                intent.putExtra("monhoc",monhoc);
+                                intent.putExtra("tende", model.text);
+                                ListTest.this.startActivity(intent);
+                            }
+                        });
+                    }
+                    adapter.setfilter(files);
+                    rcvData.setAdapter(adapter);
+                    rcvData.invalidate();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     private void loadList() {
         FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
                 MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child(monhoc)
@@ -66,27 +135,22 @@ public class ListTest extends AppCompatActivity {
                 rootDatabase.child("account").child(uid).child(monhoc).child("de").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (!dataSnapshot.hasChild(t))
-                        {
-                            viewHolder.txvTenFile.setText(model.text);
-                            files.add(model);
-                            //Log.d("itemCount", adapter.getItemCount() + "");;
-                            Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                            adapter.notifyDataSetChanged();
-                            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(ListTest.this, Test.class);
-                                    intent.putExtra("keyt", t);
-                                    intent.putExtra("Uid2", uid);
-                                    intent.putExtra("monhoc", monhoc);
-                                    intent.putExtra("tende", model.text);
-                                    ListTest.this.startActivity(intent);
-                                }
-                            });
-                        }
-
-
+                        viewHolder.txvTenFile.setText(model.text);
+                        files.add(model);
+                        //Log.d("itemCount", adapter.getItemCount() + "");;
+                        Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                        adapter.notifyDataSetChanged();
+                        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(ListTest.this, Test.class);
+                                intent.putExtra("keyt", t);
+                                intent.putExtra("Uid2", uid);
+                                intent.putExtra("monhoc", monhoc);
+                                intent.putExtra("tende", model.text);
+                                ListTest.this.startActivity(intent);
+                            }
+                        });
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -101,54 +165,7 @@ public class ListTest extends AppCompatActivity {
         rcvData.setAdapter(myAdapterTest);
 
     }
-    private void loadOld() {
-        FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
-                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("account").child(uid).child(monhoc).child("de")
-        ) {
-            @Override
-            protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, final int position) {
-                final String t = getRef(position).getKey().toString();
-                viewHolder.txvKey.setText(t);
-                //viewHolder.setActionClick(model.text);
-                rootDatabase.child("account").child(uid).child(monhoc).child("de").child(t).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild("nametest")) {
-                            model.text = dataSnapshot.child("nametest").getValue().toString();
-                            viewHolder.setActionClick(model.text);
-                            viewHolder.txvTenFile.setText(model.text);
-                            Log.d("huy", model.text);
-                        }
 
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
-                files.add(model);
-                Log.d("loadOld", t + "");
-                adapter.notifyDataSetChanged();
-                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent= new Intent(ListTest.this,Test.class);
-                        intent.putExtra("keyt",t);
-                        intent.putExtra("Uid2", uid);
-                        intent.putExtra("monhoc",monhoc);
-                        intent.putExtra("tende", model.text);
-                        Log.d("tende", model.text);
-                        ListTest.this.startActivity(intent);
-                    }
-                });
-//                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
-            }
-        };
-        rcvData.setAdapter(myAdapterTest);
-
-    }
     public static String removeDiacriticalMarks(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
@@ -321,7 +338,7 @@ public class ListTest extends AppCompatActivity {
                             if ((temp.contains(temp2Arr.get(i)) || (replaceD.contains(replaceD2Arr)
                                     && temp2Arr.get(i).contains(replaceD2Arr))
                                     || (replaceD.contains(replaceD2Arr)
-                                    && (nTemp2Arr != 0))))
+                                    && (nTemp2Arr != 0)) ))
                             {
                                 countContains++;
                             }
@@ -434,6 +451,7 @@ public class ListTest extends AppCompatActivity {
         rcvData.setAdapter(adapter);
         keys = new ArrayList<>();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
     }
     private void search() {
         searchviewww.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {

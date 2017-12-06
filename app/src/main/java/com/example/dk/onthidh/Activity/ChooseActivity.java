@@ -195,20 +195,20 @@ public class ChooseActivity extends AppCompatActivity {
         int id=menuItem.getItemId();
         Fragment fragment=null;
         Class classfragment=null;
-        if(id==R.id.nav_first_fragment)
+        if(id == R.id.nav_first_fragment)
             classfragment=FragmentMain.class;
-        if(id==R.id.nav_second_fragment)
+        if(id == R.id.nav_second_fragment)
             classfragment=FragmentAccount.class;
-        if(id==R.id.nav_third_fragment)
+        if(id == R.id.nav_third_fragment)
             classfragment=FragmentSupport.class;
-        if(id==R.id.nav_four_fragment)
+        if(id == R.id.nav_four_fragment)
             classfragment=FragmentRate.class;
-        if(id==R.id.nav_five_fragment)
+        if(id == R.id.nav_five_fragment)
         {
             openChangeDialogChangePass();
             drawer.closeDrawers();
         }
-        if(id==R.id.nav_six_fragment)
+        if(id == R.id.nav_six_fragment)
         {
             openLogoutDialog();
             drawer.closeDrawers();
@@ -217,7 +217,6 @@ public class ChooseActivity extends AppCompatActivity {
             classfragment=FragmentReview.class;
         try {
             fragment=(Fragment)classfragment.newInstance();
-
             FragmentManager fmanager= getSupportFragmentManager();
             fmanager.beginTransaction()
                     .replace(R.id.flContent,fragment)

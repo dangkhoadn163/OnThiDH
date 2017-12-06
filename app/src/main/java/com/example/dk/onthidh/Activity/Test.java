@@ -413,7 +413,14 @@ public class Test extends AppCompatActivity {
             countquiz = 50;
             scoreperanswer = new BigDecimal("0.2");
         }
-        else if(monhoc.equals("vatly") || monhoc.equals("hoahoc"))
+        else if(monhoc.equals("toanhoc"))
+        {
+            time = 5400000;
+            countquiz = 50;
+            scoreperanswer = new BigDecimal("0.2");
+        }
+        else if(monhoc.equals("vatly") || monhoc.equals("hoahoc") || monhoc.equals("gdcd")
+                || monhoc.equals("dialy") || monhoc.equals("lichsu") || monhoc.equals("sinhhoc"))
         {
             time = 3000000;
             countquiz = 40;
