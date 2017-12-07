@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 
 import com.example.dk.onthidh.MyFile.MyFile;
@@ -41,7 +42,6 @@ public class ListTest extends AppCompatActivity {
     String uid,monhoc;
     Toolbar toolbar;
     DatabaseReference rootDatabase;
-    ArrayList<String> keystest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +51,11 @@ public class ListTest extends AppCompatActivity {
         keyAccount = new ArrayList<String>();
         Log.d("Uid1", "onComplete: Uid=" + uid);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
+
+
         anhXa();
         Nav();
-//        loadList();
+        //loadList();
 //        loadOld();
         loadList2();
         Log.d("abc", "truong thpt tran hung dao tphcm 2017 lan 2".contains("lan 1") + "");
@@ -66,58 +68,50 @@ public class ListTest extends AppCompatActivity {
         DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref2;
         ref2 = ref1.child("monhoc").child(monhoc);
-        DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ref4;
-        ref4 = ref3.child("account").child(uid).child(monhoc).child("de");
-
-        ref4.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Result will be holded Here
-                for (final DataSnapshot dsp : dataSnapshot.getChildren())
-                {
-                      Log.d("keyAccount", dsp.getRef().getKey() + "");
-                      keyAccount.add(dsp.getRef().getKey());
-
-
-                }
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
         ref2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Result will be holded Here
                 for (final DataSnapshot dsp : dataSnapshot.getChildren()) {
-
-                    if(!keyAccount.contains(dsp.getRef().getKey()))
-                    {
-                        final MyFile model = new MyFile();
-                        model.text = dsp.child("text").getValue().toString();
-                        files.add(0,model);
-                        //adapter.notifyDataSetChanged();
-                        adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-                                Intent intent= new Intent(ListTest.this,Test.class);
-                                Log.d("position", position + "/" + dsp.getRef().getKey() + "/" + model.text);
-                                intent.putExtra("keyt",dsp.getRef().getKey());
-                                intent.putExtra("Uid2", uid);
-                                intent.putExtra("monhoc",monhoc);
-                                intent.putExtra("tende", model.text);
-                                ListTest.this.startActivity(intent);
+                    rootDatabase.child("account").child(uid).child(monhoc).child("de").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            final String t = dsp.getRef().getKey();
+                            if(!dataSnapshot.hasChild(t))
+                            {
+                                final MyFile model = new MyFile();
+                                model.text = dsp.child("text").getValue().toString();
+                                files.add(model);
+                                keys.add(dsp.getRef().getKey());
+                                Log.d("filesarr", model.text + "");
+                                adapter.notifyDataSetChanged();
+                                adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        model.text = files.get(position).text;
+                                        Intent intent= new Intent(ListTest.this,Test.class);
+                                        Log.d("postion", position + "/" + keys.get(position)+ "/" + model.text);
+                                        intent.putExtra("keyt", keys.get(position));
+                                        intent.putExtra("Uid2", uid);
+                                        intent.putExtra("monhoc",monhoc);
+                                        intent.putExtra("tende", model.text);
+                                        ListTest.this.startActivity(intent);
+                                    }
+                                });
                             }
-                        });
-                    }
-                    adapter.setfilter(files);
-                    rcvData.setAdapter(adapter);
-                    rcvData.invalidate();
+                            adapter.setfilter(files);
+                            rcvData.setAdapter(adapter);
+                            rcvData.invalidate();
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
                 }
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

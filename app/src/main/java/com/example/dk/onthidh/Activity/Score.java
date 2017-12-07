@@ -375,6 +375,12 @@ public class Score extends AppCompatActivity {
         Log.d("useranswer", useranswer + "");
         int index = 0;
         int length = useranswer.length();
+        int lengthquiz = quizanswers.length();
+        if(length > lengthquiz)
+        {
+            useranswer = useranswer.substring(0, lengthquiz);
+            length = useranswer.length();
+        }
         char c;
         char cafter;
         char cquizans;
