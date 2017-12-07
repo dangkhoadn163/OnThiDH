@@ -53,9 +53,9 @@ public class ListTest extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
         Nav();
-        //loadList();
+        loadList();
 //        loadOld();
-        loadList2();
+//        loadList2();
         Log.d("abc", "truong thpt tran hung dao tphcm 2017 lan 2".contains("lan 1") + "");
         search();
 
