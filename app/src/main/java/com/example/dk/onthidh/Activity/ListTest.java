@@ -53,9 +53,9 @@ public class ListTest extends AppCompatActivity {
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         anhXa();
         Nav();
-        loadList();
+//        loadList();
 //        loadOld();
-//        loadList2();
+        loadList2();
         Log.d("abc", "truong thpt tran hung dao tphcm 2017 lan 2".contains("lan 1") + "");
         search();
 
@@ -105,7 +105,7 @@ public class ListTest extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 Intent intent= new Intent(ListTest.this,Test.class);
-                                Log.d("postion", position + "/" + dsp.getRef().getKey() + "/" + model.text);
+                                Log.d("position", position + "/" + dsp.getRef().getKey() + "/" + model.text);
                                 intent.putExtra("keyt",dsp.getRef().getKey());
                                 intent.putExtra("Uid2", uid);
                                 intent.putExtra("monhoc",monhoc);

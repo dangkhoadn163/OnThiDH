@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.dk.onthidh.Activity.MainActivity;
 import com.example.dk.onthidh.R;
@@ -31,12 +32,16 @@ public class FragmentMain extends Fragment {
         btngeography = (Button)view.findViewById(R.id.btn_geography);
         btnhistoty = (Button)view.findViewById(R.id.btn_history);
         btnbiology = (Button)view.findViewById(R.id.btn_biology);
+        btnedu= (Button)view.findViewById(R.id.btn_education);
+        btnmath= (Button)view.findViewById(R.id.btn_math);
         anhvan();
         vatly();
         hoahoc();
         dialy();
         lichsu();
         sinhhoc();
+        toanhoc();
+        gdcd();
         return view;//super.onCreateView(inflater, container, savedInstanceState);
     }
     public void anhvan() {
@@ -117,8 +122,26 @@ public class FragmentMain extends Fragment {
             }
         });
     }
-    public void edu(){
+    public void gdcd(){
+        btnedu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    public void toanhoc(){
+        btnmath.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                monhoc = "toanhoc";
+                intent.putExtra("monhoc", monhoc);
+                intent.putExtra("Uid", uid);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 }
 

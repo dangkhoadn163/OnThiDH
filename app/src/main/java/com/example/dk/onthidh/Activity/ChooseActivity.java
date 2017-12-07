@@ -98,6 +98,7 @@ public class ChooseActivity extends AppCompatActivity {
     public void info() {
         if (user != null) {
             // email address, and profile photo Url
+            email="a";
             email = user.getEmail();
             Uri photoUrl = user.getPhotoUrl();
             nav();

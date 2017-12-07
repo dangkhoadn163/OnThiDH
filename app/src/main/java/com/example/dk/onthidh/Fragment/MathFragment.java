@@ -49,7 +49,7 @@ public class MathFragment extends Fragment {
         Log.d("context", getActivity() + "");
         loadMath = new LoadDataOld();
         //loadOld();
-        loadMath.loadOld(uid, "anhvan", getActivity(), files, adapter, rcvData, rootDatabase);
+        loadMath.loadOld(uid, "math", getActivity(), files, adapter, rcvData, rootDatabase);
         return view;//super.onCreateView(inflater, container, savedInstanceState);
     }
 
