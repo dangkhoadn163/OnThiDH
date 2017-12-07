@@ -53,7 +53,8 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return files.size();
+
+        return files == null ? 0 : files.size() ;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -81,6 +82,4 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
         Log.d("filesssssssssssss", files.size() + "");
         this.notifyDataSetChanged();
     }
-
-
 }

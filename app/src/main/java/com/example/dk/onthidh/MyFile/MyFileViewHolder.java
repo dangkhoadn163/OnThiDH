@@ -3,7 +3,9 @@ package com.example.dk.onthidh.MyFile;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +27,8 @@ public final class MyFileViewHolder extends RecyclerView.ViewHolder {
         this.txvTenFile = (TextView) itemView.findViewById(R.id.txvTenFile);
         this.txvKey = (TextView) itemView.findViewById(R.id.txvKey);
         this.txvAnswer=(TextView)itemView.findViewById(R.id.txvAnswer);
-    }
 
+    }
     public void loadHinhAnh(Context context, String duongDan) {
         Picasso.with(context).load(duongDan).into(imvHinhAnh);
     }
@@ -47,4 +49,5 @@ public final class MyFileViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
+
 }
