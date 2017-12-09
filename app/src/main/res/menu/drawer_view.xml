@@ -8,7 +8,7 @@
                 <item
                     android:id="@+id/nav_second_fragment"
                     android:icon="@drawable/ic_customer"
-                    android:title="Tài khoản" />
+                    android:title="Thông tin tài khoản" />
                 <item
                     android:id="@+id/nav_third_fragment"
                     android:title="Trợ giúp và phản hồi"
@@ -29,7 +29,7 @@
                     android:id="@+id/nav_seven_fragment"
                     android:icon="@drawable/ic_testold"
                     android:title="Xem lại đề đã làm" />
-                <item android:title="">
+                <item android:title="Tài khoản">
                         <menu>
                                 <item
                                     android:icon="@drawable/ic_changepass"
