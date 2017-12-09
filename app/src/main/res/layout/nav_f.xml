@@ -15,6 +15,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
+        android:src="@drawable/ic_contact"
         android:background="@drawable/bg_score"
         app:civ_border_color="@color/colorBlack"
         app:civ_border_width="2dp" />
@@ -23,7 +24,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:id="@+id/tv_name"
-        android:text="Name"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
     <TextView
@@ -31,7 +31,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_email"
         android:paddingTop="20dp"
-        android:text="Email"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 </LinearLayout>

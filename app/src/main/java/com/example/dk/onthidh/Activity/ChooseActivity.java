@@ -40,6 +40,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static com.example.dk.onthidh.CustomDialog.Constant.IMAGE_REQUEST_CODE;
 import static com.example.dk.onthidh.CustomDialog.FirebaseController.uploadAvatar;
 
@@ -59,6 +61,10 @@ public class ChooseActivity extends AppCompatActivity {
     private DatabaseReference rootDatabase;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+    //Header-Nav
+    private CircleImageView iv_picture;
+    private TextView tv_name;
+    private TextView tv_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +82,13 @@ public class ChooseActivity extends AppCompatActivity {
     private void anhxa() {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        navigation = (NavigationView) findViewById(R.id.navview);
+        View header = navigation.getHeaderView(0);
+        iv_picture = (CircleImageView) header.findViewById(R.id.iv_picture);
+        tv_name = (TextView) header.findViewById(R.id.tv_name);
+        tv_email = (TextView) header.findViewById(R.id.tv_email);
+
     }
 
     public void loadnameuser(String uid) {
@@ -98,7 +111,6 @@ public class ChooseActivity extends AppCompatActivity {
     public void info() {
         if (user != null) {
             // email address, and profile photo Url
-            email="a";
             email = user.getEmail();
             Uri photoUrl = user.getPhotoUrl();
             nav();
@@ -155,11 +167,14 @@ public class ChooseActivity extends AppCompatActivity {
         ab.setHomeAsUpIndicator(R.drawable.ic_profile);
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
-        TextView tv_name= (TextView) findViewById(R.id.tv_name);
-        TextView tv_email= (TextView) findViewById(R.id.tv_email);
-        final ImageView iv_picture= (ImageView) findViewById(R.id.iv_picture);
-        tv_email.setText(email);
-        tv_name.setText(name);
+
+        if(email!=null){
+            tv_email.setText(email);
+        }
+        if(name!=null){
+            tv_name.setText(name);
+        }
+
         iv_picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
