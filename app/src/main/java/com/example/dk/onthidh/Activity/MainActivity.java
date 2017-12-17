@@ -3,16 +3,19 @@ package com.example.dk.onthidh.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dk.onthidh.R;
 
 public class MainActivity extends AppCompatActivity {
     String uid;
     String monhoc;
-    private Button btndethi,btnbaitap,btntailieu,btndedathi;
+    Toolbar toolbar;
+    private Button btndethi,btnbaitap,btntailieu;
     private TextView luyenthimon;
 
     @Override
@@ -21,10 +24,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         uid = getIntent().getExtras().getString("Uid");
         monhoc = getIntent().getExtras().getString("monhoc");
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         Anhxa ();
-
         setActionClick();
         title();
+        Nav();
     }
     private  void title(){
         if(monhoc.equals("anhvan")){
@@ -52,6 +56,18 @@ public class MainActivity extends AppCompatActivity {
             luyenthimon.setText("Luyện thi môn Sinh Học");
         }
     }
+    private void Nav() {
+        //set toolbar thay the cho actionbar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
     private  void Anhxa(){
 
         btndethi = (Button) findViewById(R.id.dethi);
@@ -70,15 +86,18 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
-        /*btndedathi.setOnClickListener(new View.OnClickListener() {
+        btnbaitap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this,ListOld.class);
-                intent.putExtra("monhoc",monhoc);
-                intent.putExtra("Uid", uid);
-                MainActivity.this.startActivity(intent);
+                Toast.makeText(MainActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
+        btntailieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

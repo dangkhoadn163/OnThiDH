@@ -7,6 +7,8 @@ package com.example.dk.onthidh.CustomDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
@@ -42,6 +44,7 @@ public class DialogStart {
 
 
     public void show() {
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         builder.setView(view);
         dialog = builder.create();
         dialog.setCanceledOnTouchOutside(false);

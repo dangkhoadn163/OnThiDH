@@ -3,6 +3,8 @@ package com.example.dk.onthidh.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -531,7 +533,11 @@ public class Test extends AppCompatActivity {
         dialognew.txvThoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityCompat.finishAffinity(Test.this);
+                Intent intent= new Intent(Test.this,ListTest.class);
+//                intent.putExtra("monhoc",monhoc);
+                intent.putExtra("Uid", userid);
+                Test.this.startActivity(intent);
+                /*ActivityCompat.finishAffinity(Test.this);*/
             }
         });
         dialognew.show();
