@@ -3,13 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Thông tin tài khoản"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,31 +30,6 @@
                     android:layout_weight="2"/>
                 <ImageButton
                     android:id="@+id/btn_editname"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_editclassic"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Email liên hệ"
-                android:layout_marginTop="10dp"
-                android:gravity="center"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
-                    android:id="@+id/edt_email"
-                    android:hint="Email"
-                    android:layout_weight="2"/>
-                <ImageButton
-                    android:id="@+id/btn_editemail"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_editclassic"
@@ -167,13 +135,65 @@
                     android:background="@drawable/ic_editclassic"
                     android:layout_weight="1"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Khối"
+                android:layout_marginTop="10dp"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/edt_grade"
+                    android:hint="Khối"
+                    android:enabled="false"
+                    android:layout_weight="2"/>
+                <ImageButton
+                    android:id="@+id/btn_editgrade"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_editclassic"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ngày sinh"
+                android:layout_marginTop="10dp"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/edt_birth"
+                    android:hint="Ngày sinh"
+                    android:enabled="false"
+                    android:layout_weight="2"/>
+                <ImageButton
+                    android:id="@+id/btn_editbirth"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_editclassic"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="20dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

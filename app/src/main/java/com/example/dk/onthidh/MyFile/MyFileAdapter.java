@@ -59,8 +59,7 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView img;
-        public TextView txtv;
-        public TextView txva;
+        public TextView txtv,txva;
         public ViewHolder(final View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.imvHinhAnh);
