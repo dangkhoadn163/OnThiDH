@@ -44,8 +44,9 @@ public class DialogStart {
 
 
     public void show() {
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         builder.setView(view);
+        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog = builder.create();
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
