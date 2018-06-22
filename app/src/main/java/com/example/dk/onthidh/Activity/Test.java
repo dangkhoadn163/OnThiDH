@@ -115,7 +115,7 @@ public class Test extends AppCompatActivity {
         loadnameuser(userid);
         load(keyt);
         loadanswer(keyt);
-        autoCheck();
+//      autoCheck();
         Nav();
         ClickClock();
     }
@@ -534,7 +534,7 @@ public class Test extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(Test.this,ListTest.class);
-//                intent.putExtra("monhoc",monhoc);
+                intent.putExtra("monhoc",monhoc);
                 intent.putExtra("Uid", userid);
                 Test.this.startActivity(intent);
                 /*ActivityCompat.finishAffinity(Test.this);*/

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.dk.onthidh.Activity.ListTest;
 import com.example.dk.onthidh.Activity.Test;
 import com.example.dk.onthidh.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyFile p = files.get(position);
         holder.txtv.setText(p.text);
-//        Picasso.with(mContext).load(p.image).into(holder.img);
+        //Picasso.with(mContext).load(p.image).into(holder.img);
     }
 
     @Override

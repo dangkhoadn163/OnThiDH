@@ -51,12 +51,9 @@ public class ListTest extends AppCompatActivity {
         keyAccount = new ArrayList<String>();
         Log.d("Uid1", "onComplete: Uid=" + uid);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
-
-
         anhXa();
         Nav();
-        //loadList();
-//        loadOld();
+//      loadOld();
         loadList2();
         search();
 
@@ -107,8 +104,6 @@ public class ListTest extends AppCompatActivity {
 
                         }
                     });
-
-
                 }
 
             }
@@ -117,46 +112,6 @@ public class ListTest extends AppCompatActivity {
 
             }
         });
-    }
-    private void loadList() {
-        FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
-                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child(monhoc)
-        ) {
-            @Override
-            protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, final int position) {
-                final String t = getRef(position).getKey().toString();
-                rootDatabase.child("account").child(uid).child(monhoc).child("de").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        viewHolder.txvTenFile.setText(model.text);
-                        files.add(model);
-                        //Log.d("itemCount", adapter.getItemCount() + "");;
-                        Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                        adapter.notifyDataSetChanged();
-                        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ListTest.this, Test.class);
-                                intent.putExtra("keyt", t);
-                                intent.putExtra("Uid2", uid);
-                                intent.putExtra("monhoc", monhoc);
-                                intent.putExtra("tende", model.text);
-                                ListTest.this.startActivity(intent);
-                            }
-                        });
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
-//                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
-            }
-        };
-        rcvData.setAdapter(myAdapterTest);
-
     }
 
     public static String removeDiacriticalMarks(String string) {

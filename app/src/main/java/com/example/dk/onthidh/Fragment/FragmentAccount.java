@@ -1,4 +1,5 @@
 package com.example.dk.onthidh.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,8 +17,6 @@ import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialo
 import com.example.dk.onthidh.Activity.RegisterActivity;
 import com.example.dk.onthidh.Class.Uid;
 import com.example.dk.onthidh.R;
-import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener;
-import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -120,23 +119,24 @@ public class FragmentAccount extends Fragment {
                 editGrade.setEnabled(true);
             }
         });
-        imgbBirth.setOnClickListener(new View.OnClickListener() {
+/*        imgbBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new SlideDateTimePicker.Builder(getActivity().getSupportFragmentManager())
                         .setListener(listener)
                         .setInitialDate(new Date())
-                        //.setMinDate(minDate)
-                        //.setMaxDate(maxDate)
-                        //.setIs24HourTime(true)
-                        //.setTheme(SlideDateTimePicker.HOLO_DARK)
-                        //.setIndicatorColor(Color.parseColor("#990000"))
+//                        .setMinDate(minDate)
+//                        .setMaxDate(maxDate)
+                        .setIs24HourTime(true)
+                        .setTheme(SlideDateTimePicker.HOLO_DARK)
+                        .setIndicatorColor(Color.parseColor("#990000"))
                         .build()
                         .show();
             }
-        });
+        });*/
 
     }
+/*
     private SlideDateTimeListener listener = new SlideDateTimeListener() {
 
         @Override
@@ -153,6 +153,7 @@ public class FragmentAccount extends Fragment {
                     "Canceled", Toast.LENGTH_SHORT).show();
         }
     };
+*/
 
     public void datauser(){
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {

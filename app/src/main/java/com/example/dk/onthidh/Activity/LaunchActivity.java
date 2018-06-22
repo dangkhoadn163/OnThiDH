@@ -75,6 +75,7 @@ public class LaunchActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d("TAG", "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.d("keyyyyy",""+user.getUid());
                     // Authenticated successfully with authData
                     Intent intent = new Intent(LaunchActivity.this, ChooseActivity.class);
                     intent.putExtra("Uid", user.getUid());

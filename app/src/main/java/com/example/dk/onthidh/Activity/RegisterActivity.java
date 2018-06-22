@@ -32,62 +32,62 @@ public class RegisterActivity extends AppCompatActivity {
         Anhxa();
         mAuth = FirebaseAuth.getInstance();
 
-        // Lay duong dan cua note goc tren database:
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+                // Lay duong dan cua note goc tren database:
+                mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registerFirebase();
-            }
+                confirm.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View v) {
+        registerFirebase();
+        }
         });
 
 
-    }
-    private void registerFirebase() {
+        }
+private void registerFirebase() {
 
-        final String name = Edtname.getText().toString();
+final String name = Edtname.getText().toString();
         String email = Edtemail.getText().toString();
         String password = Edtpass.getText().toString();
         // Neu email & password & name trong 2 cai edit khac null:
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(name)) {
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        // Lấy id của user vừa đăng kí:
-                        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        Log.d("uid", "onComplete: uid=" + userID);
-                        // Upload dữ liệu lên firebase database:
-                        // Trước khi làm cái này nhớ nhúng thư viện:
-                        // compile 'com.google.firebase:firebase-database:11.0.2'
-                        mDatabase.child("account").child(userID).child("name").setValue(name).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                // Dang ki thanh cong
-                                Toast.makeText(RegisterActivity.this, "Register Success !", Toast.LENGTH_LONG).show();
-                                finish();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegisterActivity.this, "Disconnected !", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                    } else {
-                        // Dang ki that bai
-                        Toast.makeText(RegisterActivity.this, "Register Failure !", Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+@Override
+public void onComplete(@NonNull Task<AuthResult> task) {
+        if (task.isSuccessful()) {
+        // Lấy id của user vừa đăng kí:
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Log.d("uid", "onComplete: uid=" + userID);
+        // Upload dữ liệu lên firebase database:
+        // Trước khi làm cái này nhớ nhúng thư viện:
+        // compile 'com.google.firebase:firebase-database:11.0.2'
+        mDatabase.child("account").child(userID).child("name").setValue(name).addOnCompleteListener(new OnCompleteListener<Void>() {
+@Override
+public void onComplete(@NonNull Task<Void> task) {
+        // Dang ki thanh cong
+        Toast.makeText(RegisterActivity.this, "Register Success !", Toast.LENGTH_LONG).show();
+        finish();
         }
-    }
+        }).addOnFailureListener(new OnFailureListener() {
+@Override
+public void onFailure(@NonNull Exception e) {
+        Toast.makeText(RegisterActivity.this, "Disconnected !", Toast.LENGTH_LONG).show();
+        }
+        });
 
-    private void Anhxa() {
+        } else {
+        // Dang ki that bai
+        Toast.makeText(RegisterActivity.this, "Register Failure !", Toast.LENGTH_LONG).show();
+        }
+        }
+        });
+        }
+        }
+
+private void Anhxa() {
         Edtname = (EditText) findViewById(R.id.nameuser);
         Edtemail = (EditText) findViewById(R.id.emailuser);
         Edtpass = (EditText) findViewById(R.id.passuser);
         confirm = (Button) findViewById(R.id.confirmuser);
-    }
-}
+        }
+        }

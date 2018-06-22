@@ -2,6 +2,7 @@ package com.example.dk.onthidh.CustomDialog;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +26,7 @@ public class FirebaseController {
         Calendar c = Calendar.getInstance();
         String s = c.getTimeInMillis() + "";
         // up hinh len storage database
+        Log.d("uri",""+imageUri);
         FirebaseStorage.getInstance().getReference().child(s).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

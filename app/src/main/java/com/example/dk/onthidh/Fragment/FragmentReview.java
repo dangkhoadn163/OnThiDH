@@ -95,7 +95,7 @@ public class FragmentReview extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 //Do some magic
-                Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "magic?", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });

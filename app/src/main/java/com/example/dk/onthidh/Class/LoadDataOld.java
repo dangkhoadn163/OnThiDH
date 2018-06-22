@@ -27,7 +27,9 @@ import java.util.ArrayList;
 public class LoadDataOld {
 
     public LoadDataOld()
-    {}
+    {
+
+    }
 
     public void loadOld(final String uid, final String monhoc, final Context context
             , final ArrayList<MyFile> files, final MyFileAdapter adapter, final RecyclerView rcvData
@@ -39,7 +41,8 @@ public class LoadDataOld {
             @Override
             protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, int position) {
                 final String t = getRef(position).getKey().toString();
-                viewHolder.txvKey.setText(t);
+                //Nếu cần hiển thị thì ghi
+                viewHolder.txvKey.setText("");
                 //viewHolder.setActionClick(model.text);
                 rootDatabase.child("account").child(uid).child(monhoc).child("de").child(t).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -59,7 +62,7 @@ public class LoadDataOld {
                                     context.startActivity(intent);
                                 }
                             });
-                            Log.d("huy", model.text);
+                            Log.d("tende", model.text);
                         }
                     }
                     @Override

@@ -36,6 +36,13 @@ bảng xếp hạng người dùng(top 5 tặng tiền trong app theo thứ tự
 hệ thống thi đấu giữa các người dùng(chọn ngẫu nhiên giữa các người dùng với nhau)
 sẽ có phần thưởng cho người dùng khi truy cập vào app 7 ngày liên tiếp(nhật ký truy cập)
 mỗi lần thi xong người dùng phải đợi 30p đề có thể thi tiếp đề mới (nếu muốn skip phải xem quảng cáo)
+-------------------------------------------------------------
+Cần update:
++Search: search xong xóa thì phải cập nhật lại list
++Thông báo hoặc hiện progressbar nếu mạng yếu(gây khó chịu)
+Fix:
++Vô xem đề xong thoát app -> mốt thi lại
+--------------------------------------------------------------
 
 
 
