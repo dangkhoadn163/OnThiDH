@@ -20,11 +20,6 @@ tools:context="com.example.dk.onthidh.Activity.ChooseActivity">
             layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <com.miguelcatalan.materialsearchview.MaterialSearchView
-            android:id="@+id/materialsearchview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.miguelcatalan.materialsearchview.MaterialSearchView>
     </FrameLayout>
     <FrameLayout
         android:id="@+id/flContent"
@@ -44,4 +39,3 @@ tools:context="com.example.dk.onthidh.Activity.ChooseActivity">
     app:headerLayout="@layout/nav_f"
     app:menu="@menu/drawer_view" />
 </android.support.v4.widget.DrawerLayout>
-

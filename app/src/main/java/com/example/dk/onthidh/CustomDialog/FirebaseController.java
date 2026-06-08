@@ -30,8 +30,12 @@ public class FirebaseController {
         FirebaseStorage.getInstance().getReference().child(s).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                String url = taskSnapshot.getDownloadUrl().toString();
-                UploadDatabase(url,userID);
+                taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        UploadDatabase(uri.toString(), userID);
+                    }
+                });
             }
         });
         // upload storage xong thì upload đường dẫn vào database:

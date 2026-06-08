@@ -18,6 +18,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,37 +72,27 @@ public class Score extends AppCompatActivity {
         tabLayout = (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         rootDatabase = FirebaseDatabase.getInstance().getReference();
-        keyt = getIntent().getExtras().getString("keyt111");
-        if (keyt != null) {
-            keyt = getIntent().getExtras().getString("keyt111");
-        }
-        else {
-            key = getIntent().getExtras().getString("keyt222");
-            keyt=key;
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+            Toast.makeText(this, "Missing score data", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
         }
 
-        userid = getIntent().getExtras().getString("Uid111");
-        if(userid!=null){
-            userid = getIntent().getExtras().getString("Uid111");
-        }
-        else {
-            uid = getIntent().getExtras().getString("Uid222");
-            userid=uid;
+        keyt = getExtra(extras, "keyt111", "keyt222");
+        userid = getExtra(extras, "Uid111", "Uid222");
+        monhoc = getExtra(extras, "monhoc", "monhoc2");
+        tende = extras.getString("tende");
+
+        if (TextUtils.isEmpty(keyt) || TextUtils.isEmpty(userid) || TextUtils.isEmpty(monhoc)) {
+            Toast.makeText(this, "Invalid score data", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
         }
 
-        monhoc = getIntent().getExtras().getString("monhoc");
-        if(monhoc!=null){
-            monhoc = getIntent().getExtras().getString("monhoc");
-        }
-        else {
-            monhoc2 = getIntent().getExtras().getString("monhoc2");
-            monhoc=monhoc2;
-        }
-        tende= getIntent().getExtras().getString("tende");
-        Toast.makeText(this, ""+tende, Toast.LENGTH_SHORT).show();
         anhxa();
         inintquiz(monhoc);
-/*        load(keyt);*/
+	/*        load(keyt);*/
        // loadnameuser(userid);
         loaduseranswer(keyt, userid);
     }
@@ -242,7 +233,8 @@ public class Score extends AppCompatActivity {
                 Toast.makeText(Score.this, useranswer+"", Toast.LENGTH_SHORT).show();
             }
         };
-        rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam").addValueEventListener(valueEventListener);
+        rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam")
+                .addListenerForSingleValueEvent(valueEventListener);
 
     }
 
@@ -285,7 +277,10 @@ public class Score extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("name")) {
-                    getSupportActionBar().setTitle(dataSnapshot.child("name").getValue().toString());
+                    ActionBar actionBar = getSupportActionBar();
+                    if (actionBar != null) {
+                        actionBar.setTitle(dataSnapshot.child("name").getValue().toString());
+                    }
                 }
             }
             @Override
@@ -298,9 +293,11 @@ public class Score extends AppCompatActivity {
         //set toolbar thay the cho actionbar
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.mipmap.ic_tracnghiem);
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setDisplayShowHomeEnabled(true);
+        if (ab != null) {
+            ab.setHomeAsUpIndicator(R.mipmap.ic_tracnghiem);
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setDisplayShowHomeEnabled(true);
+        }
         navigation = (NavigationView) findViewById(R.id.nvcView);
         Button btnchitiet = (Button) findViewById(R.id.btnChitiet);
         /*btnchitiet.setOnClickListener(new View.OnClickListener() {
@@ -321,16 +318,14 @@ public class Score extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.mnSetting:
-                Intent intent= new Intent(Score.this,ChooseActivity.class);
+        int itemId = item.getItemId();
+        if (itemId == R.id.mnSetting) {
+            Intent intent= new Intent(Score.this,ChooseActivity.class);
 //                intent.putExtra("monhoc",monhoc);
-                intent.putExtra("Uid", userid);
-                Score.this.startActivity(intent);
-                break;
-            case android.R.id.home:
-                drawer.openDrawer(GravityCompat.START);
-                break;
+            intent.putExtra("Uid", userid);
+            Score.this.startActivity(intent);
+        } else if (itemId == android.R.id.home) {
+            drawer.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -347,12 +342,12 @@ public class Score extends AppCompatActivity {
     }
     private void inintquiz(String monhoc)
     {
-        if(monhoc.equals("anhvan"))
+        if(monhoc.equals("anhvan") || monhoc.equals("toanhoc"))
         {
             countquiz = 50;
         }
         else if(monhoc.equals("vatly") || monhoc.equals("hoahoc") || monhoc.equals("dialy")
-                || monhoc.equals("lichsu") || monhoc.equals("sinhhoc"))
+                || monhoc.equals("lichsu") || monhoc.equals("sinhhoc") || monhoc.equals("gdcd"))
         {
             countquiz = 40;
         }
@@ -367,10 +362,16 @@ public class Score extends AppCompatActivity {
     }
     private int countrightanswer()
     {
+        if (countquiz == 0 || TextUtils.isEmpty(scoreuser)) {
+            return 0;
+        }
         return (int)(Float.valueOf(scoreuser) / (10.0 / countquiz));
     }
     public void youranswers()
     {
+        if (TextUtils.isEmpty(useranswer) || TextUtils.isEmpty(quizanswers)) {
+            return;
+        }
         Log.d("answer", quizanswers + "");
         Log.d("useranswer", useranswer + "");
         int index = 0;
@@ -426,6 +427,14 @@ public class Score extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    private String getExtra(Bundle extras, String primaryKey, String fallbackKey) {
+        String value = extras.getString(primaryKey);
+        if (value == null && fallbackKey != null) {
+            value = extras.getString(fallbackKey);
+        }
+        return value;
     }
 
     @Override

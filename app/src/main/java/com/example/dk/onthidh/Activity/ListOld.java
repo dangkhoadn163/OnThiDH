@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -14,22 +15,19 @@ import android.view.View;
 
 import com.example.dk.onthidh.MyFile.MyFile;
 import com.example.dk.onthidh.MyFile.MyFileAdapter;
-import com.example.dk.onthidh.MyFile.MyFileViewHolder;
 import com.example.dk.onthidh.R;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
 
 public class ListOld extends AppCompatActivity {
     private static final String listTest = "ListTest";
-    private MaterialSearchView searchviewww;
+    private SearchView searchviewww;
     ArrayList<MyFile> files;
     MyFileAdapter adapter;
     ArrayList<String> keys;
@@ -50,97 +48,59 @@ public class ListOld extends AppCompatActivity {
         Nav();
 //        loadList();
         loadOld();
-        search();
     }
     public  static final String TAG = ListTest.class.getSimpleName();
 
-    private void loadList() {
-        FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
-                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("monhoc").child(monhoc)
-        ) {
-            @Override
-            protected void populateViewHolder(MyFileViewHolder viewHolder, final MyFile model, int position) {
-                final String t = getRef(position).getKey().toString();
-                //viewHolder.txvKey.setText(t);
-                viewHolder.setActionClick(model.text);
-                viewHolder.txvTenFile.setText(model.text);
-                files.add(model);
-                Log.d("loadlist", files.size() + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                adapter.notifyDataSetChanged();
-                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent= new Intent(ListOld.this,Test.class);
-                        intent.putExtra("keyt",t);
-                        intent.putExtra("Uid2", uid);
-                        intent.putExtra("monhoc",monhoc);
-                        intent.putExtra("tende", model.text);
-                        ListOld.this.startActivity(intent);
-                    }
-                });
-//                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
-            }
-        };
-        rcvData.setAdapter(myAdapterTest);
-
-    }
     private void loadOld() {
-        FirebaseRecyclerAdapter<MyFile, MyFileViewHolder> myAdapterTest = new FirebaseRecyclerAdapter<MyFile, MyFileViewHolder>(
-                MyFile.class, R.layout.item, MyFileViewHolder.class, rootDatabase.child("account").child(uid).child(monhoc).child("de")
-        ) {
+        adapter.setOnItemClickListener(new MyFileAdapter.OnItemClickListener() {
             @Override
-            protected void populateViewHolder(final MyFileViewHolder viewHolder, final MyFile model, int position) {
-                final String t = getRef(position).getKey().toString();
-                viewHolder.txvKey.setText(t);
-                //viewHolder.setActionClick(model.text);
-                rootDatabase.child("account").child(uid).child(monhoc).child("de").child(t).addListenerForSingleValueEvent(new ValueEventListener() {
+            public void onItemClick(View view, int position) {
+                if (position < 0 || position >= files.size()) {
+                    return;
+                }
+
+                MyFile model = files.get(position);
+                Intent intent = new Intent(ListOld.this, Score.class);
+                intent.putExtra("keyt222", model.key);
+                intent.putExtra("Uid222", uid);
+                intent.putExtra("monhoc2", monhoc);
+                intent.putExtra("tende", model.text);
+                ListOld.this.startActivity(intent);
+            }
+        });
+
+        rootDatabase.child("account").child(uid).child(monhoc).child("de")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild("nametest")) {
-                            model.text = dataSnapshot.child("nametest").getValue().toString();
-                            viewHolder.setActionClick(model.text);
-                            viewHolder.txvTenFile.setText(model.text);
-                            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent= new Intent(ListOld.this,Score.class);
-                                    intent.putExtra("keyt222",t);
-                                    intent.putExtra("Uid222", uid);
-                                    intent.putExtra("monhoc2",monhoc);
-                                    intent.putExtra("tende", model.text);
-                                    ListOld.this.startActivity(intent);
-                                }
-                            });
-                            Log.d("huy", model.text);
+                        files.clear();
+
+                        for (DataSnapshot child : dataSnapshot.getChildren()) {
+                            if (!child.hasChild("nametest") || !child.hasChild("dapandalam")) {
+                                continue;
+                            }
+
+                            MyFile model = child.getValue(MyFile.class);
+                            if (model == null) {
+                                model = new MyFile();
+                            }
+
+                            model.key = child.getKey();
+
+                            if (child.hasChild("nametest")) {
+                                model.text = String.valueOf(child.child("nametest").getValue());
+                            }
+
+                            files.add(model);
                         }
+
+                        adapter.setfilter(files);
                     }
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
-
-                files.add(model);
-                Log.d("loadOld", t + "");
-                adapter.notifyDataSetChanged();
-                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent= new Intent(ListOld.this,Score.class);
-                        intent.putExtra("keyt",t);
-                        intent.putExtra("Uid2", uid);
-                        intent.putExtra("monhoc",monhoc);
-                        intent.putExtra("tende", model.text);
-                        Log.d("tende", model.text);
-                        ListOld.this.startActivity(intent);
-                    }
-                });
-//                Toast.makeText(ListTest.this, t+"", Toast.LENGTH_SHORT).show();
-            }
-        };
-        rcvData.setAdapter(myAdapterTest);
-
     }
     public static String removeDiacriticalMarks(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD)
@@ -271,7 +231,6 @@ public class ListOld extends AppCompatActivity {
         });
     }
     public void anhXa() {
-        searchviewww = (MaterialSearchView) findViewById(R.id.materialsearchview);
         keys = new ArrayList<>();
         rcvData = (RecyclerView) findViewById(R.id.recyclerViewImage);
         files = new ArrayList<>();
@@ -286,7 +245,11 @@ public class ListOld extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
     }
     private void search() {
-        searchviewww.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+        if (searchviewww == null) {
+            return;
+        }
+
+        searchviewww.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -317,7 +280,8 @@ public class ListOld extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
         MenuItem item = menu.findItem(R.id.Search);
-        searchviewww.setMenuItem(item);
+        searchviewww = (SearchView) item.getActionView();
+        search();
         return true;
     }
 }

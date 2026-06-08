@@ -17,11 +17,6 @@
                 layout="@layout/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-            <com.miguelcatalan.materialsearchview.MaterialSearchView
-                android:id="@+id/materialsearchview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </com.miguelcatalan.materialsearchview.MaterialSearchView>
         </FrameLayout>
 
         <android.support.v7.widget.RecyclerView

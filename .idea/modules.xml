@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OnThi.OnThiDH.iml" filepath="$PROJECT_DIR$/.idea/modules/OnThi.OnThiDH.iml" />
       <module fileurl="file://$PROJECT_DIR$/OnThiDH.iml" filepath="$PROJECT_DIR$/OnThiDH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OnThiDH.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OnThiDH.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slideDateTimePicker/OnThiDH.slideDateTimePicker.iml" filepath="$PROJECT_DIR$/.idea/modules/slideDateTimePicker/OnThiDH.slideDateTimePicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/slideDateTimePicker/slideDateTimePicker.iml" filepath="$PROJECT_DIR$/slideDateTimePicker/slideDateTimePicker.iml" />
     </modules>

@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +39,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -72,12 +72,17 @@ public class ChooseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose);
         mAuth = FirebaseAuth.getInstance();
         rootDatabase = FirebaseDatabase.getInstance().getReference();
-        uid = getIntent().getExtras().getString("Uid");
+        context = this;
+        Bundle extras = getIntent().getExtras();
+        if (extras == null || TextUtils.isEmpty(extras.getString("Uid"))) {
+            finish();
+            return;
+        }
+        uid = extras.getString("Uid");
         Log.d("uuuuuuuuu",""+uid);
         anhxa();
+        nav();
         loadnameuser(uid);
-
-
     }
     private void anhxa() {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -97,24 +102,24 @@ public class ChooseActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild("name")) {
                     name = dataSnapshot.child("name").getValue().toString();
-                    info();
                 }
+                info();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                info();
             }
         });
     }
 
     public void info() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // email address, and profile photo Url
             email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            nav();
         }
+        updateHeader();
     }
 
 
@@ -128,34 +133,14 @@ public class ChooseActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Nếu nhận <ActivityResult> từ activity CHỌN ẢNH (không phân biệt từ thư viện hay chụp ảnh mới)
-        // và kiểm tra có chọn ảnh hay không để xử lý hàm if này
         if (requestCode == IMAGE_REQUEST_CODE
                 && resultCode == RESULT_OK
                 && data != null) {
             imageUri = data.getData();
-            // Lấy được tấm ảnh rồi thì mở activity cắt ảnh
-            CropImage.activity(imageUri)// thảy cái uri vào intent crop image
-                    .setAspectRatio(1, 1)// set tỉ lệ cắt (ở đây cắt avatar nên để tỉ lệ 1:1 cho nó thành hình vuông)
-                    .setMaxCropResultSize(500,500) // kích thước cắt tối đa: 500x500 pixel
-                    .setMinCropWindowSize(50, 50) // kích thước cắt tối thiểu: 50x50 pixel
-                    .setBackgroundColor(R.color.colorWhite) // tự hiểu
-                    .start(this); // tự hiểu
-        }
-
-        // Nếu nhận <ActivityResult> từ activity CẮT ẢNH
-        // và nhận được 1 tấm ảnh đã cắt thì xử lý hàm if này:
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && data != null) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                // Lấy đường dẫn
-                imageUri = result.getUri();
-                // Đóng dialog mở lên lúc nãy
+            if (imageUri != null) {
                 customDialog.dismiss();
-                // upload Avatar lên firebase
-                uploadAvatar(context, uid, imageUri);// Xem bên class FirebaseController
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                // nếu xảy ra lỗi thì cũng đóng dialog luôn:
+                uploadAvatar(context, uid, imageUri);
+            } else if (customDialog != null) {
                 customDialog.dismiss();
             }
         }
@@ -164,16 +149,12 @@ public class ChooseActivity extends AppCompatActivity {
     public void nav(){
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_profile);
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setDisplayShowHomeEnabled(true);
-
-        if(email!=null){
-            tv_email.setText(email);
+        if (ab != null) {
+            ab.setHomeAsUpIndicator(R.drawable.ic_profile);
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setDisplayShowHomeEnabled(true);
         }
-        if(name!=null){
-            tv_name.setText(name);
-        }
+        updateHeader();
 
         iv_picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,9 +165,12 @@ public class ChooseActivity extends AppCompatActivity {
         rootDatabase.child("account").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = new User();
-                user = dataSnapshot.getValue(User.class);
-                Picasso.with(ChooseActivity.this).load(user.avatar).into(iv_picture);
+                User user = dataSnapshot.getValue(User.class);
+                if (user != null && !TextUtils.isEmpty(user.avatar)) {
+                    Picasso.with(ChooseActivity.this).load(user.avatar).into(iv_picture);
+                } else {
+                    iv_picture.setImageResource(R.mipmap.ic_launcher);
+                }
             }
 
             @Override
@@ -231,6 +215,9 @@ public class ChooseActivity extends AppCompatActivity {
         }
         if(id==R.id.nav_seven_fragment)
             classfragment=FragmentReview.class;
+        if (classfragment == null) {
+            return;
+        }
         try {
             fragment=(Fragment)classfragment.newInstance();
             FragmentManager fmanager= getSupportFragmentManager();
@@ -241,6 +228,7 @@ public class ChooseActivity extends AppCompatActivity {
             setTitle(menuItem.getTitle());
             drawer.closeDrawer(GravityCompat.START);
         }catch(Exception e) {
+            Log.e("ChooseActivity", "Failed to open menu fragment", e);
         }
     }
     @Override
@@ -275,5 +263,14 @@ public class ChooseActivity extends AppCompatActivity {
         /*restart*/
 //        finish();
 //        startActivity(getIntent());
+    }
+
+    private void updateHeader() {
+        if (!TextUtils.isEmpty(email)) {
+            tv_email.setText(email);
+        }
+        if (!TextUtils.isEmpty(name)) {
+            tv_name.setText(name);
+        }
     }
 }

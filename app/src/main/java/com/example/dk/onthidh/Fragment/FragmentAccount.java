@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
 import com.example.dk.onthidh.Activity.RegisterActivity;
 import com.example.dk.onthidh.Class.Uid;
 import com.example.dk.onthidh.R;
@@ -316,4 +315,3 @@ public class FragmentAccount extends Fragment {
         });
     }
 }
-

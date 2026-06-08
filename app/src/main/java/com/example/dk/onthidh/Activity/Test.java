@@ -17,6 +17,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -90,10 +91,22 @@ public class Test extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        keyt = getIntent().getExtras().getString("keyt");
-        userid = getIntent().getExtras().getString("Uid2");
-        monhoc = getIntent().getExtras().getString("monhoc");
-        tende = getIntent().getExtras().getString("tende");
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+            Toast.makeText(this, "Missing test data", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        keyt = extras.getString("keyt");
+        userid = extras.getString("Uid2");
+        monhoc = extras.getString("monhoc");
+        tende = extras.getString("tende");
+        if (TextUtils.isEmpty(keyt) || TextUtils.isEmpty(userid) || TextUtils.isEmpty(monhoc)) {
+            Toast.makeText(this, "Invalid test data", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
         Log.d("tende", tende);
 
         clock=1;
@@ -176,21 +189,11 @@ public class Test extends AppCompatActivity {
     }
 
     public void loadsaveanswers(){
-        rootDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Uid uid = new Uid(saveanswers,scored);
-                String nameTest = tende;
-                Log.d("nameTest", nameTest);
-                rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam").setValue(uid);
-                rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("nametest").setValue(nameTest);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        Uid uid = new Uid(saveanswers,scored);
+        String nameTest = tende;
+        Log.d("nameTest", nameTest);
+        rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("dapandalam").setValue(uid);
+        rootDatabase.child("account").child(userid).child(monhoc).child("de").child(keyt).child("nametest").setValue(nameTest);
     }
     void autoCheck()
     {
@@ -317,36 +320,10 @@ public class Test extends AppCompatActivity {
                             "Bạn sẽ không được nộp bài kể từ thời gian này !", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                dialog();
-                Log.d("ID", idRdb );
-                int lengthresult = answers.length();
-                String temp = "";
-                int index = 0;
-                for(int j = 0; j < lengthresult; j++)
-                {
-                    char c = answers.charAt(j);
-                    temp = temp.concat(c + "");
-                    if(c >= 'A' && c <= 'D')
-                    {
-                        Log.d("Temp", temp);
-                        boolean checkresult = rdg[index]
-                                .getResources()
-                                .getResourceEntryName(rdg[index]
-                                        .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
-                        Log.d("Result", temp + ":" + checkresult + "");
-                        saveanswers = saveanswers.concat(rdg[index].getResources()
-                                .getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
-                        if(checkresult)
-                        {
-                            score = score.add(scoreperanswer);
-                            Log.d("Scorestep", score + "");
-                        }
-                        temp = "";
-                        index++;
-                    }
+                if (!calculateResult(false)) {
+                    return;
                 }
-                saveanswers = saveanswers.replace("cau", "");
-                scored= score + "";
+                dialog();
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -364,46 +341,10 @@ public class Test extends AppCompatActivity {
     }
     private void timeup(){
         Toast.makeText(Test.this, "Đã hết giờ làm bài", Toast.LENGTH_SHORT).show();
-        int lengthresult = answers.length();
-        String temp = "";
-        int index = 0;
-        for(int j = 0; j < lengthresult; j++)
-        {
-            char c = answers.charAt(j);
-            temp = temp.concat(c + "");
-            if(c >= 'A' && c <= 'D')
-            {
-                Log.d("Temp", temp);
-                boolean checkresult = false;
-                //Log.d("Result", temp + ":" + checkresult + "");
-                if(rdg[index].getCheckedRadioButtonId() == -1)
-                {
-                    saveanswers = saveanswers.concat("cau" + (index + 1) + "e");
-                    Log.d("timeup1", saveanswers);
-                    checkresult = false;
-                }
-                else
-                {
-                    saveanswers = saveanswers.concat(rdg[index].getResources()
-                            .getResourceEntryName(rdg[index].getCheckedRadioButtonId()) + "");
-                    checkresult = rdg[index]
-                            .getResources()
-                            .getResourceEntryName(rdg[index]
-                                    .getCheckedRadioButtonId()).toLowerCase().contains(temp.toLowerCase());
-                }
-
-                if(checkresult)
-                {
-                    score = score.add(scoreperanswer);
-                    Log.d("Scorestep", score + "");
-                }
-                temp = "";
-                index++;
-            }
+        if (!calculateResult(true)) {
+            return;
         }
-        saveanswers = saveanswers.replace("cau", "");
         Log.d("timeup", saveanswers);
-        scored= score+"";
         Log.d("score0", scored);
         loadsaveanswers();
     }
@@ -552,5 +493,65 @@ public class Test extends AppCompatActivity {
         dialogBack.setMessage("Bạn phải nộp bài hay đợi hết thời gian mới được thoát nhé !");
         dialogBack.setNegativeButton(":)", null);
         dialogBack.create().show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (timerstart != null) {
+            timerstart.cancel();
+        }
+        if (timercheck != null) {
+            timercheck.cancel();
+        }
+        super.onDestroy();
+    }
+
+    private boolean calculateResult(boolean fillEmptyAnswers) {
+        if (TextUtils.isEmpty(answers)) {
+            Toast.makeText(this, "Đề thi chưa tải xong đáp án", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        resetResultState();
+        int lengthresult = answers.length();
+        String temp = "";
+        int index = 0;
+
+        for (int j = 0; j < lengthresult; j++) {
+            char c = answers.charAt(j);
+            temp = temp.concat(c + "");
+            if (c >= 'A' && c <= 'D') {
+                boolean checkresult = false;
+                int checkedId = rdg[index].getCheckedRadioButtonId();
+
+                if (checkedId == -1) {
+                    if (fillEmptyAnswers) {
+                        saveanswers = saveanswers.concat("cau" + (index + 1) + "e");
+                    }
+                } else {
+                    String checkedAnswer = rdg[index].getResources().getResourceEntryName(checkedId);
+                    saveanswers = saveanswers.concat(checkedAnswer);
+                    checkresult = checkedAnswer.toLowerCase().contains(temp.toLowerCase());
+                }
+
+                if (checkresult) {
+                    score = score.add(scoreperanswer);
+                    Log.d("Scorestep", score + "");
+                }
+
+                temp = "";
+                index++;
+            }
+        }
+
+        saveanswers = saveanswers.replace("cau", "");
+        scored = score + "";
+        return true;
+    }
+
+    private void resetResultState() {
+        saveanswers = "";
+        scored = "0";
+        score = new BigDecimal("0.0");
     }
 }

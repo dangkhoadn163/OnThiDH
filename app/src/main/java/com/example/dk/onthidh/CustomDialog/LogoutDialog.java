@@ -2,6 +2,7 @@ package com.example.dk.onthidh.CustomDialog;
 
 import android.content.Context;
 import android.content.Intent;
+import android.app.Activity;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,6 @@ public class LogoutDialog {
     public AlertDialog dialog;
     public Context context;
     public TextView txvTitle, txvClose, txvConfirm;
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public LogoutDialog(final Context context) {
         this.context = context;
@@ -44,8 +44,12 @@ public class LogoutDialog {
                 mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
                 Intent intent = new Intent(context, LaunchActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 context.startActivity(intent);
-
+                if (context instanceof Activity) {
+                    ((Activity) context).finish();
+                }
+                dismiss();
             }
         });
     }

@@ -8,6 +8,7 @@ public class MyFile {
 
     public String answer;
     public String image;
+    public String key;
     public String text;
 
     public MyFile() {

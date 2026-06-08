@@ -26,7 +26,6 @@
                 android:background="@drawable/bg_edt2"
                 android:drawableRight="@drawable/ic_mail"
                 android:hint="Email"
-                android:text="dangkhoadn163@gmail.com"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
                 android:paddingRight="20dp"

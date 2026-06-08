@@ -5,40 +5,35 @@ package com.example.dk.onthidh.MyFile;
  */
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.dk.onthidh.Activity.ListTest;
-import com.example.dk.onthidh.Activity.Test;
 import com.example.dk.onthidh.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<MyFile> files;
-    private static OnItemClickListener listener;
+    private OnItemClickListener listener;
 
     public MyFileAdapter(Context mContext, ArrayList<MyFile> filesr) {
         this.mContext = mContext;
-        this.files = files;
+        this.files = filesr;
     }
+
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position);
     }
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
@@ -58,6 +53,13 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
         return files == null ? 0 : files.size() ;
     }
 
+    public MyFile getItem(int position) {
+        if (files == null || position < 0 || position >= files.size()) {
+            return null;
+        }
+        return files.get(position);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView img;
         public TextView txtv,txva;
@@ -69,8 +71,10 @@ public class MyFileAdapter extends RecyclerView.Adapter<MyFileAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (listener != null)
-                        listener.onItemClick(itemView, getLayoutPosition());
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(itemView, position);
+                    }
                 }
             });
 
