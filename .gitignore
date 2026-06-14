@@ -7,3 +7,14 @@
 /build
 /captures
 .externalNativeBuild
+
+# iOS / Xcode build outputs
+/ios/DerivedData/
+/ios/.build/
+/ios/*.xcodeproj/xcuserdata/
+/ios/*.xcodeproj/xcuserdata/**
+/ios/*.xcodeproj/project.xcworkspace/xcuserdata/
+/ios/*.xcodeproj/project.xcworkspace/xcuserdata/**
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate

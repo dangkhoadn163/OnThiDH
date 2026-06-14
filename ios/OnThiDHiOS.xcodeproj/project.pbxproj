@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B00000000000000000000001 /* OnThiDHiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000002 /* OnThiDHiOSApp.swift */; };
+		B00000000000000000000002 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000003 /* AppState.swift */; };
+		B00000000000000000000003 /* FirebaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000004 /* FirebaseConfig.swift */; };
+		B00000000000000000000004 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000005 /* Models.swift */; };
+		B00000000000000000000005 /* FirebaseAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000006 /* FirebaseAuthClient.swift */; };
+		B00000000000000000000006 /* FirebaseDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000007 /* FirebaseDatabaseClient.swift */; };
+		B00000000000000000000013 /* FirebaseStorageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000014 /* FirebaseStorageClient.swift */; };
+		B00000000000000000000007 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000008 /* RootView.swift */; };
+		B00000000000000000000008 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000009 /* LoginView.swift */; };
+		B00000000000000000000009 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000000A /* RegisterView.swift */; };
+		B0000000000000000000000A /* SubjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000000B /* SubjectListView.swift */; };
+		B0000000000000000000000B /* ExamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000000C /* ExamListView.swift */; };
+		B0000000000000000000000C /* ExamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000000D /* ExamDetailView.swift */; };
+		B0000000000000000000000D /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000000E /* PlaceholderView.swift */; };
+		B0000000000000000000000E /* ExamAttemptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000000F /* ExamAttemptView.swift */; };
+		B0000000000000000000000F /* ReviewLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000010 /* ReviewLibraryView.swift */; };
+		B00000000000000000000010 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000011 /* AccountView.swift */; };
+		B00000000000000000000011 /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000012 /* SupportView.swift */; };
+		B00000000000000000000012 /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000013 /* RateView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F00000000000000000000001 /* OnThiDHiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnThiDHiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F00000000000000000000002 /* OnThiDHiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnThiDHiOSApp.swift; sourceTree = "<group>"; };
+		F00000000000000000000003 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F00000000000000000000004 /* FirebaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConfig.swift; sourceTree = "<group>"; };
+		F00000000000000000000005 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F00000000000000000000006 /* FirebaseAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthClient.swift; sourceTree = "<group>"; };
+		F00000000000000000000007 /* FirebaseDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseClient.swift; sourceTree = "<group>"; };
+		F00000000000000000000014 /* FirebaseStorageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageClient.swift; sourceTree = "<group>"; };
+		F00000000000000000000008 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F00000000000000000000009 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F0000000000000000000000A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		F0000000000000000000000B /* SubjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectListView.swift; sourceTree = "<group>"; };
+		F0000000000000000000000C /* ExamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListView.swift; sourceTree = "<group>"; };
+		F0000000000000000000000D /* ExamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamDetailView.swift; sourceTree = "<group>"; };
+		F0000000000000000000000E /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		F0000000000000000000000F /* ExamAttemptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAttemptView.swift; sourceTree = "<group>"; };
+		F00000000000000000000010 /* ReviewLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLibraryView.swift; sourceTree = "<group>"; };
+		F00000000000000000000011 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		F00000000000000000000012 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
+		F00000000000000000000013 /* RateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		P00000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G00000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				G00000000000000000000002 /* OnThiDHiOS */,
+				G00000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		G00000000000000000000002 /* OnThiDHiOS */ = {
+			isa = PBXGroup;
+			children = (
+				F00000000000000000000002 /* OnThiDHiOSApp.swift */,
+				F00000000000000000000003 /* AppState.swift */,
+				F00000000000000000000004 /* FirebaseConfig.swift */,
+				F00000000000000000000005 /* Models.swift */,
+				F00000000000000000000006 /* FirebaseAuthClient.swift */,
+				F00000000000000000000007 /* FirebaseDatabaseClient.swift */,
+				F00000000000000000000014 /* FirebaseStorageClient.swift */,
+				G00000000000000000000004 /* Views */,
+			);
+			path = OnThiDHiOS;
+			sourceTree = "<group>";
+		};
+		G00000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F00000000000000000000001 /* OnThiDHiOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		G00000000000000000000004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F00000000000000000000008 /* RootView.swift */,
+				F00000000000000000000009 /* LoginView.swift */,
+				F0000000000000000000000A /* RegisterView.swift */,
+				F0000000000000000000000B /* SubjectListView.swift */,
+				F0000000000000000000000C /* ExamListView.swift */,
+				F0000000000000000000000D /* ExamDetailView.swift */,
+				F0000000000000000000000E /* PlaceholderView.swift */,
+				F0000000000000000000000F /* ExamAttemptView.swift */,
+				F00000000000000000000010 /* ReviewLibraryView.swift */,
+				F00000000000000000000011 /* AccountView.swift */,
+				F00000000000000000000012 /* SupportView.swift */,
+				F00000000000000000000013 /* RateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		T00000000000000000000001 /* OnThiDHiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = L00000000000000000000002 /* Build configuration list for PBXNativeTarget "OnThiDHiOS" */;
+			buildPhases = (
+				P00000000000000000000002 /* Sources */,
+				P00000000000000000000001 /* Frameworks */,
+				P00000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OnThiDHiOS;
+			productName = OnThiDHiOS;
+			productReference = F00000000000000000000001 /* OnThiDHiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		R00000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					T00000000000000000000001 = {
+						CreatedOnToolsVersion = 26.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = L00000000000000000000001 /* Build configuration list for PBXProject "OnThiDHiOS" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = G00000000000000000000001;
+			productRefGroup = G00000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				T00000000000000000000001 /* OnThiDHiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		P00000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		P00000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B00000000000000000000001 /* OnThiDHiOSApp.swift in Sources */,
+				B00000000000000000000002 /* AppState.swift in Sources */,
+				B00000000000000000000003 /* FirebaseConfig.swift in Sources */,
+				B00000000000000000000004 /* Models.swift in Sources */,
+				B00000000000000000000005 /* FirebaseAuthClient.swift in Sources */,
+				B00000000000000000000006 /* FirebaseDatabaseClient.swift in Sources */,
+				B00000000000000000000013 /* FirebaseStorageClient.swift in Sources */,
+				B00000000000000000000007 /* RootView.swift in Sources */,
+				B00000000000000000000008 /* LoginView.swift in Sources */,
+				B00000000000000000000009 /* RegisterView.swift in Sources */,
+				B0000000000000000000000A /* SubjectListView.swift in Sources */,
+				B0000000000000000000000B /* ExamListView.swift in Sources */,
+				B0000000000000000000000C /* ExamDetailView.swift in Sources */,
+				B0000000000000000000000D /* PlaceholderView.swift in Sources */,
+				B0000000000000000000000E /* ExamAttemptView.swift in Sources */,
+				B0000000000000000000000F /* ReviewLibraryView.swift in Sources */,
+				B00000000000000000000010 /* AccountView.swift in Sources */,
+				B00000000000000000000011 /* SupportView.swift in Sources */,
+				B00000000000000000000012 /* RateView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C00000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C00000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C00000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MVWPM244G9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "On Thi DH";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App can truy cap thu vien anh de chon avatar.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.dk.onthidh.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C00000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MVWPM244G9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "On Thi DH";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App can truy cap thu vien anh de chon avatar.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.dk.onthidh.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		L00000000000000000000001 /* Build configuration list for PBXProject "OnThiDHiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C00000000000000000000001 /* Debug */,
+				C00000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		L00000000000000000000002 /* Build configuration list for PBXNativeTarget "OnThiDHiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C00000000000000000000003 /* Debug */,
+				C00000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = R00000000000000000000001 /* Project object */;
+}
